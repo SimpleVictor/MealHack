@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import {Menu} from "../pages/menu/menu";
+import {Barcode} from "../pages/barcode/barcode";
+import {Setting} from "../pages/setting/setting";
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
+    Menu,
+    Barcode,
+    Setting,
     TabsPage
   ],
   imports: [
@@ -20,8 +22,9 @@ import { TabsPage } from '../pages/tabs/tabs';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
+    Menu,
+    Barcode,
+    Setting,
     HomePage,
     TabsPage
   ],

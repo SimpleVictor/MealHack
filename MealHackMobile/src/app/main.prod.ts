@@ -4,4 +4,6 @@ import { enableProdMode } from '@angular/core';
 import { AppModuleNgFactory } from './app.module.ngfactory';
 
 enableProdMode();
-platformBrowser().bootstrapModuleFactory(AppModuleNgFactory);
+platformBrowser().bootstrapModuleFactory(AppModuleNgFactory, [], {
+  tabsPlacement:'top'
+});

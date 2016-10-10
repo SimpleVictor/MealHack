@@ -31,6 +31,30 @@ $colors: (
   favorite:   #69BB7B
 );
 
+.tabbar{
+  background: #B71C1C !important;
+  border-bottom: 0 !important;
+}
+
+.toolbar-title{
+  color: #FFF !important;
+  font-weight: 900 !important;
+}
+
+.toolbar-background{
+  background: #B71C1C !important;
+  border-color:#B71C1C !important;
+}
+
+.tab-button[aria-selected=true]{
+  color: #FFF !important;
+  border-bottom: 4px solid #FFF !important;
+}
+
+//
+//.toolbar-background{
+//  backgrond-color: #B00808;
+//}
 
 // App Theme
 // --------------------------------------------------
@@ -49,3 +73,4 @@ $colors: (
 
 $ionicons-font-path: "../assets/fonts";
 @import "ionicons";
+
