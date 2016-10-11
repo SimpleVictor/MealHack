@@ -2,7 +2,7 @@ import { Component} from '@angular/core';
 import { NavController} from 'ionic-angular';
 
 declare var TweenLite;
-declare var Bounce;
+declare var Circ;
 @Component({
   templateUrl: 'build/pages/barcode/barcode.html'
 })
@@ -14,7 +14,10 @@ export class Barcode {
 
   ionViewDidEnter(){
     let obj = document.getElementById("barcode-title");
-    TweenLite.from(obj, 0.5, {left:"300px",ease:Bounce.easeOut});
+    TweenLite.from(obj, 0.5, {left:"300px",ease:Circ.easeOut});
+    let cards = document.getElementsByClassName("barcode-card");
+    TweenLite.from(cards, 0.2, {margin:"100px",ease:Circ.easeOut});
+
   }
 
 }
