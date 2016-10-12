@@ -12,17 +12,29 @@
 
 @import "../pages/home/home";
 
+*{
+  font-family: 'Chewy', cursive;
+}
+
 ion-content{
   background-color: $main-background-color;
 }
 
 .tabbar{
-  background: #B71C1C !important;
+  background: #E62117 !important;
   border-bottom: 0 !important;
 }
 
 ion-card{
-  border-top: 2px solid #B71C1C !important;
+  border-top: 2px solid #E62117 !important;
+}
+
+ion-title{
+  padding: 0;
+}
+
+.tab-button{
+  color: #73100B !important;
 }
 
 .toolbar-title{
@@ -31,8 +43,8 @@ ion-card{
 }
 
 .toolbar-background{
-  background: #B71C1C !important;
-  border-color:#B71C1C !important;
+  background: #E62117 !important;
+  border-color:#E62117 !important;
 }
 
 .tab-button[aria-selected=true]{
@@ -41,5 +53,5 @@ ion-card{
 }
 
 ion-tabbar{
-  background: #B71C1C !important;
+  background: #E62117 !important;
 }

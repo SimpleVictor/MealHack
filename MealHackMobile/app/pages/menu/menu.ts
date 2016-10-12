@@ -12,7 +12,7 @@ export class Menu {
 
   ionViewDidEnter(){
     let obj = document.getElementById("menu-title");
-    TweenLite.from(obj, 0.5, {left:"300px", ease:Circ.easeOut});
+    TweenLite.from(obj, 0.4, {width:"0px",opacity: 0, ease:Circ.easeOut});
     let cards = document.getElementsByClassName("menu-card");
     TweenLite.from(cards, 0.2, {margin:"100px",ease:Circ.easeOut});
   }

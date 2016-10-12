@@ -14,7 +14,7 @@ export class Barcode {
 
   ionViewDidEnter(){
     let obj = document.getElementById("barcode-title");
-    TweenLite.from(obj, 0.5, {left:"300px",ease:Circ.easeOut});
+    TweenLite.from(obj, 0.4, {width:"0px",opacity: 0, ease:Circ.easeOut});
     let cards = document.getElementsByClassName("barcode-card");
     TweenLite.from(cards, 0.2, {margin:"100px",ease:Circ.easeOut});
 
