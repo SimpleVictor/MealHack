@@ -1,22 +1,40 @@
 .home-page{
+
+  .foodlist{
+    position: relative;
+  }
   #close-marker{
     //font-size: 3.0rem !important;
     font-size: 3.0rem;
+    position: absolute;
+    left: 85%;
+    z-index: 2;
+    font-weight: bolder;
+    top: 25px;
+    color: white;
   }
   .welcome-card{
     position: relative;
-
-    .food-title{
-      top:30%;
-      background: rgba(54, 25, 25, .35);
-      width:100%;
-      position: absolute;
+    .food-title2{
       color: #FFF;
       letter-spacing: 4px;
       font-size: 2.7rem;
-      //top: 50%;
-      //left:50%;
-      margin: 0;
+      background: rgba(54, 25, 25, .35);
+      position:absolute;
+      height: 100%;
+      width: 100%;
+      //top:30%;
+    }
+
+    .food-title{
+      color: #FFF;
+      letter-spacing: 4px;
+      font-size: 2.7rem;
+      background: rgba(54, 25, 25, .35);
+      position:absolute;
+      height: 100%;
+      width: 100%;
+      //top:30%;
     }
     .food-shadowTop{
       width: 100%;
