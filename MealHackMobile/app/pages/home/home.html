@@ -7,38 +7,40 @@
 
 <ion-content class="home-page">
 
-  <ion-card class="welcome-card" tappable ion-button (click)="testMe()">
+  <row>
+    <button full secondary (click)="hideIt()">Hide</button>
+    <button full secondary (click)="showIt()">Show</button>
+  </row>
+
+  <ion-card #mcdonald class="welcome-card" tappable (click)="pickRestaurant('0')">
+    <img src="img/mcdonald.jpg">
       <h3 class="food-shadowBot" style="color: white" text-center></h3>
       <h3 class="food-title" text-center>McDonald</h3>
       <h3 class="food-shadowTop" style="color: white" text-center></h3>
-      <img src="img/mcdonald.jpg">
   </ion-card>
 
-
-
-  <ion-card class="welcome-card">
+  <ion-card #burgerking class="welcome-card" tappable ion-button (click)="pickRestaurant('1')">
     <h3 class="food-shadowBot" style="color: white" text-center></h3>
     <h3 class="food-title" text-center>BurgerKing</h3>
     <h3 class="food-shadowTop" style="color: white" text-center></h3>
     <img src="img/burgerking.jpg">
   </ion-card>
 
-
-  <ion-card class="welcome-card">
+  <ion-card #starbuck class="welcome-card" tappable ion-button (click)="pickRestaurant('2')">
     <h3 class="food-shadowBot" style="color: white" text-center></h3>
     <h3 class="food-title" text-center>Starbuck</h3>
     <h3 class="food-shadowTop" style="color: white" text-center></h3>
     <img src="img/starbuck.jpg">
   </ion-card>
 
-  <ion-card class="welcome-card">
+  <ion-card #kfc class="welcome-card" tappable ion-button (click)="pickRestaurant('3')">
     <h3 class="food-shadowBot" style="color: white" text-center></h3>
     <h3 class="food-title" text-center>KFC</h3>
     <h3 class="food-shadowTop" style="color: white" text-center></h3>
     <img src="img/kfc.jpg">
   </ion-card>
 
-  <ion-card class="welcome-card">
+  <ion-card #chipotle class="welcome-card" tappable ion-button (click)="pickRestaurant('4')">
     <h3 class="food-shadowBot" style="color: white" text-center></h3>
     <h3 class="food-title" text-center>Chipotle</h3>
     <h3 class="food-shadowTop" style="color: white" text-center></h3>
