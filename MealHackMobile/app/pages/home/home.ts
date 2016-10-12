@@ -19,6 +19,9 @@ export class HomePage {
 
   RestaurantNameOrder;
 
+  currentRestaurant;
+  originalHeight;
+
   constructor(public navCtrl: NavController) {
     console.log(CONFIGS.data);
   }
@@ -33,6 +36,7 @@ export class HomePage {
     ];
 
 
+
       let obj = document.getElementById("home-title");
       TweenLite.from(obj, 0.4, {width:"0px",opacity: 0, ease:Circ.easeOut});
 
@@ -41,38 +45,50 @@ export class HomePage {
 
   }
   pickRestaurant(target){
+    console.log(this.burgerking);
     // (this.RestaurantNameOrder[target].nativeElement;
     // let cssObj = this.RestaurantNameOrder[target].nativeElement;
     //
     for(let i = 0; i < this.RestaurantNameOrder.length; i++){
       let newNum = parseInt(target);
       if(i === newNum){
-        console.log("works");
+        this.currentRestaurant = i;
+        this.expandRestaurant(this.RestaurantNameOrder[i]);
       }else{
-        TweenLite.to(this.RestaurantNameOrder[i].nativeElement, 0.5, {right: "400px", opacity: 0, ease:Circ.easeOut});
+        TweenLite.to(this.RestaurantNameOrder[i].nativeElement, 0.5, {right: "400px", opacity: 0, ease:Circ.easeOut, onComplete:this.onComplete, onCompleteParams:[this.RestaurantNameOrder[i]]});
       }
     }
   }
 
   hideIt(){
-    console.log(this.burgerking);
-    //Coming Back
-    // TweenLite.from(this.burgerking.nativeElement , 0.5, {right: "400px", opacity: 0, ease:Circ.easeOut});
-    //Going Away
-    TweenLite.to(this.burgerking.nativeElement , 0.5, {right: "400px", opacity: 0, ease:Circ.easeOut, onComplete:this.onComplete, onCompleteParams:[this.burgerking]})
+    TweenLite.to(this.burgerking.nativeElement , 0.5, {right: "400px", opacity: 0, ease:Circ.easeOut,onComplete:this.onComplete,   onCompleteParams:[this.burgerking]})
   }
 
-  showIt(){
-    this.burgerking.nativeElement.style.right = 0;
-    this.burgerking.nativeElement.style.opacity = 1;
-    this.burgerking.nativeElement.style.display = '';
-    TweenLite.from(this.burgerking.nativeElement , 0.5, {right: "400px", opacity: 0, ease:Circ.easeOut});
+  goBackToStart(){
+    console.log("bruh");
+    TweenLite.to(this.RestaurantNameOrder[this.currentRestaurant].nativeElement, 0.5 ,{height: "auto"});
+    // for(let i = 0; i < this.RestaurantNameOrder.length; i++){
+
+    // }
+    // this.burgerking.nativeElement.style.right = 0;
+    // this.burgerking.nativeElement.style.opacity = 1;
+    // this.burgerking.nativeElement.style.display = '';
+    // TweenLite.from(this.burgerking.nativeElement , 0.5, {right: "400px", opacity: 0, ease:Circ.easeOut});
   }
 
   onComplete(myobj){
-    console.log(myobj);
+    console.log("completed");
     myobj.nativeElement.style.display = 'none';
   }
 
+  expandRestaurant(obj){
+    console.log(obj.nativeElement.children[3]);
+    let img = obj.nativeElement.children[3];
+    let text = obj.nativeElement.children[1];
+    obj.nativeElement.children[0].style.display = 'none';
+    obj.nativeElement.children[2].style.display = 'none';
+    TweenLite.to(img, 0.5, {height:"250px", ease:Circ.easeOut});
+
+  }
 
 }

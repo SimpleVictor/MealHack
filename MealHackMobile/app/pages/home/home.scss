@@ -1,7 +1,11 @@
 .home-page{
-
+  #close-marker{
+    //font-size: 3.0rem !important;
+    font-size: 3.0rem;
+  }
   .welcome-card{
     position: relative;
+
     .food-title{
       top:30%;
       background: rgba(54, 25, 25, .35);
