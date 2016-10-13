@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import  * as mcdonald from '../../json/mcdonald';
-
+import * as burgerking from '../../json/burgerking';
 declare var TweenLite;
 declare var Bounce;
 declare var Circ;
@@ -13,12 +13,15 @@ export class HomePage {
 
   @ViewChild("mcdonald") mcdonald;
   @ViewChild("burgerking") burgerking;
+  @ViewChild("tacobell") tacobell;
   @ViewChild("starbuck") starbuck;
   @ViewChild("kfc") kfc;
   @ViewChild("chipotle") chipotle;
 
 
-  whichTab = "burger";
+  mcdonaldTab = "burger";
+  burgerkingTab = "burger";
+  tacobellTab;
 
   RestaurantNameOrder;
 
@@ -26,6 +29,7 @@ export class HomePage {
   originalHeight;
 
   mcdonald_menu;
+  burgerking_menu;
 
 
   //Check to see if restaurant has been expanded so click event isn't triggered
@@ -34,12 +38,15 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
     this.mcdonald_menu = JSON.parse(mcdonald.mcdonald);
     console.log(this.mcdonald_menu);
+    console.log(burgerking);
+    this.burgerking_menu = burgerking.burgerking;
   }
 
   ionViewDidEnter(){
     this.RestaurantNameOrder = [
       this.mcdonald,
       this.burgerking,
+      this.tacobell,
       this.starbuck,
       this.kfc,
       this.chipotle

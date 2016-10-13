@@ -20,7 +20,7 @@
       <img src="img/mcdonald.jpg">
     <div class="foodlist" style="display: none">
 
-      <ion-segment [(ngModel)]="whichTab" color="secondary">
+      <ion-segment [(ngModel)]="mcdonaldTab" color="secondary">
         <ion-segment-button class="segment-activated" value="burger">Burger</ion-segment-button>
         <ion-segment-button value="sides">Sides</ion-segment-button>
         <ion-segment-button value="dessert">Dessert</ion-segment-button>
@@ -28,7 +28,7 @@
       </ion-segment>
 
       <ion-list>
-        <div [ngSwitch]="whichTab">
+        <div [ngSwitch]="mcdonaldTab">
 
           <div *ngSwitchCase="'burger'" >
             <ion-item *ngFor="let mcdonald of mcdonald_menu.Burger">
@@ -42,11 +42,18 @@
           </div>
 
           <div *ngSwitchCase="'sides'" >
-            <ion-item>bruhhh</ion-item>
+            <ion-item *ngFor="let mcdonald of mcdonald_menu.Sides">
+              <ion-thumbnail item-left>
+                <img class="mcdonald_img" src="{{mcdonald.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{mcdonald.name}}</h2>
+              <p>Hayao Miyazaki • 1988</p>
+              <button clear item-right>Add</button>
+            </ion-item>
           </div>
 
           <div *ngSwitchCase="'dessert'" >
-            <ion-item *ngFor="let mcdonald of mcdonald_menu.Burger">
+            <ion-item *ngFor="let mcdonald of mcdonald_menu.Desert">
               <ion-thumbnail item-left>
                 <img class="mcdonald_img" src="{{mcdonald.picture_url}}">
               </ion-thumbnail>
@@ -57,7 +64,7 @@
           </div>
 
           <div *ngSwitchCase="'drinks'" >
-            <ion-item *ngFor="let mcdonald of mcdonald_menu.Burger">
+            <ion-item *ngFor="let mcdonald of mcdonald_menu.Drinks">
               <ion-thumbnail item-left>
                 <img class="mcdonald_img" src="{{mcdonald.picture_url}}">
               </ion-thumbnail>
@@ -78,6 +85,86 @@
     <h3 class="food-title" text-center>BurgerKing</h3>
     <img src="img/burgerking.jpg">
     <div class="foodlist" style="display: none">
+
+      <ion-segment [(ngModel)]="burgerkingTab" color="secondary">
+        <ion-segment-button class="segment-activated" value="burger">Burger</ion-segment-button>
+        <ion-segment-button value="sides">Sides</ion-segment-button>
+        <ion-segment-button value="dessert">Dessert</ion-segment-button>
+        <ion-segment-button value="drinks">Drinks</ion-segment-button>
+      </ion-segment>
+
+      <ion-list>
+        <div [ngSwitch]="burgerkingTab">
+
+          <div *ngSwitchCase="'burger'" >
+            <ion-item *ngFor="let burgerking of burgerking_menu.burgers">
+              <ion-thumbnail item-left>
+                <img class="mcdonald_img" src="{{burgerking.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{burgerking.name}}</h2>
+              <p>Hayao Miyazaki • 1988</p>
+              <button clear item-right>Add</button>
+            </ion-item>
+          </div>
+
+          <div *ngSwitchCase="'sides'" >
+            <ion-item *ngFor="let burgerking of burgerking_menu.sides">
+              <ion-thumbnail item-left>
+                <img class="mcdonald_img" src="{{burgerking.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{burgerking.name}}</h2>
+              <p>Hayao Miyazaki • 1988</p>
+              <button clear item-right>Add</button>
+            </ion-item>
+          </div>
+
+          <div *ngSwitchCase="'dessert'" >
+            <ion-item *ngFor="let burgerking of burgerking_menu.desserts">
+              <ion-thumbnail item-left>
+                <img class="mcdonald_img" src="{{burgerking.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{burgerking.name}}</h2>
+              <p>Hayao Miyazaki • 1988</p>
+              <button clear item-right>Add</button>
+            </ion-item>
+          </div>
+
+          <div *ngSwitchCase="'drinks'" >
+            <ion-item *ngFor="let burgerking of burgerking_menu.drinks">
+              <ion-thumbnail item-left>
+                <img class="mcdonald_img" src="{{burgerking.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{burgerking.name}}</h2>
+              <p>Hayao Miyazaki • 1988</p>
+              <button clear item-right>Add</button>
+            </ion-item>
+          </div>
+
+
+        </div>
+      </ion-list>
+
+
+      </div>
+  </ion-card>
+
+  <ion-card #tacobell class="welcome-card" tappable ion-button (click)="pickRestaurant('2')">
+    <h3 class="food-title" text-center>Tacobell</h3>
+    <img src="img/tacobell.jpg">
+
+    <div class="foodlist" style="display: none">
+
+      <ion-segment [(ngModel)]="tacobellTab" color="secondary">
+        <ion-segment-button class="segment-activated" value="taco">Taco</ion-segment-button>
+        <ion-segment-button value="burrito">Burrito</ion-segment-button>
+        <ion-segment-button value="sides">Sides</ion-segment-button>
+      </ion-segment>
+      <ion-segment [(ngModel)]="tacobellTab" color="secondary">
+        <ion-segment-button value="drinks">Drinks</ion-segment-button>
+        <ion-segment-button value="dessert">Sweets</ion-segment-button>
+        <ion-segment-button value="breakfast">Breakfast</ion-segment-button>
+      </ion-segment>
+
       <ion-list>
         <ion-item>
           <ion-thumbnail item-left>
@@ -88,13 +175,16 @@
           <button clear item-right>Add</button>
         </ion-item>
       </ion-list>
-      </div>
+    </div>
   </ion-card>
 
-  <ion-card #starbuck class="welcome-card" tappable ion-button (click)="pickRestaurant('2')">
+  <ion-card #starbuck class="welcome-card" tappable ion-button (click)="pickRestaurant('3')">
     <h3 class="food-title" text-center>Starbuck</h3>
     <img src="img/starbuck.jpg">
     <div class="foodlist" style="display: none">
+
+
+
       <ion-list>
         <ion-item>
           <ion-thumbnail item-left>
@@ -108,7 +198,7 @@
       </div>
   </ion-card>
 
-  <ion-card #kfc class="welcome-card" tappable ion-button (click)="pickRestaurant('3')">
+  <ion-card #kfc class="welcome-card" tappable ion-button (click)="pickRestaurant('4')">
     <h3 class="food-title" text-center>KFC</h3>
     <img src="img/kfc.jpg">
     <div class="foodlist" style="display: none">
@@ -125,7 +215,7 @@
       </div>
   </ion-card>
 
-  <ion-card #chipotle class="welcome-card" tappable ion-button (click)="pickRestaurant('4')">
+  <ion-card #chipotle class="welcome-card" tappable ion-button (click)="pickRestaurant('5')">
     <h3 class="food-title" text-center>Chipotle</h3>
     <img src="img/chipotle.jpg">
     <div class="foodlist" style="display: none">
