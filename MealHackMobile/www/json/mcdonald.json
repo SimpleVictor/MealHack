@@ -35,7 +35,7 @@
     {
       "name": "McCafe Coffee",
       "picture_url": "img/food/mcdonald/drinks/coffee.png"
-    },
+    }
   ],
   "Burger": [
     {
@@ -106,6 +106,25 @@
     }
   ],
   "Sides":[
-
+    {
+      "name": "World Famous Fries",
+      "picture_url": "img/food/mcdonald/sides/fries.png"
+    },
+    {
+      "name": "Apple Slices",
+      "picture_url": "img/food/mcdonald/sides/appleslice.png"
+    },
+    {
+      "name": "Chicken McNuggets",
+      "picture_url": "img/food/mcdonald/sides/nuggets.png"
+    },
+    {
+      "name": "Sausage Burrito",
+      "picture_url": "img/food/mcdonald/sides/sausageburrito.png"
+    },
+    {
+      "name": "Hash Browns",
+      "picture_url": "img/food/mcdonald/sides/hashbrowns.png"
+    }
   ]
 }
