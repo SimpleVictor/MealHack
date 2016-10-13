@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {HomePage} from "../home/home";
-import {Menu} from "../menu/menu";
+// import {Menu} from "../menu/menu";
 import {Barcode} from "../barcode/barcode";
 import {Setting} from "../setting/setting";
 
@@ -16,9 +16,9 @@ import {Setting} from "../setting/setting";
 })
 export class TabsPage {
   tab1Root = HomePage;
-  tab2Root = Menu;
-  tab3Root = Barcode;
-  tab4Root = Setting;
+  // tab2Root = Menu;
+  tab2Root = Barcode;
+  tab3Root = Setting;
   constructor(private navCtrl: NavController) {
 
   }
