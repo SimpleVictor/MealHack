@@ -158,7 +158,53 @@ export let tacobell = {
       price: "1.59"
     }
   ],
-  sides: [],
+  sides: [
+    {
+      name: "Cheesy Fiesta Potatoes",
+      picture_url: "img/food/tacobell/sides/CheesyFiestaPotatoes.jpg",
+      price: "1.39"
+    },
+    {
+      name: "Chips & Cheese",
+      picture_url: "img/food/tacobell/sides/ChipsCheese.jpg",
+      price: "1.39"
+    },
+    {
+      name: "Chips and Pico De Gallo",
+      picture_url: "img/food/tacobell/sides/ChipsandPicoDeGallo.jpg",
+      price: "1.49"
+    },
+    {
+      name: "Chips and Guacamole",
+      picture_url: "img/food/tacobell/sides/ChipsandGuacamole.jpg",
+      price: "1.49"
+    },
+    {
+      name: "Chips and Salsa",
+      picture_url: "img/food/tacobell/sides/ChipsandSalsa.jpg",
+      price: "1.49"
+    },
+    {
+      name: "Pintos N Cheese",
+      picture_url: "img/food/tacobell/sides/PintosNCheese.jpg",
+      price: "1.29"
+    },
+    {
+      name: "Premium Latin Rice",
+      picture_url: "img/food/tacobell/sides/PremiumLatinRice.jpg",
+      price: "1.49"
+    },
+    {
+      name: "Black Beans and Rice",
+      picture_url: "img/food/tacobell/sides/BlackBeansandRice.jpg",
+      price: "1.49"
+    },
+    {
+      name: "Black Beans",
+      picture_url: "img/food/tacobell/sides/BlackBeans.jpg",
+      price: "1.49"
+    }
+  ],
   drinks: [],
   desserts: [],
   breakfast: []
