@@ -20,45 +20,15 @@
       <img src="img/mcdonald.jpg">
     <div class="foodlist" style="display: none">
     <ion-list>
-      <ion-item>
+      <ion-item *ngFor="let mcdonald of mcdonald_menu.Burger">
         <ion-thumbnail item-left>
-          <img src="img/kristy.png">
+          <img class="mcdonald_img" src="{{mcdonald.picture_url}}">
         </ion-thumbnail>
-        <h2>My Neighbor Totoro</h2>
+        <h2>{{mcdonald.name}}</h2>
         <p>Hayao Miyazaki • 1988</p>
         <button clear item-right>Add</button>
       </ion-item>
     </ion-list>
-      <ion-list>
-        <ion-item>
-          <ion-thumbnail item-left>
-            <img src="img/kristy.png">
-          </ion-thumbnail>
-          <h2>My Neighbor Totoro</h2>
-          <p>Hayao Miyazaki • 1988</p>
-          <button clear item-right>Add</button>
-        </ion-item>
-      </ion-list>
-      <ion-list>
-        <ion-item>
-          <ion-thumbnail item-left>
-            <img src="img/kristy.png">
-          </ion-thumbnail>
-          <h2>My Neighbor Totoro</h2>
-          <p>Hayao Miyazaki • 1988</p>
-          <button clear item-right>Add</button>
-        </ion-item>
-      </ion-list>
-      <ion-list>
-        <ion-item>
-          <ion-thumbnail item-left>
-            <img src="img/kristy.png">
-          </ion-thumbnail>
-          <h2>My Neighbor Totoro</h2>
-          <p>Hayao Miyazaki • 1988</p>
-          <button clear item-right>Add</button>
-        </ion-item>
-      </ion-list>
     </div>
   </ion-card>
 

@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import  * as mcdonald from '../../json/mcdonald';
 
 declare var TweenLite;
 declare var Bounce;
@@ -21,7 +22,11 @@ export class HomePage {
   currentRestaurant;
   originalHeight;
 
+  mcdonald_menu;
+
   constructor(public navCtrl: NavController) {
+    this.mcdonald_menu = JSON.parse(mcdonald.mcdonald);
+    console.log(this.mcdonald_menu);
   }
 
   ionViewDidEnter(){
@@ -43,7 +48,6 @@ export class HomePage {
 
   }
   pickRestaurant(target){
-    console.log(this.burgerking);
     // (this.RestaurantNameOrder[target].nativeElement;
     // let cssObj = this.RestaurantNameOrder[target].nativeElement;
     //
@@ -116,7 +120,7 @@ export class HomePage {
   }
 
   onComplete(myobj){
-    console.log("completed");
+    // console.log("completed");
     myobj.nativeElement.style.display = 'none';
   }
 
