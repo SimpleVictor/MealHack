@@ -1,0 +1,41 @@
+{
+  "Drinks": [
+
+  ],
+  "Burger": [
+    {
+      "name": "Big Mac",
+      "picture_url": "img/food/mcdonald/burgers/bigmac.png"
+    },
+    {
+      "name": "Quarter Pounder with Cheese",
+      "picture_url": "img/food/mcdonald/burgers/quarterpounder.png"
+    },
+    {
+      "name": "Double Quarter Pounder with Cheese",
+      "picture_url": "img/food/mcdonald/burgers/doublequarter.png"
+    },
+    {
+      "name": "Hamburger",
+      "picture_url": "img/food/mcdonald/burgers/hamburger.png"
+    },
+    {
+      "name": "Cheeseburger",
+      "picture_url": "img/food/mcdonald/burgers/cheeseburger.png"
+    },
+    {
+      "name": "Double Cheeseburger",
+      "picture_url": "img/food/mcdonald/burgers/doublecheeseburger.png"
+    },
+    {
+      "name": "McDouble",
+      "picture_url": "img/food/mcdonald/burgers/mcdouble.png"
+    }
+  ],
+  "Desert":[
+
+  ],
+  "Sides":[
+
+  ]
+}
