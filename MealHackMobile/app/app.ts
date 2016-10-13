@@ -3,9 +3,13 @@ import { ionicBootstrap, Platform, SqlStorage, Storage } from 'ionic-angular';
 import { StatusBar , SQLite} from 'ionic-native';
 import {TabsPage} from "./pages/tabs/tabs";
 // import {NativePageTransitions, TransitionOptions} from 'ionic-native';
+import * as CONFIGS from "../myConfig";
+import {SqlStorageService} from "./providers/sqlstorage";
 
+declare var firebase;
 
 @Component({
+  providers: [SqlStorageService],
   template: '<ion-nav [root]="rootPage"></ion-nav>'
 })
 export class MyApp {
@@ -13,6 +17,17 @@ export class MyApp {
 
   constructor(public platform: Platform) {
     platform.ready().then(() => {
+      console.log(CONFIGS);
+
+
+      var config = {
+        apiKey: CONFIGS.data.apiKey,
+        authDomain: CONFIGS.data.authDomain,
+        databaseURL: CONFIGS.data.databaseURL,
+        storageBucket: CONFIGS.data.storageBucket,
+        messagingSenderId: CONFIGS.data.messagingSenderId
+      };
+      firebase.initializeApp(config);
 
       console.log(platform.platforms());
       let myPlat = platform.platforms();

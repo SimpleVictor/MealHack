@@ -1,6 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import * as CONFIGS from "../../../myConfig";
 
 declare var TweenLite;
 declare var Bounce;
@@ -23,7 +22,6 @@ export class HomePage {
   originalHeight;
 
   constructor(public navCtrl: NavController) {
-    console.log(CONFIGS.data);
   }
 
   ionViewDidEnter(){
