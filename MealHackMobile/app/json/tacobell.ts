@@ -205,9 +205,132 @@ export let tacobell = {
       price: "1.49"
     }
   ],
-  drinks: [],
-  desserts: [],
-  breakfast: []
+  drinks: [
+    {
+      name: "Airheads White Mystery Freeze",
+      picture_url: "img/food/tacobell/drinks/AirheadsWhiteMysteryFreeze.jpg",
+      price: "1.99"
+    },
+    {
+      name: "StarBurst Strawberry Freeze",
+      picture_url: "img/food/tacobell/drinks/StarBurstStrawberryFreeze.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Mtn Dew Baja Blast Freeze",
+      picture_url: "img/food/tacobell/drinks/MtnDewBajaBlastFreeze.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Mtn Dew Baja Blast",
+      picture_url: "img/food/tacobell/drinks/MtnDewBajaBlast.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Pepsi",
+      picture_url: "img/food/tacobell/drinks/Pepsi.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Diet Pepsi",
+      picture_url: "img/food/tacobell/drinks/DietPepsi.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Sierra Mist",
+      picture_url: "img/food/tacobell/drinks/SierraMist.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Mountain Dew",
+      picture_url: "img/food/tacobell/drinks/mountaindew.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Dr Pepper",
+      picture_url: "img/food/tacobell/drinks/DrPepper.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Mountain Dew Kickstart Orange Citrus",
+      picture_url: "img/food/tacobell/drinks/MountainDewKickstartOrangeCitrus.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Brisk Iced Tea and Lemonade",
+      picture_url: "img/food/tacobell/drinks/BriskIcedTeaandLemonade.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Brisk Mango Fiesta",
+      picture_url: "img/food/tacobell/drinks/BriskMangoFiesta.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Tropicana Pink Lemonade",
+      picture_url: "img/food/tacobell/drinks/TropicanaPinkLemonade.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Lipton Unsweetened Iced Tea",
+      picture_url: "img/food/tacobell/drinks/LiptonUnsweetenedIcedTea.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Orange Juice",
+      picture_url: "img/food/tacobell/drinks/OrangeJuice.jpg",
+      price: "1.99"
+    },
+    {
+      name: "Premium Hot Coffee",
+      picture_url: "img/food/tacobell/drinks/PremiumHotCoffee.jpg",
+      price: "1.49"
+    },
+    {
+      name: "Iced Regular Coffee",
+      picture_url: "img/food/tacobell/drinks/IcedRegularCoffee.jpg",
+      price: "1.49"
+    },
+    {
+      name: "Cup of Water",
+      picture_url: "img/food/tacobell/drinks/CupofWater.jpg",
+      price: "Free"
+    }
+  ],
+  desserts: [
+    {
+      name: "Cinnabon Delights 2 Pack",
+      picture_url: "img/food/tacobell/desserts/CinnabonDelights2Pack.jpg",
+      price: "1.00"
+    },
+    {
+      name: "Cinnabon Delights 4 Pack",
+      picture_url: "img/food/tacobell/desserts/CinnabonDelights4Pack.jpg",
+      price: "1.79"
+    },
+    {
+      name: "Cinnabon Delights 12 Pack",
+      picture_url: "img/food/tacobell/desserts/CinnabonDelights12Pack.jpg",
+      price: "4.89"
+    },
+    {
+      name: "Cinnamon Twists",
+      picture_url: "img/food/tacobell/desserts/CinnamonTwists.jpg",
+      price: "1.00"
+    },
+    {
+      name: "Caramel Apple Empanada",
+      picture_url: "img/food/tacobell/desserts/CaramelAppleEmpanada.jpg",
+      price: "1.00"
+    }
+  ],
+  breakfast: [
+    {
+      name: "",
+      picture_url: "img/food/tacobell/breakfast/.jpg",
+      price: ""
+    }
+  ]
 };
 
 
