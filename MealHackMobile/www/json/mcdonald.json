@@ -1,6 +1,41 @@
 {
   "Drinks": [
-
+    {
+      "name": "Coke",
+      "picture_url": "img/food/mcdonald/drinks/cup.png"
+    },
+    {
+      "name": "Water Bottle",
+      "picture_url": "img/food/mcdonald/drinks/water.png"
+    },
+    {
+      "name": "Milk Jug",
+      "picture_url": "img/food/mcdonald/drinks/milkjug.png"
+    },
+    {
+      "name": "Sprite",
+      "picture_url": "img/food/mcdonald/drinks/cup.png"
+    },
+    {
+      "name": "Fanata",
+      "picture_url": "img/food/mcdonald/drinks/cup.png"
+    },
+    {
+      "name": "Dr Pepper",
+      "picture_url": "img/food/mcdonald/drinks/cup.png"
+    },
+    {
+      "name": "Diet Coke",
+      "picture_url": "img/food/mcdonald/drinks/cup.png"
+    },
+    {
+      "name": "Minute Maid",
+      "picture_url": "img/food/mcdonald/drinks/cup.png"
+    },
+    {
+      "name": "McCafe Coffee",
+      "picture_url": "img/food/mcdonald/drinks/coffee.png"
+    },
   ],
   "Burger": [
     {
@@ -33,7 +68,42 @@
     }
   ],
   "Desert":[
-
+    {
+      "name": "Vanilla Cone",
+      "picture_url": "img/food/mcdonald/deserts/vanillacone.png"
+    },
+    {
+      "name": "McFlurry with Oreo Cookies",
+      "picture_url": "img/food/mcdonald/deserts/mcflurry.png"
+    },
+    {
+      "name": "Strawberry Sundae",
+      "picture_url": "img/food/mcdonald/deserts/strawberrysundae.png"
+    },
+    {
+      "name": "hotfudgesundae",
+      "picture_url": "img/food/mcdonald/deserts/hotfudgesundae.png"
+    },
+    {
+      "name": "bakedapplepie",
+      "picture_url": "img/food/mcdonald/deserts/bakedapplepie.png"
+    },
+    {
+      "name": "Fruit 'N Yogurt Parfait",
+      "picture_url": "img/food/mcdonald/deserts/parfait.png"
+    },
+    {
+      "name": "cookies",
+      "picture_url": "img/food/mcdonald/deserts/cookies.png"
+    },
+    {
+      "name": "Strawberry Shake",
+      "picture_url": "img/food/mcdonald/deserts/strawberryshake.png"
+    },
+    {
+      "name": "Shamrock Shake",
+      "picture_url": "img/food/mcdonald/deserts/shamrockshake.png"
+    }
   ],
   "Sides":[
 
