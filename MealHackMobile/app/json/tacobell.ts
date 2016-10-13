@@ -48,7 +48,7 @@ export let tacobell = {
     {
       name: "Chicken Soft Taco",
       picture_url: "img/food/tacobell/tacos/chickchicktaco.jpg",
-      price: ""
+      price: "1.79"
     },
     {
       name: "Grilled Steak Soft Taco",
@@ -76,9 +76,122 @@ export let tacobell = {
       price: "3.19"
     }
   ],
-  burritos: [],
+  burritos: [
+    {
+      name: "Cheddar Habanero Quesarito",
+      picture_url: "img/food/tacobell/burritos/CheddarHabaneroQuesarito.jpg",
+      price: "2.49"
+    },
+    {
+      name: "Bean Burrito",
+      picture_url: "img/food/tacobell/burritos/BeanBurrito.jpg",
+      price: "1.19"
+    },
+    {
+      name: "Burrito Supreme",
+      picture_url: "img/food/tacobell/burritos/BurritoSupreme.jpg",
+      price: "2.99"
+    },
+    {
+      name: "7-Layer Burrito",
+      picture_url: "img/food/tacobell/burritos/sevenLayerBurrito.jpg",
+      price: "2.79"
+    },
+    {
+      name: "Beefy 5-Layer Burrito",
+      picture_url: "img/food/tacobell/burritos/BeefyfiveLayerBurrito.jpg",
+      price: "1.69"
+    },
+    {
+      name: "XXL Grilled Stuft Burrito",
+      picture_url: "img/food/tacobell/burritos/XXLGrilledStuftBurrito.jpg",
+      price: "4.19"
+    },
+    {
+      name: "Smothered Burrito",
+      picture_url: "img/food/tacobell/burritos/SmotheredBurrito.jpg",
+      price: "4.19"
+    },
+    {
+      name: "ShreddedChickenBurrito",
+      picture_url: "img/food/tacobell/burritos/ShreddedChickenBurrito.jpg",
+      price: "1.89"
+    },
+    {
+      name: "Power Menu Burrito",
+      picture_url: "img/food/tacobell/burritos/PowerMenuBurrito.jpg",
+      price: "3.79"
+    },
+    {
+      name: "Power Menu Burrito - Veggie",
+      picture_url: "img/food/tacobell/burritos/PowerMenuBurritoVeggie.jpg",
+      price: "3.79"
+    },
+    {
+      name: "Cheesy Potato Burrito",
+      picture_url: "img/food/tacobell/burritos/CheesyPotatoBurrito.jpg",
+      price: "2.49"
+    },
+    {
+      name: "Combo Burrito",
+      picture_url: "img/food/tacobell/burritos/ComboBurrito.jpg",
+      price: "2.39"
+    },
+    {
+      name: "Black Bean Burrito",
+      picture_url: "img/food/tacobell/burritos/blackbeanburrito.jpg",
+      price: "2.19"
+    },
+    {
+      name: "Beefy Nacho Griller",
+      picture_url: "img/food/tacobell/burritos/BeefyNachoGriller.jpg",
+      price: "1.59"
+    },
+    {
+      name: "Chipotle Chicken Loaded Griller",
+      picture_url: "img/food/tacobell/burritos/ChipotleChickenLoadedGriller.jpg",
+      price: "1.59"
+    },
+    {
+      name: "Loaded Potato Griller",
+      picture_url: "img/food/tacobell/burritos/LoadedPotatoGriller.jpg",
+      price: "1.59"
+    }
+  ],
   sides: [],
   drinks: [],
   desserts: [],
   breakfast: []
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
