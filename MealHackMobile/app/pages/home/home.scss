@@ -1,8 +1,14 @@
 .home-page{
 
-  .foodlist{
-    position: relative;
+  .segment-button{
+    background-color: #E62117;
+    color: #FFF;
+    border-color: #FFF;
   }
+  .segment-button.segment-activated{
+    background-color: #73100B;
+  }
+
   #close-marker{
     //font-size: 3.0rem !important;
     font-size: 3.0rem;

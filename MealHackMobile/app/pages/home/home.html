@@ -19,16 +19,58 @@
       <!--<h3 class="food-shadowBot" style="color: white" text-center></h3>-->
       <img src="img/mcdonald.jpg">
     <div class="foodlist" style="display: none">
-    <ion-list>
-      <ion-item *ngFor="let mcdonald of mcdonald_menu.Burger">
-        <ion-thumbnail item-left>
-          <img class="mcdonald_img" src="{{mcdonald.picture_url}}">
-        </ion-thumbnail>
-        <h2>{{mcdonald.name}}</h2>
-        <p>Hayao Miyazaki • 1988</p>
-        <button clear item-right>Add</button>
-      </ion-item>
-    </ion-list>
+
+      <ion-segment [(ngModel)]="whichTab" color="secondary">
+        <ion-segment-button class="segment-activated" value="burger">Burger</ion-segment-button>
+        <ion-segment-button value="sides">Sides</ion-segment-button>
+        <ion-segment-button value="dessert">Dessert</ion-segment-button>
+        <ion-segment-button value="drinks">Drinks</ion-segment-button>
+      </ion-segment>
+
+      <ion-list>
+        <div [ngSwitch]="whichTab">
+
+          <div *ngSwitchCase="'burger'" >
+            <ion-item *ngFor="let mcdonald of mcdonald_menu.Burger">
+              <ion-thumbnail item-left>
+                <img class="mcdonald_img" src="{{mcdonald.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{mcdonald.name}}</h2>
+              <p>Hayao Miyazaki • 1988</p>
+              <button clear item-right>Add</button>
+            </ion-item>
+          </div>
+
+          <div *ngSwitchCase="'sides'" >
+            <ion-item>bruhhh</ion-item>
+          </div>
+
+          <div *ngSwitchCase="'dessert'" >
+            <ion-item *ngFor="let mcdonald of mcdonald_menu.Burger">
+              <ion-thumbnail item-left>
+                <img class="mcdonald_img" src="{{mcdonald.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{mcdonald.name}}</h2>
+              <p>Hayao Miyazaki • 1988</p>
+              <button clear item-right>Add</button>
+            </ion-item>
+          </div>
+
+          <div *ngSwitchCase="'drinks'" >
+            <ion-item *ngFor="let mcdonald of mcdonald_menu.Burger">
+              <ion-thumbnail item-left>
+                <img class="mcdonald_img" src="{{mcdonald.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{mcdonald.name}}</h2>
+              <p>Hayao Miyazaki • 1988</p>
+              <button clear item-right>Add</button>
+            </ion-item>
+          </div>
+
+
+        </div>
+      </ion-list>
+
     </div>
   </ion-card>
 

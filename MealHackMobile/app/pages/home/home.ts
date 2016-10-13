@@ -17,12 +17,19 @@ export class HomePage {
   @ViewChild("kfc") kfc;
   @ViewChild("chipotle") chipotle;
 
+
+  whichTab = "burger";
+
   RestaurantNameOrder;
 
   currentRestaurant;
   originalHeight;
 
   mcdonald_menu;
+
+
+  //Check to see if restaurant has been expanded so click event isn't triggered
+  checkClick:boolean = false;
 
   constructor(public navCtrl: NavController) {
     this.mcdonald_menu = JSON.parse(mcdonald.mcdonald);
@@ -50,14 +57,17 @@ export class HomePage {
   pickRestaurant(target){
     // (this.RestaurantNameOrder[target].nativeElement;
     // let cssObj = this.RestaurantNameOrder[target].nativeElement;
-    //
-    for(let i = 0; i < this.RestaurantNameOrder.length; i++){
-      let newNum = parseInt(target);
-      if(i === newNum){
-        this.currentRestaurant = i;
-        this.expandRestaurant(this.RestaurantNameOrder[i]);
-      }else{
-        TweenLite.to(this.RestaurantNameOrder[i].nativeElement, 0.5, {right: "400px", opacity: 0, ease:Circ.easeOut, onComplete:this.onComplete, onCompleteParams:[this.RestaurantNameOrder[i]]});
+
+    if(!this.checkClick){
+      this.checkClick = true;
+      for(let i = 0; i < this.RestaurantNameOrder.length; i++){
+        let newNum = parseInt(target);
+        if(i === newNum){
+          this.currentRestaurant = i;
+          this.expandRestaurant(this.RestaurantNameOrder[i]);
+        }else{
+          TweenLite.to(this.RestaurantNameOrder[i].nativeElement, 0.5, {right: "400px", opacity: 0, ease:Circ.easeOut, onComplete:this.onComplete, onCompleteParams:[this.RestaurantNameOrder[i]]});
+        }
       }
     }
   }
@@ -67,9 +77,11 @@ export class HomePage {
   }
 
   goBackToStart(){
+    //Switch back click event
+    this.checkClick = false;
+
     // console.log("bruh");
     // TweenLite.to(this.RestaurantNameOrder[this.currentRestaurant].nativeElement, 0.5 ,{height: "auto"});
-
 
     console.log(this.currentRestaurant);
     //HIDE THE MENU LIST
@@ -143,7 +155,8 @@ export class HomePage {
     //Card
     TweenLite.to(card, 0.5, {height:"auto" ,ease:Circ.easeOut});
     //Close Marker
-    TweenLite.from(close, 1, {left:"-400px", opacity: 0, ease:Circ.easeOut, rotation: 1000,delay: 0.5});
+    // TweenLite.from(close, 1, {left:"-400px", opacity: 0, ease:Circ.easeOut, rotation: 1000,delay: 0.5});
+    TweenLite.from(close, 1, {left:"-400px", opacity: 0, ease:Circ.easeOut, rotation: 1000});
     // Food List
     // console.log(foodlist);
     // foodlist[0].style.display = "";
