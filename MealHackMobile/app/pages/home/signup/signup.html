@@ -1,0 +1,41 @@
+<ion-content padding class="signup-page">
+  <ion-card class="signup-card">
+    <ion-card-title style="color: #E62117">
+        <h1 text-center style="font-size: 4.4rem !important;">PhreshFood</h1>
+    </ion-card-title>
+    <ion-card-content>
+      <p style="color: #FFF; font-size: 1.7rem" text-center>No sign up required!</p>
+      <p class="sug-text" style="color: white" text-center>Just a name</p>
+      <ion-input maincolor style="border-bottom: solid 1px #FFF" type="text" text-center placeholder="Enter name here"></ion-input>
+      <p class="sug-text" style="color: white; margin-bottom: 10px" text-center>And choose a default picture</p>
+
+      <row style="display:flex; margin-bottom: 20px">
+
+        <ion-thumbnail>
+          <img src="img/profile-picture/male1.png">
+        </ion-thumbnail>
+        <ion-thumbnail>
+          <img src="img/profile-picture/male2.png">
+        </ion-thumbnail>
+        <ion-thumbnail>
+          <img src="img/profile-picture/male3.png">
+        </ion-thumbnail>
+      </row>
+      <row style="display:flex; margin-bottom: 30px">
+        <ion-thumbnail>
+          <img src="img/profile-picture/female1.png">
+        </ion-thumbnail>
+        <ion-thumbnail>
+          <img src="img/profile-picture/female2.png">
+        </ion-thumbnail>
+        <ion-thumbnail>
+          <img src="img/profile-picture/female3.png">
+        </ion-thumbnail>
+      </row>
+
+
+      <button full maincolor ion-button tappable (click)="DismissModal()">Next</button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

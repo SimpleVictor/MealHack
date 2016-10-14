@@ -16,7 +16,7 @@
   <ion-content class="page-barcode">
 
     <ion-card class="barcode-card tabs">
-      <ion-card-content>
+      <ion-card-content class="tab-content">
         <ion-segment [(ngModel)]="BarcodeTabs" sidecolor>
           <ion-segment-button class="segment-activated" value="draft">Draft</ion-segment-button>
           <ion-segment-button value="scanned">Scanned</ion-segment-button>
@@ -28,10 +28,85 @@
 
     <ion-card padding class="barcode-card">
       <div [ngSwitch]="BarcodeTabs">
-        <div *ngSwitchCase="'draft'">draft</div>
-        <div *ngSwitchCase="'scanned'">scanned</div>
-        <div *ngSwitchCase="'saved'">saved</div>
+        <div *ngSwitchCase="'draft'" class="draft-card">
+          <ion-list>
+            <ion-list-header>
+              <span>Draft</span>
+              <span><button style="float: right" ion-button tappable clear item-right>Generate Barcode</button></span>
+            </ion-list-header>
+            <ion-item-sliding>
+              <ion-item>
+                <ion-avatar item-left>
+                  <img src="img/profile-picture/female3.png">
+                </ion-avatar>
+                <h2>Slimer</h2>
+              </ion-item>
+              <ion-item-options side="right">
+                <button danger>
+                  <ion-icon name="trash"></ion-icon>
+                  delete
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </div>
 
+
+
+        <div *ngSwitchCase="'scanned'">
+          <ion-list>
+            <ion-list-header>
+              Scanned Barcodes
+            </ion-list-header>
+            <ion-item-sliding>
+              <ion-item>
+                <ion-avatar item-left>
+                  <img src="img/profile-picture/male1.png">
+                </ion-avatar>
+                <h2>Jason</h2>
+                <p>Description of my order...</p>
+              </ion-item>
+              <ion-item-options side="right">
+                <button secondary>
+                  <ion-icon name="md-checkmark-circle-outline"></ion-icon>
+                  save
+                </button>
+                <button danger>
+                  <ion-icon name="trash"></ion-icon>
+                  delete
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </div>
+
+
+        <div *ngSwitchCase="'saved'">
+          <ion-list>
+            <ion-list-header>
+              Saved Barcodes
+            </ion-list-header>
+            <ion-item-sliding>
+              <ion-item>
+                <ion-avatar item-left>
+                  <img src="img/profile-picture/female3.png">
+                </ion-avatar>
+                <h2>Cindy</h2>
+                <p>Description of my order</p>
+              </ion-item>
+              <ion-item-options side="right">
+                <button secondary>
+                  <ion-icon name="md-checkmark-circle-outline"></ion-icon>
+                  save
+                </button>
+                <button danger>
+                  <ion-icon name="trash"></ion-icon>
+                  delete
+                </button>
+              </ion-item-options>
+            </ion-item-sliding>
+          </ion-list>
+        </div>
       </div>
     </ion-card>
 

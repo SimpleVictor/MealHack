@@ -1,5 +1,9 @@
 .page-barcode {
 
+  .tab-content{
+    padding: 0;
+  }
+
   #testId{
     color: #73100B;
     position: fixed;
@@ -11,5 +15,14 @@
       padding: 0;
     }
   }
+
+
+  .draft-card{
+    ion-label{
+      margin: 0;
+    }
+
+  }
+
 
 }
