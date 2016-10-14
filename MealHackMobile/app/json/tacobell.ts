@@ -326,9 +326,69 @@ export let tacobell = {
   ],
   breakfast: [
     {
-      name: "",
-      picture_url: "img/food/tacobell/breakfast/.jpg",
+      name: "Breakfast Crunchwrap",
+      picture_url: "img/food/tacobell/breakfast/BreakfastCrunchwrap.jpg",
+      price: "2.49"
+    },
+    {
+      name: "Breakfast Crunchwrap Combo",
+      picture_url: "img/food/tacobell/breakfast/breakfastcrunchwrapcombo.jpg",
+      price: "4.49"
+    },
+    {
+      name: "Grande Scrambler Combo",
+      picture_url: "img/food/tacobell/breakfast/GrandeScramblerCombo.jpg",
+      price: "4.69"
+    },
+    {
+      name: "Cheesey Burrito Combo",
+      picture_url: "img/food/tacobell/breakfast/CheeseyBurritoCombo.jpg",
+      price: "3.69"
+    },
+    {
+      name: "Sausage Flatbread Quesadilla",
+      picture_url: "img/food/tacobell/breakfast/SausageFlatbreadQuesadilla.jpg",
+      price: "1.00"
+    },
+    {
+      name: "Grilled Breakfast Burrito",
+      picture_url: "img/food/tacobell/breakfast/GrilledBreakfastBurrito.jpg",
+      price: "1.00"
+    },
+    {
+      name: "Grilled Breakfast Burrito Fiesta Potato",
+      picture_url: "img/food/tacobell/breakfast/GrilledBreakfastBurritoFiestaPotato.jpg",
+      price: "1.00"
+    },
+    {
+      name: "Mini Skillet Bowl",
+      picture_url: "img/food/tacobell/breakfast/MiniSkilletBowl.jpg",
+      price: "1.00"
+    },
+    {
+      name: "Breakfast Soft Taco",
+      picture_url: "img/food/tacobell/breakfast/BreakfastSoftTaco.jpg",
+      price: "1.00"
+    },
+    {
+      name: "Hash Brown",
+      picture_url: "img/food/tacobell/breakfast/HashBrown.jpg",
+      price: "1.00"
+    },
+    {
+      name: "Breakfast CrunchWrap California",
+      picture_url: "img/food/tacobell/breakfast/BreakfastCrunchWrapCalifornia.jpg",
+      price: "2.79"
+    },
+    {
+      name: "Grande Scrambler",
+      picture_url: "img/food/tacobell/breakfast/GrandeScrambler.jpg",
       price: ""
+    },
+    {
+      name: "Cheesy Burrito",
+      picture_url: "img/food/tacobell/breakfast/CheesyBurrito.jpg",
+      price: "1.79"
     }
   ]
 };
