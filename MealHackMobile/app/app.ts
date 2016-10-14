@@ -42,6 +42,12 @@ export class MyApp {
 
         console.log("You are deploying the app on an Iphone");
         let db = new SQLite();
+        let modal = this.modalCtrl.create(SignUpPage);
+        modal.onDidDismiss(() => {
+          this.BackgroundOpacity(true);
+        });
+        this.BackgroundOpacity(false);
+        modal.present();
         // db.openDatabase({
         //   name: 'data.db',
         //   location: 'default'
