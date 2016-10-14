@@ -7,6 +7,8 @@
 
 <ion-content class="home-page">
 
+  <ion-icon id="PizzaId" name="pizza"></ion-icon>
+
   <ion-icon id="close-marker" tappable ion-button (click)="goBackToStart()" style="display: none" name="md-close"></ion-icon>
   <!--<row>-->
     <!--<button full secondary (click)="hideIt()">Hide</button>-->
@@ -37,7 +39,7 @@
               </ion-thumbnail>
               <h2>{{mcdonald.name}}</h2>
               <p>Hayao Miyazaki • 1988</p>
-              <button clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
             </ion-item>
           </div>
 
@@ -48,7 +50,7 @@
               </ion-thumbnail>
               <h2>{{mcdonald.name}}</h2>
               <p>Hayao Miyazaki • 1988</p>
-              <button clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
             </ion-item>
           </div>
 
@@ -59,7 +61,7 @@
               </ion-thumbnail>
               <h2>{{mcdonald.name}}</h2>
               <p>Hayao Miyazaki • 1988</p>
-              <button clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
             </ion-item>
           </div>
 
@@ -70,7 +72,7 @@
               </ion-thumbnail>
               <h2>{{mcdonald.name}}</h2>
               <p>Hayao Miyazaki • 1988</p>
-              <button clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
             </ion-item>
           </div>
 
@@ -103,7 +105,7 @@
               </ion-thumbnail>
               <h2>{{burgerking.name}}</h2>
               <p>Hayao Miyazaki • 1988</p>
-              <button clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
             </ion-item>
           </div>
 
@@ -114,7 +116,7 @@
               </ion-thumbnail>
               <h2>{{burgerking.name}}</h2>
               <p>Hayao Miyazaki • 1988</p>
-              <button clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
             </ion-item>
           </div>
 
@@ -125,7 +127,7 @@
               </ion-thumbnail>
               <h2>{{burgerking.name}}</h2>
               <p>Hayao Miyazaki • 1988</p>
-              <button clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
             </ion-item>
           </div>
 
@@ -136,7 +138,7 @@
               </ion-thumbnail>
               <h2>{{burgerking.name}}</h2>
               <p>Hayao Miyazaki • 1988</p>
-              <button clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
             </ion-item>
           </div>
 
@@ -164,16 +166,71 @@
         <ion-segment-button value="dessert">Sweets</ion-segment-button>
         <ion-segment-button value="breakfast">Breakfast</ion-segment-button>
       </ion-segment>
-
       <ion-list>
-        <ion-item>
-          <ion-thumbnail item-left>
-            <img src="img/kristy.png">
-          </ion-thumbnail>
-          <h2>My Neighbor Totoro</h2>
-          <p>Hayao Miyazaki • 1988</p>
-          <button clear item-right>Add</button>
-        </ion-item>
+        <div [ngSwitch]="tacobellTab">
+
+          <div *ngSwitchCase="'taco'">
+            <ion-item *ngFor="let taco of tacobell_menu.tacos">
+              <ion-thumbnail item-left>
+                <img src="{{taco.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{taco.name}}</h2>
+              <p>Price: ${{taco.price}}</p>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
+            </ion-item>
+          </div>
+          <div *ngSwitchCase="'burrito'">
+            <ion-item *ngFor="let burrito of tacobell_menu.burritos">
+              <ion-thumbnail item-left>
+                <img src="{{burrito.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{burrito.name}}</h2>
+              <p>Price: ${{burrito.price}}</p>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
+            </ion-item>
+          </div>
+          <div *ngSwitchCase="'sides'">
+            <ion-item *ngFor="let sides of tacobell_menu.sides">
+              <ion-thumbnail item-left>
+                <img src="{{sides.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{sides.name}}</h2>
+              <p>Price: ${{sides.price}}</p>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
+            </ion-item>
+          </div>
+          <div *ngSwitchCase="'drinks'">
+            <ion-item *ngFor="let drinks of tacobell_menu.drinks">
+              <ion-thumbnail item-left>
+                <img src="{{drinks.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{drinks.name}}</h2>
+              <p>Price: ${{drinks.price}}</p>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
+            </ion-item>
+          </div>
+          <div *ngSwitchCase="'dessert'">
+            <ion-item *ngFor="let dessert of tacobell_menu.desserts">
+              <ion-thumbnail item-left>
+                <img src="{{dessert.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{dessert.name}}</h2>
+              <p>Price: ${{dessert.price}}</p>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
+            </ion-item>
+          </div>
+          <div *ngSwitchCase="'breakfast'">
+            <ion-item *ngFor="let breakfast of tacobell_menu.breakfast">
+              <ion-thumbnail item-left>
+                <img src="{{breakfast.picture_url}}">
+              </ion-thumbnail>
+              <h2>{{breakfast.name}}</h2>
+              <p>Price: ${{breakfast.price}}</p>
+              <button ion-button tappable (click)="addFoodItem($event)" clear item-right>Add</button>
+            </ion-item>
+          </div>
+
+        </div>
       </ion-list>
     </div>
   </ion-card>

@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import  * as mcdonald from '../../json/mcdonald';
 import * as burgerking from '../../json/burgerking';
+import * as tacobell from '../../json/tacobell';
 declare var TweenLite;
 declare var Bounce;
 declare var Circ;
@@ -21,7 +22,7 @@ export class HomePage {
 
   mcdonaldTab = "burger";
   burgerkingTab = "burger";
-  tacobellTab;
+  tacobellTab = "taco";
 
   RestaurantNameOrder;
 
@@ -30,6 +31,14 @@ export class HomePage {
 
   mcdonald_menu;
   burgerking_menu;
+  tacobell_menu;
+
+
+  //PIZZA ANIMATION
+  tabIcon;
+  savedTop;
+  savedLeft;
+  pizzaIcon;
 
 
   //Check to see if restaurant has been expanded so click event isn't triggered
@@ -37,9 +46,13 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
     this.mcdonald_menu = JSON.parse(mcdonald.mcdonald);
-    console.log(this.mcdonald_menu);
-    console.log(burgerking);
     this.burgerking_menu = burgerking.burgerking;
+    this.tacobell_menu =  tacobell.tacobell;
+
+
+    console.log(this.burgerking_menu);
+    console.log(this.tacobell_menu);
+    console.log(this.mcdonald_menu);
   }
 
   ionViewDidEnter(){
@@ -59,6 +72,22 @@ export class HomePage {
 
       let obj2 = document.getElementsByClassName("welcome-card");
       TweenLite.from(obj2, 0.2, {margin: "100px", opacity: 0, ease:Circ.easeOut});
+
+
+
+  //  THIS IS FOR THE PIZZA ANIMATION
+    this.tabIcon = document.getElementsByClassName("ion-md-restaurant");
+    console.log(this.tabIcon[0].getBoundingClientRect());
+    this.savedTop = this.tabIcon[0].getBoundingClientRect().top;
+    this.savedLeft = this.tabIcon[0].getBoundingClientRect().left;
+
+    this.pizzaIcon = document.getElementById("PizzaId");
+    this.pizzaIcon.style.top = `${this.savedTop}px`;
+    this.pizzaIcon.style.left = `${this.savedLeft}px`;
+
+
+
+
 
   }
   pickRestaurant(target){
@@ -90,7 +119,6 @@ export class HomePage {
     // console.log("bruh");
     // TweenLite.to(this.RestaurantNameOrder[this.currentRestaurant].nativeElement, 0.5 ,{height: "auto"});
 
-    console.log(this.currentRestaurant);
     //HIDE THE MENU LIST
     this.RestaurantNameOrder[this.currentRestaurant].nativeElement.children[2].style.display = "none";
     //IMG
@@ -104,7 +132,7 @@ export class HomePage {
     //BRING BACK OTHER RESTAURANT
     for(let i = 0; i < this.RestaurantNameOrder.length ; i++){
       if(i === this.currentRestaurant){
-        console.log("yes");
+        console.log(`Current Restaurant[${this.currentRestaurant}] is ignored during the repeat process`);
       }else{
         this.RestaurantNameOrder[i].nativeElement.style.display = "";
         this.RestaurantNameOrder[i].nativeElement.style.right = "";
@@ -151,7 +179,6 @@ export class HomePage {
     let close = window.document.getElementById("close-marker");
     let foodlist = window.document.getElementsByClassName("foodlist");
     close.style.display = "";
-    console.log(close);
     // obj.nativeElement.children[0].style.display = 'none';
     // obj.nativeElement.children[2].style.display = 'none';
     obj.nativeElement.children[2].style.display = '';
@@ -175,6 +202,27 @@ export class HomePage {
 
   }
 
+
+  addFoodItem(myevent){
+    // console.log($);
+    // let element = document.getElementsByClassName("ion-md-restaurant");
+    // console.log(element[0].getBoundingClientRect());
+
+    console.log(myevent.toElement.getBoundingClientRect());
+    let element = myevent.toElement.getBoundingClientRect();
+    let objTop = Math.round(element.top);
+    let objLeft = Math.round(element.left);
+    console.log(objTop, objLeft);
+
+    TweenLite.from(this.pizzaIcon, 0.50, {top: objTop, left: objLeft , rotation: 720,ease:Circ.easeOut, onComplete: onComplete, onCompleteParams: [this.tabIcon[0]]});
+
+
+    function onComplete(z){
+      TweenLite.from(z, 0.50, {rotation: 720,ease:Circ.easeOut});
+    }
+
+
+  }
 
   safetyButton(){
     this.goBackToStart();

@@ -7,7 +7,7 @@ export let tacobell = {
     },
     {
       name: "Nacho Cheese Doritos Locos Tacos",
-      picture_url: "img/food/tacobell/tacos/.jpg",
+      picture_url: "img/food/tacobell/tacos/NachoCheeseDoritosLocosTacos.jpg",
       price: "1.49"
     },
     {
@@ -113,7 +113,7 @@ export let tacobell = {
       price: "4.19"
     },
     {
-      name: "ShreddedChickenBurrito",
+      name: "Shredded Chicken Burrito",
       picture_url: "img/food/tacobell/burritos/ShreddedChickenBurrito.jpg",
       price: "1.89"
     },
@@ -372,7 +372,7 @@ export let tacobell = {
     },
     {
       name: "Hash Brown",
-      picture_url: "img/food/tacobell/breakfast/HashBrown.jpg",
+      picture_url: "img/food/tacobell/breakfast/hashbrown.jpg",
       price: "1.00"
     },
     {

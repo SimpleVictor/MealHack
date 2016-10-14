@@ -13,12 +13,22 @@
 </ion-header>
 
 
-  <ion-content padding>
+  <ion-content padding class="page-barcode">
 
     <ion-card class="barcode-card">
       <ion-card-content>
 
         Barcode
+
+        <ion-icon id="PizzaId" name="pizza"></ion-icon>
+
+
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <button ion-button tappable (click)="tapBUtton($event)">Click Me</button>
       </ion-card-content>
     </ion-card>
 
