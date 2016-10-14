@@ -13,23 +13,28 @@
 </ion-header>
 
 
-  <ion-content padding class="page-barcode">
+  <ion-content class="page-barcode">
 
-    <ion-card class="barcode-card">
+    <ion-card class="barcode-card tabs">
       <ion-card-content>
-
-        Barcode
-
-        <ion-icon id="PizzaId" name="pizza"></ion-icon>
-
-
+        <ion-segment [(ngModel)]="BarcodeTabs" sidecolor>
+          <ion-segment-button class="segment-activated" value="draft">Draft</ion-segment-button>
+          <ion-segment-button value="scanned">Scanned</ion-segment-button>
+          <ion-segment-button value="saved">Saved</ion-segment-button>
+        </ion-segment>
       </ion-card-content>
     </ion-card>
 
-    <ion-card>
-      <ion-card-content>
-        <button ion-button tappable (click)="tapBUtton($event)">Click Me</button>
-      </ion-card-content>
+
+    <ion-card padding class="barcode-card">
+      <div [ngSwitch]="BarcodeTabs">
+        <div *ngSwitchCase="'draft'">draft</div>
+        <div *ngSwitchCase="'scanned'">scanned</div>
+        <div *ngSwitchCase="'saved'">saved</div>
+
+      </div>
     </ion-card>
+
+
 
   </ion-content>
