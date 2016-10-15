@@ -12,6 +12,7 @@ export class SqlStorageService {
 
   constructor(private platform: Platform) {
     let whichPlat = platform.platforms;
+    console.log(whichPlat);
     if(whichPlat[0] === 'cordova'){
       console.log("your on the iphone");
       this.isMobile = true;
