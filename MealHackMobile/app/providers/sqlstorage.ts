@@ -93,7 +93,9 @@ export class SqlStorageService {
       this.DB.query(`SELECT * FROM food_table`).then(
         (data) => {
           console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-          console.log(data.res);
+          console.log(data.res.rows.length);
+          console.log(data.res.rows.item);
+          console.log(data.res.rows.item(0));
           console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$");
           allTable.food_table = data;
 
