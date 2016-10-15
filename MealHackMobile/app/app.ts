@@ -17,12 +17,13 @@ export class MyApp {
   rootPage: any = TabsPage;
   profile;
 
-  constructor(public platform: Platform, private modalCtrl: ModalController) {
+  constructor(public platform: Platform, private modalCtrl: ModalController, public sqlStorage: SqlStorageService) {
     platform.ready().then(() => {
       console.log(CONFIGS);
 
-      console.log(document.getElementsByClassName("homemain-page"));
-      this.profile = document.getElementsByClassName("homemain-page");
+      // console.log(document.getElementsByClassName("homemain-page"));
+      // this.profile = document.getElementsByClassName("homemain-page");
+
 
       var config = {
         apiKey: CONFIGS.data.apiKey,

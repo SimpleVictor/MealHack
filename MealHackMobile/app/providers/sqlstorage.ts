@@ -72,11 +72,13 @@ export class SqlStorageService {
 
 
   DeleteTable(){
-      return this.DB.query(`DROP TABLE IF EXISTS food_table`);
+      return this.DB.query(`DROP TABLE IF EXISTS profile_table`);
   }
 
   AddFakeData(){
-      return this.DB.query(`INSERT INTO food_table (saved_food, scanned_food, barcode_id, food_notes, name_of_creator,profile_pic, scanned_date, food_order, food_title) VALUES (?,?,?,?,?,?,?,?,?)`, ['true', 'true', '234865742', 'Put cheese on the bread', 'Victor', 'male1', '123123131','this is the stringify order', 'Monday Meal']);
+      // return this.DB.query(`INSERT INTO food_table (saved_food, scanned_food, barcode_id, food_notes, name_of_creator,profile_pic, scanned_date, food_order, food_title) VALUES (?,?,?,?,?,?,?,?,?)`, ['true', 'true', '234865742', 'Put cheese on the bread', 'Victor', 'male1', '123123131','this is the stringify order', 'Monday Meal']);
+
+    return this.DB.query(`INSERT INTO profile_table (name, profile_pic) VALUES (?,?)`, ["bob", "male2"]);
 
   }
 
@@ -98,7 +100,7 @@ export class SqlStorageService {
               allTable.draft_table = data;
 
 
-              this.DB.query(`SELECT * FROM draft_table`).then(
+              this.DB.query(`SELECT * FROM profile_table`).then(
                 (data) => {
                   allTable.profile_table = data;
                   console.log("grabbed Everything successfully!");
