@@ -45,4 +45,11 @@ export class Setting {
     this.sqlstorage.RetreiveAllTable((result) => console.log(result));
   }
 
+  addSampleDraftData(){
+    this.sqlstorage.AddFakeDraftItems().then(
+      (data) => console.log("SUCESS!"),
+      (err) => console.log(err)
+    );
+  }
+
 }

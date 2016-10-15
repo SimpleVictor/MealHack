@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { NavController} from 'ionic-angular';
+import {SqlStorageService} from "../../providers/sqlstorage";
 
 declare var TweenLite;
 declare var Circ;
@@ -12,8 +13,20 @@ declare var $;
 export class Barcode {
 
   BarcodeTabs= "draft";
+  draftItems;
+  profileInfo;
+  scannedItems;
+  savedItems;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService) {
+    this.sqlstorage.RetreiveAllTable((result) => {
+      console.log(result)
+      this.draftItems = result.draft_table;
+      this.profileInfo = result.profile_table;
+      console.log(this.draftItems);
+    });
+
+  }
 
 
   ionViewDidEnter(){

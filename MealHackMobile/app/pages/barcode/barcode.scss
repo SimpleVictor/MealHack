@@ -16,12 +16,20 @@
     }
   }
 
+  .draft_img{
+    max-width: 8rem;
+    max-height: 8rem;
+  }
 
   .draft-card{
     ion-label{
       margin: 0;
     }
 
+  }
+
+  .draft_item{
+    padding-left: 0;
   }
 
 

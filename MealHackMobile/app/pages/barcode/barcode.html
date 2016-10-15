@@ -29,17 +29,41 @@
     <ion-card padding class="barcode-card">
       <div [ngSwitch]="BarcodeTabs">
         <div *ngSwitchCase="'draft'" class="draft-card">
+          <!--<ion-list>-->
+            <!--<ion-list-header>-->
+              <!--<span>Draft</span>-->
+              <!--<span><button style="float: right" ion-button tappable clear item-right>Generate Barcode</button></span>-->
+            <!--</ion-list-header>-->
+            <!--<ion-item-sliding>-->
+              <!--<ion-item>-->
+                <!--<ion-avatar item-left>-->
+                  <!--<img src="img/profile-picture/female3.png">-->
+                <!--</ion-avatar>-->
+                <!--<h2>Slimer</h2>-->
+              <!--</ion-item>-->
+              <!--<ion-item-options side="right">-->
+                <!--<button danger>-->
+                  <!--<ion-icon name="trash"></ion-icon>-->
+                  <!--delete-->
+                <!--</button>-->
+              <!--</ion-item-options>-->
+            <!--</ion-item-sliding>-->
+          <!--</ion-list>-->
+
+
+
           <ion-list>
             <ion-list-header>
               <span>Draft</span>
               <span><button style="float: right" ion-button tappable clear item-right>Generate Barcode</button></span>
             </ion-list-header>
-            <ion-item-sliding>
-              <ion-item>
-                <ion-avatar item-left>
-                  <img src="img/profile-picture/female3.png">
-                </ion-avatar>
-                <h2>Slimer</h2>
+            <ion-item-sliding *ngIf="draftItems">
+              <ion-item class="draft_item" *ngFor="let draftItem of draftItems">
+                <ion-thumbnail item-left>
+                  <img class="draft_img" src="{{draftItem.food_url}}">
+                </ion-thumbnail>
+                <h2>{{draftItem.food_name}}</h2>
+                <p>Amount: {{draftItem.food_amount}}</p>
               </ion-item>
               <ion-item-options side="right">
                 <button danger>
@@ -49,6 +73,8 @@
               </ion-item-options>
             </ion-item-sliding>
           </ion-list>
+
+
         </div>
 
 

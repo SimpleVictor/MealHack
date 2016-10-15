@@ -226,6 +226,10 @@ export class SqlStorageService {
     console.log("Sending off DRAFT NOW!!!");
   }
 
+  public AddFakeDraftItems(){
+    return this.DB.query(`INSERT INTO draft_table (food_name,food_url,food_amount) VALUES (?,?,?)`, ["Fake burger", "img/food/burgerking/burger/baconkingsandwich.png", "3"]);
+  }
+
 
 
 
