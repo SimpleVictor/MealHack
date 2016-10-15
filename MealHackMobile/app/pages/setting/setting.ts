@@ -9,7 +9,7 @@ declare var Circ;
 })
 export class Setting {
 
-  constructor(public navCtrl: NavController, private sqlstorage: SqlStorageService) {}
+  constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService) {}
 
   ionViewDidEnter(){
     let obj = document.getElementById("setting-title");
