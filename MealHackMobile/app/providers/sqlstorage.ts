@@ -85,9 +85,9 @@ export class SqlStorageService {
 
   RetreiveAllTable(callback){
     let allTable = {
-      food_table: {},
-       profile_table: {},
-      draft_table: {}
+      food_table: [],
+       profile_table: [],
+      draft_table: []
     };
 
       this.DB.query(`SELECT * FROM food_table`).then(
@@ -97,18 +97,22 @@ export class SqlStorageService {
           console.log(data.res.rows.item);
           console.log(data.res.rows.item(0));
           console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-          allTable.food_table = data;
-
+          for(let i = 0; i < data.res.rows.length; i++){
+            allTable.food_table.push(data.res.rows.item(i))
+          };
 
           this.DB.query(`SELECT * FROM draft_table`).then(
             (data) => {
-              allTable.draft_table = data;
-
+              for(let i = 0; i < data.res.rows.length; i++){
+                allTable.draft_table.push(data.res.rows.item(i))
+              };
 
               this.DB.query(`SELECT * FROM profile_table`).then(
                 (data) => {
-                  allTable.profile_table = data;
                   console.log("grabbed Everything successfully!");
+                  for(let i = 0; i < data.res.rows.length; i++){
+                    allTable.profile_table.push(data.res.rows.item(i))
+                  };
                   callback(JSON.stringify(allTable));
                 }, (err) => {
                   console.log("Failed to grab profile_table");
