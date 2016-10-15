@@ -51,8 +51,8 @@ export class MyApp {
         db.openDatabase({
           name: 'data.db',
           location: 'default'
-        }).then(() => {
-
+        }).then((data) => {
+          console.log(data);
 
           //CREATE FOOD TABLE
           db.executeSql('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food text, scanned_food text, barcode_id text, food_notes text, name_of_creator text, profile_pic text, scanned_date text, food_order text, food_title text)', [])

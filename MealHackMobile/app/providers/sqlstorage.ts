@@ -22,8 +22,8 @@ export class SqlStorageService {
         name: 'data.db',
         location: 'default'
       }).then((data) => {
+        console.log(data);
         console.log("DB IS NOW OPEN!");
-        data.refresh();
       }, (err) => console.log(err));
     }else{
       console.log("your on the web");
@@ -37,7 +37,7 @@ export class SqlStorageService {
 
   DeleteTable(){
     if(this.isMobile){
-        return this.iosDB.executeSql(`DROP TABLE IF EXISTS current_user`, []);
+        return this.iosDB.executeSql(`DROP TABLE IF EXISTS current_user`, {});
     }else{
       return this.webDB.query(`DROP TABLE IF EXISTS current_user`);
     }
@@ -62,7 +62,7 @@ export class SqlStorageService {
                                                                          'male1',
                                                                          '123123131',
                                                                          'this is the stringify order',
-                                                                         'Monday Meal')`, []);
+                                                                         'Monday Meal')`, {});
       // this.iosDB.executeSql(``, {});
       // return this.iosDB.executeSql(``, {});
 
@@ -101,18 +101,18 @@ export class SqlStorageService {
 
 
     if(this.isMobile){
-        this.iosDB.executeSql(`SELECT * FROM food_table`, []).then(
+        this.iosDB.executeSql(`SELECT * FROM food_table`, {}).then(
           (data) => {
             allTable.food_table = data;
-            console.log(data);
+            console.log(data.rows);
             console.log("######################################################");
 
-            this.iosDB.executeSql(`SELECT * FROM draft_table`, []).then(
+            this.iosDB.executeSql(`SELECT * FROM draft_table`, {}).then(
               (data) => {
                 allTable.draft_table = data;
 
 
-                this.iosDB.executeSql(`SELECT * FROM profile_table`, []).then(
+                this.iosDB.executeSql(`SELECT * FROM profile_table`, {}).then(
                   (data) => {
                     allTable.profile_table = data;
                     console.log("grabbed Everything successfully!");
