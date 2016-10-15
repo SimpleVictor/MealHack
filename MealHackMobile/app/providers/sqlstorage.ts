@@ -37,32 +37,16 @@ export class SqlStorageService {
 
   DeleteTable(){
     if(this.isMobile){
-        return this.iosDB.executeSql(`DROP TABLE IF EXISTS current_user`, {});
+        return this.iosDB.executeSql(`DROP TABLE IF EXISTS food_table`, {});
     }else{
-      return this.webDB.query(`DROP TABLE IF EXISTS current_user`);
+      return this.webDB.query(`DROP TABLE IF EXISTS food_table`);
     }
   }
 
   AddFakeData(){
     if(this.isMobile){
       console.log("went into mbile section");
-      return this.iosDB.executeSql(`INSERT INTO food_table (saved_food, 
-                                                     scanned_food,
-                                                     barcode_id,
-                                                     food_notes,
-                                                     name_of_creator,
-                                                     profile_pic,
-                                                     scanned_date,
-                                                     food_order,
-                                                     food_title) VALUES ('true',
-                                                                         'true',
-                                                                         '234865742',
-                                                                         'Put cheese on the bread',
-                                                                         'Victor',
-                                                                         'male1',
-                                                                         '123123131',
-                                                                         'this is the stringify order',
-                                                                         'Monday Meal')`, {});
+      return this.iosDB.executeSql(`INSERT INTO food_table (saved_food, scanned_food, barcode_id, food_notes, name_of_creator,profile_pic, scanned_date, food_order, food_title) VALUES ('true', 'true', '234865742', 'Put cheese on the bread', 'Victor', 'male1', '123123131','this is the stringify order', 'Monday Meal')`, {});
       // this.iosDB.executeSql(``, {});
       // return this.iosDB.executeSql(``, {});
 
