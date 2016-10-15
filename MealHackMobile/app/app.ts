@@ -55,17 +55,22 @@ export class MyApp {
           console.log(data);
 
           //CREATE FOOD TABLE
-          db.executeSql('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food text, scanned_food text, barcode_id text, food_notes text, name_of_creator text, profile_pic text, scanned_date text, food_order text, food_title text)', [])
+          db.executeSql('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food text, scanned_food text, barcode_id text, food_notes text, name_of_creator text, profile_pic text, scanned_date text, food_order text, food_title text)', {})
             .then((data) => {
               console.log("Table has been created : food_table");
               console.log(JSON.stringify(data));
+              db.executeSql(`INSERT INTO food_table (saved_food, scanned_food, barcode_id, food_notes, name_of_creator,profile_pic, scanned_date, food_order, food_title) VALUES ('true', 'true', '234865742', 'Put cheese on the bread', 'Victor', 'male1', '123123131','this is the stringify order', 'Monday Meal')`, {}).then(
+                (data) => {
+                  console.log(data);
+                }, (err) => console.log(err)
+              );
             }, (error) => {
               console.error("Unable to open database");
               console.log(JSON.stringify(error));
             });
 
           //CREATE DRAFT TABLE
-          db.executeSql('CREATE TABLE IF NOT EXISTS draft_table (id INTEGER PRIMARY KEY AUTOINCREMENT, food_order text)', [])
+          db.executeSql('CREATE TABLE IF NOT EXISTS draft_table (id INTEGER PRIMARY KEY AUTOINCREMENT, food_order text)', {})
             .then((data) => {
               console.log("Table has been created : draft_table");
               console.log(JSON.stringify(data));
@@ -76,7 +81,7 @@ export class MyApp {
 
 
           //CREATE PROFILE TABLE
-          db.executeSql('CREATE TABLE IF NOT EXISTS profile_table (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, profile_pic text)', [])
+          db.executeSql('CREATE TABLE IF NOT EXISTS profile_table (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, profile_pic text)', {})
             .then((data) => {
               console.log("Table has been created : profile_table");
               console.log(JSON.stringify(data));
