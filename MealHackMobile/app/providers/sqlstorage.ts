@@ -17,7 +17,7 @@ export class SqlStorageService {
     this.profile = document.getElementsByClassName("homemain-page");
 
       //CREATE THE FOOD TABLE
-      this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food text, scanned_food text, barcode_id text, food_notes text, name_of_creator text, profile_pic text, scanned_date text, food_order text, food_title text)').then(
+      this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT, scanned_food TEXT, barcode_id TEXT, food_notes TEXT, name_of_creator TEXT, profile_pic TEXT, scanned_date TEXT, food_order TEXT, food_title TEXT)').then(
         result => {
           console.log(result);
           console.log("Created Table food_table Successfully");
@@ -28,7 +28,7 @@ export class SqlStorageService {
       );
 
       //CREATE THE DRAFT TABLE
-    this.DB.query('CREATE TABLE IF NOT EXISTS draft_table (id INTEGER PRIMARY KEY AUTOINCREMENT, food_order text)').then(
+    this.DB.query('CREATE TABLE IF NOT EXISTS draft_table (id INTEGER PRIMARY KEY AUTOINCREMENT, food_order TEXT)').then(
         result => {
           console.log(result);
           console.log("Created Table draft_table Successfully");
@@ -39,7 +39,7 @@ export class SqlStorageService {
       );
 
       //CREATE THE PROFILE TABLE
-    this.DB.query('CREATE TABLE IF NOT EXISTS profile_table (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, profile_pic text)').then(
+    this.DB.query('CREATE TABLE IF NOT EXISTS profile_table (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, profile_pic TEXT)').then(
         result => {
           console.log(result);
           console.log("Created Table profile_table Successfully");
