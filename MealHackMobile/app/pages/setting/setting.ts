@@ -19,7 +19,7 @@ export class Setting {
   }
 
   deleteTable(){
-    this.sqlstorage.DeleteTable().then(
+    this.sqlstorage.DeleteAllTable().then(
       (data) => {
         console.log("Deleted Table Sucessfully");
       }, (err) => {
