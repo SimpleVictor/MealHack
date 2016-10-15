@@ -3,7 +3,6 @@ import {Platform, SqlStorage, Storage} from "ionic-angular";
 import {SQLite} from "ionic-native";
 
 
-declare var iosDB;
 
 @Injectable()
 export class SqlStorageService {
@@ -18,8 +17,8 @@ export class SqlStorageService {
     if(whichPlat[0] === 'cordova'){
       console.log("your on the iphone");
       this.isMobile = true;
-      iosDB = new SQLite();
-      iosDB.openDatabase({
+      this.iosDB = new SQLite();
+      this.iosDB.iosDB.openDatabase({
         name: 'data.db',
         location: 'default'
       }).then(() => {
@@ -34,9 +33,11 @@ export class SqlStorageService {
 
   }
 
+
+
   DeleteTable(){
     if(this.isMobile){
-      return iosDB.executeSql(`DROP TABLE IF EXISTS current_user`, {});
+      return this.iosDB.iosDB.executeSql(`DROP TABLE IF EXISTS current_user`, []);
     }else{
       return this.webDB.query(`DROP TABLE IF EXISTS current_user`);
     }
@@ -45,7 +46,7 @@ export class SqlStorageService {
   AddFakeData(){
     if(this.isMobile){
       console.log("went into mbile section");
-      return iosDB.executeSql(`INSERT INTO food_table (saved_food, 
+      return this.iosDB.iosDB.executeSql(`INSERT INTO food_table (saved_food, 
                                                      scanned_food,
                                                      barcode_id,
                                                      food_notes,
@@ -61,7 +62,7 @@ export class SqlStorageService {
                                                                          'male1',
                                                                          '123123131',
                                                                          'this is the stringify order',
-                                                                         'Monday Meal')`, {});
+                                                                         'Monday Meal')`, []);
       // this.iosDB.executeSql(``, {});
       // return this.iosDB.executeSql(``, {});
     }else{
@@ -96,17 +97,17 @@ export class SqlStorageService {
     };
 
     if(this.isMobile){
-      iosDB.executeSql(`SELECT * FROM food_table`, {}).then(
+      this.iosDB.iosDB.executeSql(`SELECT * FROM food_table`, []).then(
         (data) => {
           allTable.food_table = data;
 
 
-          iosDB.executeSql(`SELECT * FROM draft_table`, {}).then(
+          this.iosDB.iosDB.executeSql(`SELECT * FROM draft_table`, []).then(
             (data) => {
               allTable.draft_table = data;
 
 
-              iosDB.executeSql(`SELECT * FROM draft_table`, {}).then(
+              this.iosDB.iosDB.executeSql(`SELECT * FROM draft_table`, []).then(
                 (data) => {
                   allTable.profile_table = data;
                   console.log("grabbed Everything successfully!");
