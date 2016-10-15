@@ -113,7 +113,7 @@ export class SqlStorageService {
                   for(let i = 0; i < data.res.rows.length; i++){
                     allTable.profile_table.push(data.res.rows.item(i))
                   };
-                  callback(JSON.stringify(allTable));
+                  callback(allTable);
                 }, (err) => {
                   console.log("Failed to grab profile_table");
                   console.log(err);
