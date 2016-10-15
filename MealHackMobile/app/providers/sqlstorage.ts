@@ -164,7 +164,7 @@ export class SqlStorageService {
 
   public AddItemToDraft(item){
     let sql = `INSERT INTO draft_table (food_name, food_url, food_amount) VALUES (?,?,?)`;
-    this.DB.query(sql , [item.name, item.url, item.amount]);
+    return this.DB.query(sql , [item.name, item.picture_url, item.amount]);
   }
 
   public ResetEverythingInDraft(callback){
@@ -190,7 +190,7 @@ export class SqlStorageService {
   }
 
   public UpdateIndividualDraftItem(amount, item_id){
-    let sql = `UPDATE draft_table SET food_amount='${amount}' WHERE id='${item_id}'`;
+    let sql = `UPDATE draft_table SET food_amount=${amount} WHERE id=${item_id}`;
     return this.DB.query(sql);
   }
 

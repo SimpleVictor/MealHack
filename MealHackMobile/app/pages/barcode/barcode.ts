@@ -1,5 +1,5 @@
 import { Component} from '@angular/core';
-import { NavController} from 'ionic-angular';
+import { NavController, AlertController} from 'ionic-angular';
 import {SqlStorageService} from "../../providers/sqlstorage";
 
 declare var TweenLite;
@@ -18,7 +18,7 @@ export class Barcode {
   scannedItems;
   savedItems;
 
-  constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService) {
+  constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService, public alertCtrl: AlertController) {
 
   }
 
@@ -54,6 +54,47 @@ export class Barcode {
       (data) => this.ResetData(),
       (err) => console.log(err)
     );
+  }
+
+
+  public UpdateDraftItem(id, current):void{
+    console.log(id);
+
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Lightsaber color');
+
+    for(let i = 1; i < 10; i++){
+      let num = i;
+      let n = num.toString();
+      if(current === n){
+        console.log("here"+ i);
+        alert.addInput({
+          type: 'radio',
+          label: `${i} (current)`,
+          value: `${i}`,
+          checked: true
+        });
+      }else{
+        alert.addInput({
+          type: 'radio',
+          label: `${i}`,
+          value: `${i}`,
+          checked: false
+        });
+      }
+    };
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+        this.sqlstorage.UpdateIndividualDraftItem(data, id).then(
+          (data) => this.ResetData(),
+          (err) => console.log(err)
+        );
+      }
+    });
+    alert.present();
   }
 
 

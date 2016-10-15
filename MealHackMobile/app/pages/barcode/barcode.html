@@ -66,6 +66,10 @@
                 <p>Amount: {{draftItem.food_amount}}</p>
               </ion-item>
               <ion-item-options side="right">
+                <button secondary tappable ion-button (click)="UpdateDraftItem(draftItem.id, draftItem.food_amount)">
+                  <ion-icon name="md-create"></ion-icon>
+                  update
+                </button>
                 <button danger tappable ion-button (click)="DeleteDraftItem(draftItem.id)">
                   <ion-icon name="trash"></ion-icon>
                   delete

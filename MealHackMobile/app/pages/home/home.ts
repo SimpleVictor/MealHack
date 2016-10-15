@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController , AlertController} from 'ionic-angular';
 import  * as mcdonald from '../../json/mcdonald';
 import * as burgerking from '../../json/burgerking';
 import * as tacobell from '../../json/tacobell';
+import {SqlStorageService} from "../../providers/sqlstorage";
 declare var TweenLite;
 declare var Bounce;
 declare var Circ;
@@ -44,7 +45,7 @@ export class HomePage {
   //Check to see if restaurant has been expanded so click event isn't triggered
   checkClick:boolean = false;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService, public alertCtrl: AlertController){
     this.mcdonald_menu = JSON.parse(mcdonald.mcdonald);
     this.burgerking_menu = burgerking.burgerking;
     this.tacobell_menu =  tacobell.tacobell;
@@ -203,23 +204,58 @@ export class HomePage {
   }
 
 
-  addFoodItem(myevent){
-    // console.log($);
-    // let element = document.getElementsByClassName("ion-md-restaurant");
-    // console.log(element[0].getBoundingClientRect());
+  addFoodItem(myevent, item){
+    console.log(item);
 
-    console.log(myevent.toElement.getBoundingClientRect());
-    let element = myevent.toElement.getBoundingClientRect();
-    let objTop = Math.round(element.top);
-    let objLeft = Math.round(element.left);
-    console.log(objTop, objLeft);
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Lightsaber color');
 
-    TweenLite.from(this.pizzaIcon, 0.50, {top: objTop, left: objLeft , rotation: 720,ease:Circ.easeOut, onComplete: onComplete, onCompleteParams: [this.tabIcon[0]]});
+    alert.addInput({
+      type: 'radio',
+      label: '1',
+      value: '1',
+      checked: true
+    });
+    for(let i = 2; i < 10; i++){
+      alert.addInput({
+        type: 'radio',
+        label: `${i}`,
+        value: `${i}`,
+        checked: false
+      });
+    };
 
 
-    function onComplete(z){
-      TweenLite.from(z, 0.50, {rotation: 720,ease:Circ.easeOut});
-    }
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+        console.log(data);
+        item.amount = data;
+        this.sqlstorage.AddItemToDraft(item).then(
+          (data) => console.log("Added Succesfully"),
+          (err) => console.log(err)
+        );
+
+        console.log(myevent.toElement.getBoundingClientRect());
+        let element = myevent.toElement.getBoundingClientRect();
+        let objTop = Math.round(element.top);
+        let objLeft = Math.round(element.left);
+        console.log(objTop, objLeft);
+
+        TweenLite.from(this.pizzaIcon, 0.50, {top: objTop, left: objLeft , rotation: 720,ease:Circ.easeOut, onComplete: onComplete, onCompleteParams: [this.tabIcon[0]]});
+
+
+        function onComplete(z){
+          TweenLite.from(z, 0.50, {rotation: 720,ease:Circ.easeOut});
+        }
+      }
+    });
+    alert.present();
+
+
+
+
 
 
   }
