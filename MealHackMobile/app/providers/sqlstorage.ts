@@ -157,6 +157,11 @@ export class SqlStorageService {
   *
   * */
 
+  public GetAllItemInDraft(){
+    let sql = `SELECT * FROM draft_table`;
+    return this.DB.query(sql);
+  }
+
   public AddItemToDraft(item){
     let sql = `INSERT INTO draft_table (food_name, food_url, food_amount) VALUES (?,?,?)`;
     this.DB.query(sql , [item.name, item.url, item.amount]);
@@ -184,32 +189,9 @@ export class SqlStorageService {
     );
   }
 
-  public UpdateIndividualDraftItem(item_index, callback){
-    let sql = `SELECT * FROM draft_table`;
-    this.DB.query(sql, []).then(
-      (data) => {
-        let obj = [];
-
-        for(let i = 0; i < data.res.rows.length; i++){
-          obj.push(data.res.rows.item(i));
-          if(i === (data.res.rows.length-1)){
-            console.log("This is the last iteration");
-            obj.splice(item_index, 1);
-            for(let a = 0; a < obj.length; a++ ){
-              let sql2 = `INSERT INTO draft_table (food_name, food_url, food_amount) VALUES (?,?,?)`;
-              this.DB.query(sql2, [obj[a].food_name, obj[a].food_url, obj[a].food_amount]);
-              if(a === (obj.length -1)){
-                callback(true);
-              };
-            };
-          }
-        };
-      }, (err) => {
-        console.log("There was an error selecting the draft_table");
-        console.log(err);
-        callback(false);
-      }
-    );
+  public UpdateIndividualDraftItem(amount, item_id){
+    let sql = `UPDATE draft_table SET food_amount='${amount}' WHERE id='${item_id}'`;
+    return this.DB.query(sql);
   }
 
   public DeleteIndividualDraft(item_index, callback){
@@ -241,7 +223,7 @@ export class SqlStorageService {
   }
 
   public SendOffDraft(){
-
+    console.log("Sending off DRAFT NOW!!!");
   }
 
 
