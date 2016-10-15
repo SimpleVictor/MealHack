@@ -24,7 +24,7 @@ export class Setting {
         console.log("Deleted Table Sucessfully");
       }, (err) => {
         console.log("Failed to delete table");
-        console.log(JSON.stringify(err));
+        console.log(err);
       }
     );
   }
@@ -35,7 +35,7 @@ export class Setting {
         console.log("Added Fake Data Sucess!");
       }, (err) => {
         console.log("Failed to add fake DATA!");
-        console.log(JSON.stringify(err));
+        console.log(err);
       }
     )
   }

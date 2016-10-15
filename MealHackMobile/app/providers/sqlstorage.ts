@@ -9,6 +9,7 @@ export class SqlStorageService {
 
   isMobile;
   webDB;
+  iosDB: SQLite;
 
   constructor(private platform: Platform) {
     let whichPlat = platform.platforms();
@@ -16,6 +17,13 @@ export class SqlStorageService {
     if(whichPlat[0] === 'cordova'){
       console.log("your on the iphone");
       this.isMobile = true;
+      this.iosDB = new SQLite();
+      this.iosDB.openDatabase({
+        name: 'data.db',
+        location: 'default'
+      }).then(() => {
+        console.log("DB IS NOW OPEN!");
+      }, (err) => console.log(err));
     }else{
       console.log("your on the web");
       this.webDB = new Storage(SqlStorage);
@@ -28,13 +36,7 @@ export class SqlStorageService {
 
   DeleteTable(){
     if(this.isMobile){
-      let iosDB = new SQLite();
-      iosDB.openDatabase({
-        name: 'data.db',
-        location: 'default'
-      }).then(() => {
-        return iosDB.executeSql(`DROP TABLE IF EXISTS current_user`, []);
-      });
+        return this.iosDB.executeSql(`DROP TABLE IF EXISTS current_user`, []);
     }else{
       return this.webDB.query(`DROP TABLE IF EXISTS current_user`);
     }
@@ -43,13 +45,7 @@ export class SqlStorageService {
   AddFakeData(){
     if(this.isMobile){
       console.log("went into mbile section");
-      let iosDB = new SQLite();
-      iosDB.openDatabase({
-        name: 'data.db',
-        location: 'default'
-      }).then(() => {
-
-      return iosDB.executeSql(`INSERT INTO food_table (saved_food, 
+      return this.iosDB.executeSql(`INSERT INTO food_table (saved_food, 
                                                      scanned_food,
                                                      barcode_id,
                                                      food_notes,
@@ -69,7 +65,6 @@ export class SqlStorageService {
       // this.iosDB.executeSql(``, {});
       // return this.iosDB.executeSql(``, {});
 
-      });
 
     }else{
       // this.webDB.query(``);
@@ -105,51 +100,42 @@ export class SqlStorageService {
 
 
     if(this.isMobile){
-
-      let iosDB = new SQLite();
-      iosDB.openDatabase({
-        name: 'data.db',
-        location: 'default'
-      }).then(() => {
-
-
-        iosDB.executeSql(`SELECT * FROM food_table`, []).then(
+        this.iosDB.executeSql(`SELECT * FROM food_table`, []).then(
           (data) => {
             allTable.food_table = data;
 
 
-            iosDB.executeSql(`SELECT * FROM draft_table`, []).then(
+            this.iosDB.executeSql(`SELECT * FROM draft_table`, []).then(
               (data) => {
                 allTable.draft_table = data;
 
 
-                iosDB.executeSql(`SELECT * FROM draft_table`, []).then(
+                this.iosDB.executeSql(`SELECT * FROM draft_table`, []).then(
                   (data) => {
                     allTable.profile_table = data;
                     console.log("grabbed Everything successfully!");
-                    callback(JSON.stringify(allTable));
+                    callback(allTable);
                   }, (err) => {
                     console.log("Failed to grab profile_table");
-                    console.log(JSON.stringify(err));
-                    callback(JSON.stringify(err));
+                    console.log(err);
+                    callback(err);
                   }
                 );
 
               }, (err) => {
                 console.log("Failed to grab draft_table");
-                console.log(JSON.stringify(err));
-                callback(JSON.stringify(err));
+                console.log(err);
+                callback(err);
               }
             );
 
           }, (err) => {
             console.log("Failed to grab food_table");
-            console.log(JSON.stringify(err));
-            callback(JSON.stringify(err));
+            console.log(err);
+            callback(err);
           }
         );
 
-      });
 
     }else{
       this.webDB.query(`SELECT * FROM food_table`).then(
