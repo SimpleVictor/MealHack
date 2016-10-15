@@ -59,11 +59,6 @@ export class MyApp {
             .then((data) => {
               console.log("Table has been created : food_table");
               console.log(JSON.stringify(data));
-              db.executeSql(`INSERT INTO food_table (saved_food, scanned_food, barcode_id, food_notes, name_of_creator,profile_pic, scanned_date, food_order, food_title) VALUES ('true', 'true', '234865742', 'Put cheese on the bread', 'Victor', 'male1', '123123131','this is the stringify order', 'Monday Meal')`, {}).then(
-                (data) => {
-                  console.log(data);
-                }, (err) => console.log(err)
-              );
             }, (error) => {
               console.error("Unable to open database");
               console.log(JSON.stringify(error));
