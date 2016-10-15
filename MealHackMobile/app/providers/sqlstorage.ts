@@ -21,8 +21,9 @@ export class SqlStorageService {
       this.iosDB.openDatabase({
         name: 'data.db',
         location: 'default'
-      }).then(() => {
+      }).then((data) => {
         console.log("DB IS NOW OPEN!");
+        data.refresh();
       }, (err) => console.log(err));
     }else{
       console.log("your on the web");
