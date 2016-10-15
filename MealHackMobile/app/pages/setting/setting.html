@@ -31,8 +31,8 @@
 
       <ion-item-group>
         <ion-item-divider style="color: #E62117" light>Database</ion-item-divider>
-        <ion-item>Add Data</ion-item>
-        <ion-item>Get Data</ion-item>
+        <ion-item ion-button tappable (click)="addSampleData()">Add Data</ion-item>
+        <ion-item ion-button tappable (click)="getAllTableData()">Get Data</ion-item>
         <ion-item ion-button tappable (click)="deleteTable()">Delete Table</ion-item>
         <ion-item>IDK</ion-item>
       </ion-item-group>

@@ -24,9 +24,25 @@ export class Setting {
         console.log("Deleted Table Sucessfully");
       }, (err) => {
         console.log("Failed to delete table");
-        console.log(err);
+        console.log(JSON.stringify(err));
       }
     );
+  }
+
+  addSampleData(){
+    this.sqlstorage.AddFakeData().then(
+      (data) => {
+        console.log("Added Fake Data Sucess!");
+      }, (err) => {
+        console.log("Failed to add fake DATA!");
+        console.log(JSON.stringify(err));
+      }
+    )
+  }
+
+
+  getAllTableData(){
+    this.sqlstorage.RetreiveAllTable((result) => console.log(result));
   }
 
 }
