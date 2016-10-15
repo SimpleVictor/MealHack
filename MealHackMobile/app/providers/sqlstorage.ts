@@ -103,14 +103,15 @@ export class SqlStorageService {
         this.iosDB.executeSql(`SELECT * FROM food_table`, []).then(
           (data) => {
             allTable.food_table = data;
-
+            console.log(data);
+            console.log("######################################################");
 
             this.iosDB.executeSql(`SELECT * FROM draft_table`, []).then(
               (data) => {
                 allTable.draft_table = data;
 
 
-                this.iosDB.executeSql(`SELECT * FROM draft_table`, []).then(
+                this.iosDB.executeSql(`SELECT * FROM profile_table`, []).then(
                   (data) => {
                     allTable.profile_table = data;
                     console.log("grabbed Everything successfully!");
