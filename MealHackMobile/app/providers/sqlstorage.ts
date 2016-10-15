@@ -3,6 +3,8 @@ import {Platform, SqlStorage, Storage} from "ionic-angular";
 import {SQLite} from "ionic-native";
 
 
+declare var iosDB;
+
 @Injectable()
 export class SqlStorageService {
 
@@ -16,16 +18,25 @@ export class SqlStorageService {
     if(whichPlat[0] === 'cordova'){
       console.log("your on the iphone");
       this.isMobile = true;
-      this.iosDB = new SQLite();
+      iosDB = new SQLite();
+      iosDB.openDatabase({
+        name: 'data.db',
+        location: 'default'
+      }).then(() => {
+        console.log("Database has been opened for the ios/android");
+      });
+
     }else{
       console.log("your on the web");
       this.webDB = new Storage(SqlStorage);
     }
+
+
   }
 
   DeleteTable(){
     if(this.isMobile){
-      return this.iosDB.executeSql(`DROP TABLE IF EXISTS current_user`, {});
+      return iosDB.executeSql(`DROP TABLE IF EXISTS current_user`, {});
     }else{
       return this.webDB.query(`DROP TABLE IF EXISTS current_user`);
     }
@@ -33,7 +44,8 @@ export class SqlStorageService {
 
   AddFakeData(){
     if(this.isMobile){
-      return this.iosDB.executeSql(`INSERT INTO food_table (saved_food, 
+      console.log("went into mbile section");
+      return iosDB.executeSql(`INSERT INTO food_table (saved_food, 
                                                      scanned_food,
                                                      barcode_id,
                                                      food_notes,
@@ -84,17 +96,17 @@ export class SqlStorageService {
     };
 
     if(this.isMobile){
-      this.iosDB.executeSql(`SELECT * FROM food_table`, {}).then(
+      iosDB.executeSql(`SELECT * FROM food_table`, {}).then(
         (data) => {
           allTable.food_table = data;
 
 
-          this.iosDB.executeSql(`SELECT * FROM draft_table`, {}).then(
+          iosDB.executeSql(`SELECT * FROM draft_table`, {}).then(
             (data) => {
               allTable.draft_table = data;
 
 
-              this.iosDB.executeSql(`SELECT * FROM draft_table`, {}).then(
+              iosDB.executeSql(`SELECT * FROM draft_table`, {}).then(
                 (data) => {
                   allTable.profile_table = data;
                   console.log("grabbed Everything successfully!");
