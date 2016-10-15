@@ -11,7 +11,7 @@ export class SqlStorageService {
   webDB;
 
   constructor(private platform: Platform) {
-    let whichPlat = platform.platforms;
+    let whichPlat = platform.platforms();
     console.log(whichPlat);
     if(whichPlat[0] === 'cordova'){
       console.log("your on the iphone");
