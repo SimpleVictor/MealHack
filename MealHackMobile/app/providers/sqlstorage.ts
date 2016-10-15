@@ -194,32 +194,9 @@ export class SqlStorageService {
     return this.DB.query(sql);
   }
 
-  public DeleteIndividualDraft(item_index, callback){
-    let sql = `SELECT * FROM draft_table`;
-    this.DB.query(sql, []).then(
-      (data) => {
-        let obj = [];
-
-        for(let i = 0; i < data.res.rows.length; i++){
-          obj.push(data.res.rows.item(i));
-          if(i === (data.res.rows.length-1)){
-            console.log("This is the last iteration");
-            obj.splice(item_index, 1);
-            for(let a = 0; a < obj.length; a++ ){
-              let sql2 = `INSERT INTO draft_table (food_name, food_url, food_amount) VALUES (?,?,?)`;
-              this.DB.query(sql2, [obj[a].food_name, obj[a].food_url, obj[a].food_amount]);
-              if(a === (obj.length -1)){
-                callback(true);
-              };
-            };
-          }
-        };
-      }, (err) => {
-        console.log("There was an error selecting the draft_table");
-        console.log(err);
-        callback(false);
-      }
-    );
+  public DeleteIndividualDraft(item_index){
+    let sql = `DELETE FROM draft_table WHERE id='${item_index}';`;
+    return this.DB.query(sql);
   }
 
   public SendOffDraft(){

@@ -52,13 +52,13 @@
 
 
 
-          <ion-list>
+          <ion-list *ngIf="draftItems">
             <ion-list-header>
               <span>Draft</span>
               <span><button style="float: right" ion-button tappable clear item-right>Generate Barcode</button></span>
             </ion-list-header>
-            <ion-item-sliding *ngIf="draftItems">
-              <ion-item class="draft_item" *ngFor="let draftItem of draftItems">
+            <ion-item-sliding *ngFor="let draftItem of draftItems">
+              <ion-item class="draft_item">
                 <ion-thumbnail item-left>
                   <img class="draft_img" src="{{draftItem.food_url}}">
                 </ion-thumbnail>
@@ -66,13 +66,15 @@
                 <p>Amount: {{draftItem.food_amount}}</p>
               </ion-item>
               <ion-item-options side="right">
-                <button danger>
+                <button danger tappable ion-button (click)="DeleteDraftItem(draftItem.id)">
                   <ion-icon name="trash"></ion-icon>
                   delete
                 </button>
               </ion-item-options>
             </ion-item-sliding>
           </ion-list>
+
+
 
 
         </div>
