@@ -48,17 +48,46 @@ export class MyApp {
         });
         this.BackgroundOpacity(false);
         modal.present();
-        // db.openDatabase({
-        //   name: 'data.db',
-        //   location: 'default'
-        // }).then(() => {
-        //   db.executeSql("CREATE TABLE IF NOT EXISTS current_user (id INTEGER PRIMARY KEY AUTOINCREMENT, name text)", [])
-        //     .then((data) => {
-        //       console.log("Table has been created : "+JSON.stringify(data));
-        //     }, (error) => {
-        //       console.error("Unable to open database", error);
-        //     });
-        // });
+        db.openDatabase({
+          name: 'data.db',
+          location: 'default'
+        }).then(() => {
+
+
+          //CREATE FOOD TABLE
+          db.executeSql('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food text, scanned_food text, barcode_id text, food_notes text, name_of_creator text, profile_pic text, scanned_date text, food_order text, food_title text)', [])
+            .then((data) => {
+              console.log("Table has been created : food_table");
+              console.log(JSON.stringify(data));
+            }, (error) => {
+              console.error("Unable to open database");
+              console.log(JSON.stringify(error));
+            });
+
+          //CREATE DRAFT TABLE
+          db.executeSql('CREATE TABLE IF NOT EXISTS draft_table (id INTEGER PRIMARY KEY AUTOINCREMENT, food_order text)', [])
+            .then((data) => {
+              console.log("Table has been created : draft_table");
+              console.log(JSON.stringify(data));
+            }, (error) => {
+              console.error("Unable to open database");
+              console.log(JSON.stringify(error));
+            });
+
+
+          //CREATE PROFILE TABLE
+          db.executeSql('CREATE TABLE IF NOT EXISTS profile_table (id INTEGER PRIMARY KEY AUTOINCREMENT, name text, profile_pic text)', [])
+            .then((data) => {
+              console.log("Table has been created : profile_table");
+              console.log(JSON.stringify(data));
+            }, (error) => {
+              console.error("Unable to open database");
+              console.log(JSON.stringify(error));
+            });
+
+
+
+        });
 
 
 
