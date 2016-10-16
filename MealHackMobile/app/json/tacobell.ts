@@ -2,392 +2,392 @@ export let tacobell = {
   tacos: [
     {
       name: "Nacho Cheese Doritos Locos Tacos Supreme",
-      picture_url: "img/food/tacobell/tacos/nachocheesedoritoslocostacossupreme.jpg",
+      picture_url: "nachocheesedoritoslocostacossupreme",
       price: "1.89"
     },
     {
       name: "Nacho Cheese Doritos Locos Tacos",
-      picture_url: "img/food/tacobell/tacos/NachoCheeseDoritosLocosTacos.jpg",
+      picture_url: "NachoCheeseDoritosLocosTacos",
       price: "1.49"
     },
     {
       name: "Fiery Doritos Locos Tacos Supreme",
-      picture_url: "img/food/tacobell/tacos/fierydoritoslocos.jpg",
+      picture_url: "fierydoritoslocos",
       price: "1.89"
     },
     {
       name: "Fiery Doritos Locos Taco",
-      picture_url: "img/food/tacobell/tacos/fierydoritoslocotaco.jpg",
+      picture_url: "fierydoritoslocotaco",
       price: "1.49"
     },
     {
       name: "Cool Ranch Doritos Locos Taco",
-      picture_url: "img/food/tacobell/tacos/ranchcooldoritos.jpg",
+      picture_url: "ranchcooldoritos",
       price: "1.89"
     },
     {
       name: "Cool Ranch Doritos Locos Tacos",
-      picture_url: "img/food/tacobell/tacos/coolranchlocostaco2.jpg",
+      picture_url: "coolranchlocostaco2",
       price: "1.49"
     },
     {
       name: "Crunchy Taco",
-      picture_url: "img/food/tacobell/tacos/crunchytaco.jpg",
+      picture_url: "crunchytaco",
       price: "1.19"
     },
     {
       name: "Crunchy Taco Supreme",
-      picture_url: "img/food/tacobell/tacos/CrunchyTacoSupreme.jpg",
+      picture_url: "CrunchyTacoSupreme",
       price: "1.59"
     },
     {
       name: "Soft Taco Supreme",
-      picture_url: "img/food/tacobell/tacos/tacotacosupreme.jpg",
+      picture_url: "tacotacosupreme",
       price: "1.59"
     },
     {
       name: "Chicken Soft Taco",
-      picture_url: "img/food/tacobell/tacos/chickchicktaco.jpg",
+      picture_url: "chickchicktaco",
       price: "1.79"
     },
     {
       name: "Grilled Steak Soft Taco",
-      picture_url: "img/food/tacobell/tacos/steaktaco.jpg",
+      picture_url: "steaktaco",
       price: "2.49"
     },
     {
       name: "Double Decker Taco",
-      picture_url: "img/food/tacobell/tacos/deckertaco.jpg",
+      picture_url: "deckertaco",
       price: "1.89"
     },
     {
       name: "Double Decker Taco Supreme",
-      picture_url: "img/food/tacobell/tacos/doublesupreme.jpg",
+      picture_url: "doublesupreme",
       price: "2.19"
     },
     {
       name: "Cheesy Gordita Crunch",
-      picture_url: "img/food/tacobell/tacos/gorditacrunch.jpg",
+      picture_url: "gorditacrunch",
       price: "2.79"
     },
     {
       name: "Doritos Cheesy Gordita Crunch",
-      picture_url: "img/food/tacobell/tacos/gorditacrunchcheesy.jpg",
+      picture_url: "gorditacrunchcheesy",
       price: "3.19"
     }
   ],
   burritos: [
     {
       name: "Cheddar Habanero Quesarito",
-      picture_url: "img/food/tacobell/burritos/CheddarHabaneroQuesarito.jpg",
+      picture_url: "CheddarHabaneroQuesarito",
       price: "2.49"
     },
     {
       name: "Bean Burrito",
-      picture_url: "img/food/tacobell/burritos/BeanBurrito.jpg",
+      picture_url: "BeanBurrito",
       price: "1.19"
     },
     {
       name: "Burrito Supreme",
-      picture_url: "img/food/tacobell/burritos/BurritoSupreme.jpg",
+      picture_url: "BurritoSupreme",
       price: "2.99"
     },
     {
       name: "7-Layer Burrito",
-      picture_url: "img/food/tacobell/burritos/sevenLayerBurrito.jpg",
+      picture_url: "sevenLayerBurrito",
       price: "2.79"
     },
     {
       name: "Beefy 5-Layer Burrito",
-      picture_url: "img/food/tacobell/burritos/BeefyfiveLayerBurrito.jpg",
+      picture_url: "BeefyfiveLayerBurrito",
       price: "1.69"
     },
     {
       name: "XXL Grilled Stuft Burrito",
-      picture_url: "img/food/tacobell/burritos/XXLGrilledStuftBurrito.jpg",
+      picture_url: "XXLGrilledStuftBurrito",
       price: "4.19"
     },
     {
       name: "Smothered Burrito",
-      picture_url: "img/food/tacobell/burritos/SmotheredBurrito.jpg",
+      picture_url: "SmotheredBurrito",
       price: "4.19"
     },
     {
       name: "Shredded Chicken Burrito",
-      picture_url: "img/food/tacobell/burritos/ShreddedChickenBurrito.jpg",
+      picture_url: "ShreddedChickenBurrito",
       price: "1.89"
     },
     {
       name: "Power Menu Burrito",
-      picture_url: "img/food/tacobell/burritos/PowerMenuBurrito.jpg",
+      picture_url: "PowerMenuBurrito",
       price: "3.79"
     },
     {
       name: "Power Menu Burrito - Veggie",
-      picture_url: "img/food/tacobell/burritos/PowerMenuBurritoVeggie.jpg",
+      picture_url: "PowerMenuBurritoVeggie",
       price: "3.79"
     },
     {
       name: "Cheesy Potato Burrito",
-      picture_url: "img/food/tacobell/burritos/CheesyPotatoBurrito.jpg",
+      picture_url: "CheesyPotatoBurrito",
       price: "2.49"
     },
     {
       name: "Combo Burrito",
-      picture_url: "img/food/tacobell/burritos/ComboBurrito.jpg",
+      picture_url: "ComboBurrito",
       price: "2.39"
     },
     {
       name: "Black Bean Burrito",
-      picture_url: "img/food/tacobell/burritos/blackbeanburrito.jpg",
+      picture_url: "blackbeanburrito",
       price: "2.19"
     },
     {
       name: "Beefy Nacho Griller",
-      picture_url: "img/food/tacobell/burritos/BeefyNachoGriller.jpg",
+      picture_url: "BeefyNachoGriller",
       price: "1.59"
     },
     {
       name: "Chipotle Chicken Loaded Griller",
-      picture_url: "img/food/tacobell/burritos/ChipotleChickenLoadedGriller.jpg",
+      picture_url: "ChipotleChickenLoadedGriller",
       price: "1.59"
     },
     {
       name: "Loaded Potato Griller",
-      picture_url: "img/food/tacobell/burritos/LoadedPotatoGriller.jpg",
+      picture_url: "LoadedPotatoGriller",
       price: "1.59"
     }
   ],
   sides: [
     {
       name: "Cheesy Fiesta Potatoes",
-      picture_url: "img/food/tacobell/sides/CheesyFiestaPotatoes.jpg",
+      picture_url: "CheesyFiestaPotatoes",
       price: "1.39"
     },
     {
       name: "Chips & Cheese",
-      picture_url: "img/food/tacobell/sides/ChipsCheese.jpg",
+      picture_url: "ChipsCheese",
       price: "1.39"
     },
     {
       name: "Chips and Pico De Gallo",
-      picture_url: "img/food/tacobell/sides/ChipsandPicoDeGallo.jpg",
+      picture_url: "ChipsandPicoDeGallo",
       price: "1.49"
     },
     {
       name: "Chips and Guacamole",
-      picture_url: "img/food/tacobell/sides/ChipsandGuacamole.jpg",
+      picture_url: "ChipsandGuacamole",
       price: "1.49"
     },
     {
       name: "Chips and Salsa",
-      picture_url: "img/food/tacobell/sides/ChipsandSalsa.jpg",
+      picture_url: "ChipsandSalsa",
       price: "1.49"
     },
     {
       name: "Pintos N Cheese",
-      picture_url: "img/food/tacobell/sides/PintosNCheese.jpg",
+      picture_url: "PintosNCheese",
       price: "1.29"
     },
     {
       name: "Premium Latin Rice",
-      picture_url: "img/food/tacobell/sides/PremiumLatinRice.jpg",
+      picture_url: "PremiumLatinRice",
       price: "1.49"
     },
     {
       name: "Black Beans and Rice",
-      picture_url: "img/food/tacobell/sides/BlackBeansandRice.jpg",
+      picture_url: "BlackBeansandRice",
       price: "1.49"
     },
     {
       name: "Black Beans",
-      picture_url: "img/food/tacobell/sides/BlackBeans.jpg",
+      picture_url: "BlackBeans",
       price: "1.49"
     }
   ],
   drinks: [
     {
       name: "Airheads White Mystery Freeze",
-      picture_url: "img/food/tacobell/drinks/AirheadsWhiteMysteryFreeze.jpg",
+      picture_url: "AirheadsWhiteMysteryFreeze",
       price: "1.99"
     },
     {
       name: "StarBurst Strawberry Freeze",
-      picture_url: "img/food/tacobell/drinks/StarBurstStrawberryFreeze.jpg",
+      picture_url: "StarBurstStrawberryFreeze",
       price: "1.99"
     },
     {
       name: "Mtn Dew Baja Blast Freeze",
-      picture_url: "img/food/tacobell/drinks/MtnDewBajaBlastFreeze.jpg",
+      picture_url: "MtnDewBajaBlastFreeze",
       price: "1.99"
     },
     {
       name: "Mtn Dew Baja Blast",
-      picture_url: "img/food/tacobell/drinks/MtnDewBajaBlast.jpg",
+      picture_url: "MtnDewBajaBlast",
       price: "1.99"
     },
     {
       name: "Pepsi",
-      picture_url: "img/food/tacobell/drinks/Pepsi.jpg",
+      picture_url: "Pepsi",
       price: "1.99"
     },
     {
       name: "Diet Pepsi",
-      picture_url: "img/food/tacobell/drinks/DietPepsi.jpg",
+      picture_url: "DietPepsi",
       price: "1.99"
     },
     {
       name: "Sierra Mist",
-      picture_url: "img/food/tacobell/drinks/SierraMist.jpg",
+      picture_url: "SierraMist",
       price: "1.99"
     },
     {
       name: "Mountain Dew",
-      picture_url: "img/food/tacobell/drinks/mountaindew.jpg",
+      picture_url: "mountaindew",
       price: "1.99"
     },
     {
       name: "Dr Pepper",
-      picture_url: "img/food/tacobell/drinks/DrPepper.jpg",
+      picture_url: "DrPepper",
       price: "1.99"
     },
     {
       name: "Mountain Dew Kickstart Orange Citrus",
-      picture_url: "img/food/tacobell/drinks/MountainDewKickstartOrangeCitrus.jpg",
+      picture_url: "MountainDewKickstartOrangeCitrus",
       price: "1.99"
     },
     {
       name: "Brisk Iced Tea and Lemonade",
-      picture_url: "img/food/tacobell/drinks/BriskIcedTeaandLemonade.jpg",
+      picture_url: "BriskIcedTeaandLemonade",
       price: "1.99"
     },
     {
       name: "Brisk Mango Fiesta",
-      picture_url: "img/food/tacobell/drinks/BriskMangoFiesta.jpg",
+      picture_url: "BriskMangoFiesta",
       price: "1.99"
     },
     {
       name: "Tropicana Pink Lemonade",
-      picture_url: "img/food/tacobell/drinks/TropicanaPinkLemonade.jpg",
+      picture_url: "TropicanaPinkLemonade",
       price: "1.99"
     },
     {
       name: "Lipton Unsweetened Iced Tea",
-      picture_url: "img/food/tacobell/drinks/LiptonUnsweetenedIcedTea.jpg",
+      picture_url: "LiptonUnsweetenedIcedTea",
       price: "1.99"
     },
     {
       name: "Orange Juice",
-      picture_url: "img/food/tacobell/drinks/OrangeJuice.jpg",
+      picture_url: "OrangeJuice",
       price: "1.99"
     },
     {
       name: "Premium Hot Coffee",
-      picture_url: "img/food/tacobell/drinks/PremiumHotCoffee.jpg",
+      picture_url: "PremiumHotCoffee",
       price: "1.49"
     },
     {
       name: "Iced Regular Coffee",
-      picture_url: "img/food/tacobell/drinks/IcedRegularCoffee.jpg",
+      picture_url: "IcedRegularCoffee",
       price: "1.49"
     },
     {
       name: "Cup of Water",
-      picture_url: "img/food/tacobell/drinks/CupofWater.jpg",
+      picture_url: "CupofWater",
       price: "Free"
     }
   ],
   desserts: [
     {
       name: "Cinnabon Delights 2 Pack",
-      picture_url: "img/food/tacobell/desserts/CinnabonDelights2Pack.jpg",
+      picture_url: "CinnabonDelights2Pack",
       price: "1.00"
     },
     {
       name: "Cinnabon Delights 4 Pack",
-      picture_url: "img/food/tacobell/desserts/CinnabonDelights4Pack.jpg",
+      picture_url: "CinnabonDelights4Pack",
       price: "1.79"
     },
     {
       name: "Cinnabon Delights 12 Pack",
-      picture_url: "img/food/tacobell/desserts/CinnabonDelights12Pack.jpg",
+      picture_url: "CinnabonDelights12Pack",
       price: "4.89"
     },
     {
       name: "Cinnamon Twists",
-      picture_url: "img/food/tacobell/desserts/CinnamonTwists.jpg",
+      picture_url: "CinnamonTwists",
       price: "1.00"
     },
     {
       name: "Caramel Apple Empanada",
-      picture_url: "img/food/tacobell/desserts/CaramelAppleEmpanada.jpg",
+      picture_url: "CaramelAppleEmpanada",
       price: "1.00"
     }
   ],
   breakfast: [
     {
       name: "Breakfast Crunchwrap",
-      picture_url: "img/food/tacobell/breakfast/BreakfastCrunchwrap.jpg",
+      picture_url: "BreakfastCrunchwrap",
       price: "2.49"
     },
     {
       name: "Breakfast Crunchwrap Combo",
-      picture_url: "img/food/tacobell/breakfast/breakfastcrunchwrapcombo.jpg",
+      picture_url: "breakfastcrunchwrapcombo",
       price: "4.49"
     },
     {
       name: "Grande Scrambler Combo",
-      picture_url: "img/food/tacobell/breakfast/GrandeScramblerCombo.jpg",
+      picture_url: "GrandeScramblerCombo",
       price: "4.69"
     },
     {
       name: "Cheesey Burrito Combo",
-      picture_url: "img/food/tacobell/breakfast/CheeseyBurritoCombo.jpg",
+      picture_url: "CheeseyBurritoCombo",
       price: "3.69"
     },
     {
       name: "Sausage Flatbread Quesadilla",
-      picture_url: "img/food/tacobell/breakfast/SausageFlatbreadQuesadilla.jpg",
+      picture_url: "SausageFlatbreadQuesadilla",
       price: "1.00"
     },
     {
       name: "Grilled Breakfast Burrito",
-      picture_url: "img/food/tacobell/breakfast/GrilledBreakfastBurrito.jpg",
+      picture_url: "GrilledBreakfastBurrito",
       price: "1.00"
     },
     {
       name: "Grilled Breakfast Burrito Fiesta Potato",
-      picture_url: "img/food/tacobell/breakfast/GrilledBreakfastBurritoFiestaPotato.jpg",
+      picture_url: "GrilledBreakfastBurritoFiestaPotato",
       price: "1.00"
     },
     {
       name: "Mini Skillet Bowl",
-      picture_url: "img/food/tacobell/breakfast/MiniSkilletBowl.jpg",
+      picture_url: "MiniSkilletBowl",
       price: "1.00"
     },
     {
       name: "Breakfast Soft Taco",
-      picture_url: "img/food/tacobell/breakfast/BreakfastSoftTaco.jpg",
+      picture_url: "BreakfastSoftTaco",
       price: "1.00"
     },
     {
       name: "Hash Brown",
-      picture_url: "img/food/tacobell/breakfast/hashbrown.jpg",
+      picture_url: "hashbrown",
       price: "1.00"
     },
     {
       name: "Breakfast CrunchWrap California",
-      picture_url: "img/food/tacobell/breakfast/BreakfastCrunchWrapCalifornia.jpg",
+      picture_url: "BreakfastCrunchWrapCalifornia",
       price: "2.79"
     },
     {
       name: "Grande Scrambler",
-      picture_url: "img/food/tacobell/breakfast/GrandeScrambler.jpg",
+      picture_url: "GrandeScrambler",
       price: ""
     },
     {
       name: "Cheesy Burrito",
-      picture_url: "img/food/tacobell/breakfast/CheesyBurrito.jpg",
+      picture_url: "CheesyBurrito",
       price: "1.79"
     }
   ]
