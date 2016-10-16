@@ -135,7 +135,7 @@ export class Barcode {
       });
       alert.present();
     }else{
-      this.sqlstorage.SendOffDraft();
+      this.sqlstorage.SendOffDraft(this.draftItems);
 
       let alert = this.alertCtrl.create({
         title: 'Saved',

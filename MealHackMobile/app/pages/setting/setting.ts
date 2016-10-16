@@ -17,10 +17,11 @@ export class Setting {
 
   ionViewDidEnter(){
     console.log(qrcode);
-    var typeNumber = 4;
+    var typeNumber = 8;
     var errorCorrectionLevel = 'L';
     var qr = qrcode(typeNumber, errorCorrectionLevel);
-    qr.addData('Hi!');
+    // qr.addData('food_amount:3,food_url:img/food/burgerking/burger/whopper.png,food_name:WhopperSandwich;food_amount:5,food_url:img/food/mcdonald/burgers/bigmac.png,food_name:BigMac;');
+    qr.addData('bruh');
     qr.make();
     document.getElementById('placeHolder').innerHTML = qr.createImgTag(3, 2*3);
 

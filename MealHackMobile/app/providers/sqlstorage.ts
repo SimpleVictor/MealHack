@@ -239,8 +239,15 @@ export class SqlStorageService {
     return this.DB.query(sql);
   }
 
-  public SendOffDraft(){
-    console.log("Sending off DRAFT NOW!!!");
+  public SendOffDraft(obj){
+    console.log(obj);
+
+    let newObj = "";
+    for(let i = 0; i< obj.length ; i++){
+      newObj += `food_amount:${obj[i].food_amount},food_url:${obj[i].food_url},food_name:${obj[i].food_name};`;
+    };
+    console.log(newObj);
+
 
   }
 
