@@ -11,25 +11,25 @@
 
       <row style="display:flex; margin-bottom: 20px">
 
-        <ion-thumbnail>
-          <img src="img/profile-picture/male1.png">
+        <ion-thumbnail ion-button tappable (click)="switchProfilePicture('male1')">
+          <img [class.activatedPic]="myColor.male1" src="img/profile-picture/male1.png">
         </ion-thumbnail>
-        <ion-thumbnail>
-          <img src="img/profile-picture/male2.png">
+        <ion-thumbnail ion-button tappable (click)="switchProfilePicture('male2')">
+          <img [class.activatedPic]="myColor.male2" src="img/profile-picture/male2.png">
         </ion-thumbnail>
-        <ion-thumbnail>
-          <img src="img/profile-picture/male3.png">
+        <ion-thumbnail ion-button tappable (click)="switchProfilePicture('male3')">
+          <img [class.activatedPic]="myColor.male3" src="img/profile-picture/male3.png">
         </ion-thumbnail>
       </row>
       <row style="display:flex; margin-bottom: 30px">
-        <ion-thumbnail>
-          <img src="img/profile-picture/female1.png">
+        <ion-thumbnail ion-button tappable (click)="switchProfilePicture('female1')">
+          <img [class.activatedPic]="myColor.female1" src="img/profile-picture/female1.png">
         </ion-thumbnail>
-        <ion-thumbnail>
-          <img src="img/profile-picture/female2.png">
+        <ion-thumbnail ion-button tappable (click)="switchProfilePicture('female2')">
+          <img [class.activatedPic]="myColor.female2" src="img/profile-picture/female2.png">
         </ion-thumbnail>
-        <ion-thumbnail>
-          <img src="img/profile-picture/female3.png">
+        <ion-thumbnail ion-button tappable (click)="switchProfilePicture('female3')">
+          <img [class.activatedPic]="myColor.female3" src="img/profile-picture/female3.png">
         </ion-thumbnail>
       </row>
 

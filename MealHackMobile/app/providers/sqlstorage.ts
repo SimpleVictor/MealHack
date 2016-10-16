@@ -187,8 +187,6 @@ export class SqlStorageService {
         console.log(err);
       }
     );
-
-
   }
 
   public UpdateIndividualDraftItem(amount, item_id){
@@ -197,12 +195,13 @@ export class SqlStorageService {
   }
 
   public DeleteIndividualDraft(item_index){
-    let sql = `DELETE FROM draft_table WHERE id='${item_index}';`;
+    let sql = `DELETE FROM draft_table WHERE id='${item_index}'`;
     return this.DB.query(sql);
   }
 
   public SendOffDraft(){
     console.log("Sending off DRAFT NOW!!!");
+
   }
 
   public AddFakeDraftItems(){
@@ -217,6 +216,22 @@ export class SqlStorageService {
    *
    *
    * */
+
+
+
+  /* Beginning
+   *
+   *
+   * EVERYTHING IN HERE WILL ASSOCIATE WITH THE SAVED TABLE
+   *
+   *
+   * */
+
+
+  public DeleteFromTheSavedTable(item_index){
+    let sql = `DELETE FROM food_table WHERE id='${item_index}'`;
+    return this.DB.query(sql);
+  }
 
 
 

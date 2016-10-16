@@ -98,30 +98,52 @@ export class Barcode {
   }
 
   public ResetDraft():void {
-    this.sqlstorage.ResetEverythingInDraft((result) => {
-      if(result){
-        let alert = this.alertCtrl.create({
-          title: 'Reset',
-          subTitle: `Your draft's content has been removed`,
-          buttons: ['OK']
-        });
-        alert.present();
-        this.RefreshData();
-      }else{
-        console.log("There was an error in deleting the table");
-      }
-    })
+
+    if(!this.draftItems.length){
+      let alert = this.alertCtrl.create({
+        title: 'Food Draft is empty',
+        subTitle: `Seems like your food is undefined..Just like my girlfriend`,
+        buttons: ['OK']
+      });
+      alert.present();
+    }else{
+      this.sqlstorage.ResetEverythingInDraft((result) => {
+        if(result){
+          let alert = this.alertCtrl.create({
+            title: 'Reset',
+            subTitle: `Your draft's content has been removed`,
+            buttons: ['OK']
+          });
+          alert.present();
+          this.RefreshData();
+        }else{
+          console.log("There was an error in deleting the table");
+        }
+      })
+    }
 
 
   }
 
   public generateCode():void{
-    let alert = this.alertCtrl.create({
-      title: 'Saved',
-      subTitle: 'You order has been saved!',
-      buttons: ['OK']
-    });
-    alert.present();
+
+    if(!this.draftItems.length){
+      let alert = this.alertCtrl.create({
+        title: 'Food Draft is empty',
+        subTitle: 'Seems like your food is undefined..Just like my girlfriend',
+        buttons: ['OK']
+      });
+      alert.present();
+    }else{
+      this.sqlstorage.SendOffDraft();
+
+      let alert = this.alertCtrl.create({
+        title: 'Saved',
+        subTitle: 'You order has been saved!',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
   }
 
 

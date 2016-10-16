@@ -8,7 +8,7 @@ import {SqlStorageService} from "./providers/sqlstorage";
 import {SignUpPage} from "./pages/home/signup/signup";
 
 declare var firebase;
-
+declare var cordova;
 
 @Component({
   providers: [SqlStorageService],
@@ -24,6 +24,8 @@ export class MyApp {
 
       // console.log(document.getElementsByClassName("homemain-page"));
       // this.profile = document.getElementsByClassName("homemain-page");
+
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
       var config = {
         apiKey: CONFIGS.data.apiKey,
