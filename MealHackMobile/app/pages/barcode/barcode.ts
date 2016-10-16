@@ -39,7 +39,7 @@ export class Barcode {
 
   }
 
-  public ResetData(){
+  public RefreshData(){
     this.sqlstorage.RetreiveAllTable((result) => {
       console.log(result)
       this.draftItems = result.draft_table;
@@ -51,7 +51,7 @@ export class Barcode {
 
   public DeleteDraftItem(id):void{
     this.sqlstorage.DeleteIndividualDraft(id).then(
-      (data) => this.ResetData(),
+      (data) => this.RefreshData(),
       (err) => console.log(err)
     );
   }
@@ -89,10 +89,37 @@ export class Barcode {
       text: 'OK',
       handler: data => {
         this.sqlstorage.UpdateIndividualDraftItem(data, id).then(
-          (data) => this.ResetData(),
+          (data) => this.RefreshData(),
           (err) => console.log(err)
         );
       }
+    });
+    alert.present();
+  }
+
+  public ResetDraft():void {
+    this.sqlstorage.ResetEverythingInDraft((result) => {
+      if(result){
+        let alert = this.alertCtrl.create({
+          title: 'Reset',
+          subTitle: `Your draft's content has been removed`,
+          buttons: ['OK']
+        });
+        alert.present();
+        this.RefreshData();
+      }else{
+        console.log("There was an error in deleting the table");
+      }
+    })
+
+
+  }
+
+  public generateCode():void{
+    let alert = this.alertCtrl.create({
+      title: 'Saved',
+      subTitle: 'You order has been saved!',
+      buttons: ['OK']
     });
     alert.present();
   }

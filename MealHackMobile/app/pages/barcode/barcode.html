@@ -55,8 +55,10 @@
           <ion-list *ngIf="draftItems">
             <ion-list-header>
               <span>Draft</span>
-              <span><button style="float: right" ion-button tappable clear item-right>Generate Barcode</button></span>
+              <button style="float: right;color: red;" ion-button tappable clear item-right (click)="ResetDraft()">Reset</button>
+              <span><button style="float: right" ion-button tappable clear item-right (click)="generateCode()">Generate Barcode</button></span>
             </ion-list-header>
+
             <ion-item-sliding *ngFor="let draftItem of draftItems">
               <ion-item class="draft_item">
                 <ion-thumbnail item-left>

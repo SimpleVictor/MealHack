@@ -187,6 +187,8 @@ export class SqlStorageService {
         console.log(err);
       }
     );
+
+
   }
 
   public UpdateIndividualDraftItem(amount, item_id){
@@ -206,6 +208,15 @@ export class SqlStorageService {
   public AddFakeDraftItems(){
     return this.DB.query(`INSERT INTO draft_table (food_name,food_url,food_amount) VALUES (?,?,?)`, ["Fake burger", "img/food/burgerking/burger/baconkingsandwich.png", "3"]);
   }
+
+
+  /* ENDING
+   *
+   *
+   * EVERYTHING IN HERE WILL ASSOCIATE WITH THE DRAFT TABLE
+   *
+   *
+   * */
 
 
 
