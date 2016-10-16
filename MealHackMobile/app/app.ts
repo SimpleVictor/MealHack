@@ -9,6 +9,7 @@ import {SignUpPage} from "./pages/home/signup/signup";
 
 declare var firebase;
 
+
 @Component({
   providers: [SqlStorageService],
   template: '<ion-nav [root]="rootPage"></ion-nav>'
@@ -23,7 +24,6 @@ export class MyApp {
 
       // console.log(document.getElementsByClassName("homemain-page"));
       // this.profile = document.getElementsByClassName("homemain-page");
-
 
       var config = {
         apiKey: CONFIGS.data.apiKey,
