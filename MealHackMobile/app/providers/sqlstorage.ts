@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Platform, SqlStorage, Storage, ModalController} from "ionic-angular";
+import {Platform, SqlStorage, Storage, ModalController, LoadingController} from "ionic-angular";
 import {SignUpPage} from "../pages/home/signup/signup";
 
 
@@ -9,8 +9,9 @@ export class SqlStorageService {
 
   DB: Storage = null;
   profile;
+  CheckLoader;
 
-  constructor(private platform: Platform, private modalCtrl: ModalController) {
+  constructor(private platform: Platform, private modalCtrl: ModalController, private loadingCtrl: LoadingController) {
     this.DB = new Storage(SqlStorage);
     let whichPlat = platform.platforms();
     console.log(whichPlat);
@@ -41,17 +42,26 @@ export class SqlStorageService {
     //CREATE THE PROFILE TABLE
   this.DB.query('CREATE TABLE IF NOT EXISTS profile_table (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, profile_pic TEXT)').then(
       result => {
-        console.log(result);
         console.log("Created Table profile_table Successfully");
-        if(result.res.rows.length === 0){
-          console.log("User does not have an account with us");
-          let modal = this.modalCtrl.create(SignUpPage);
-          modal.onDidDismiss(() => {
-            this.BackgroundOpacity(true);
-          });
-          this.BackgroundOpacity(false);
-          modal.present();
-        }
+
+        this.RetreiveAllTable((myResults) => {
+          if(myResults.profile_table.length === 0){
+            console.log("User does not have an account with us");
+            let modal = this.modalCtrl.create(SignUpPage);
+            modal.onDidDismiss((Dataresults) => {
+                setTimeout(() => {
+                  this.CheckLoader = this.loadingCtrl.create(
+                    { content: "Please wait..." }
+                  );
+                  this.CheckLoader.present();
+                }, 0);
+                this.CreateProfileAccount(Dataresults);
+                this.BackgroundOpacity(true);
+            });
+            this.BackgroundOpacity(false);
+            modal.present();
+          }
+        });
 
       }, err => {
         console.log("Failed Making Table profile_table");
@@ -146,6 +156,36 @@ export class SqlStorageService {
         }
       );
   }
+
+  /* Beginning
+   *
+   *
+   * EVERYTHING IN HERE WILL ASSOCIATE WITH THE PROFILE TABLE
+   *
+   *
+   * */
+
+
+  public CreateProfileAccount(obj){
+    let sql = `INSERT INTO profile_table (name, profile_pic) VALUES (?,?)`;
+    this.DB.query(sql, [obj.name, obj.picture]).then(
+      (data) => {
+        this.CheckLoader.dismiss();
+        console.log(data);
+      }, (err) => {
+        console.log(err);
+      }
+    )
+  }
+
+
+  /* ENDING
+   *
+   *
+   * EVERYTHING IN HERE WILL ASSOCIATE WITH THE PROFILE TABLE
+   *
+   *
+   * */
 
 
 

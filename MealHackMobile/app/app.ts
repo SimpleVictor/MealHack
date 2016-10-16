@@ -25,7 +25,7 @@ export class MyApp {
       // console.log(document.getElementsByClassName("homemain-page"));
       // this.profile = document.getElementsByClassName("homemain-page");
 
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
+      // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
 
       var config = {
         apiKey: CONFIGS.data.apiKey,

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {ViewController, NavParams} from "ionic-angular";
+import { Component, OnInit , ViewChild} from '@angular/core';
+import {ViewController, NavParams, LoadingController} from "ionic-angular";
+// import {SqlStorageService} from "../../../providers/sqlstorage";
+import {SqlStorageService} from "../../../providers/sqlstorage";
 
 
 @Component({
@@ -7,8 +9,13 @@ import {ViewController, NavParams} from "ionic-angular";
 })
 export class SignUpPage implements OnInit {
 
+  @ViewChild("myValue") myValue;
+
   clientHeight;
   clientWidth;
+
+  inputValue = null;
+
 
   myColor = {
     male1 : true,
@@ -20,6 +27,7 @@ export class SignUpPage implements OnInit {
   };
 
   currentColor = "male1";
+  CheckLoader;
 
   constructor(private vControl: ViewController) {
       this.clientHeight = window.innerHeight;
@@ -30,7 +38,12 @@ export class SignUpPage implements OnInit {
   ngOnInit() { }
 
   DismissModal(){
-    this.vControl.dismiss();
+    let obj = {
+      name: this.myValue.value,
+      picture: this.currentColor
+    };
+    console.log(obj);
+    this.vControl.dismiss(obj);
   }
 
   switchProfilePicture(data){
