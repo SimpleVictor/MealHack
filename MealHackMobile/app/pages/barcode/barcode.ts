@@ -125,6 +125,42 @@ export class Barcode {
 
   }
 
+  public AddNote(id):void{
+    let prompt = this.alertCtrl.create({
+      title: 'Food Notes',
+      message: "List some food notes.",
+      inputs: [
+        {
+          name: 'food_note',
+          placeholder: 'No cheese on the burger!'
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: data => {
+            this.sqlstorage.AddFoodNote(data.food_note, id).then(
+              (data) => {
+                console.log("Added Note Success!");
+                this.RefreshData();
+              }, (err) => {
+                console.log(err);
+              }
+            );
+          }
+        }
+      ]
+    });
+    prompt.present();
+
+  }
+
   public generateCode():void{
 
     if(!this.draftItems.length){

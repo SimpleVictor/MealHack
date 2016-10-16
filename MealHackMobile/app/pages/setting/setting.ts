@@ -16,16 +16,12 @@ export class Setting {
   }
 
   ionViewDidEnter(){
-    console.log(qrcode);
-    var typeNumber = "40";
-    var errorCorrectionLevel = 'H';
+    var typeNumber = "20";
+    var errorCorrectionLevel = 'L';
     var qr = qrcode(typeNumber, errorCorrectionLevel);
-    qr.addData('food_amount:1,food_url:img/food/burgerking/burger/whopper.png,food_name:Whopper Sandwich;food_amount:1,food_url:img/food/burgerking/burger/doublewhoppersandwich.png,food_name:Double Whopper Sandwich;food_amount:1,food_url:img/food/burgerking/burger/whopperjrsandwich.png,food_name:Whopper Jr Sandwich;food_amount:1,food_url:img/food/burgerking/burger/baconkingsandwich.png,food_name:Bacon King Sandwich;food_amount:1,food_url:img/food/burgerking/sides/hashbrowns.png,food_name:Hash Browns;food_amount:1,food_url:img/food/burgerking/sides/onionrings.png,food_name:Onion Rings;food_amount:1,food_url:img/food/burgerking/sides/chickennuggets.png,food_name:Chicken Nuggets;food_amount:1,food_url:img/food/burgerking/burger/whopper.png,food_name:Whopper Sandwich;food_amount:1,food_url:img/food/burgerking/burger/doublewhoppersandwich.png,food_name:Double Whopper Sandwich;food_amount:1,food_url:img/food/burgerking/burger/whopperjrsandwich.png,food_name:Whopper Jr Sandwich;food_amount:1,food_url:img/food/burgerking/burger/baconkingsandwich.png,food_name:Bacon King Sandwich;food_amount:1,food_url:img/food/burgerking/sides/hashbrowns.png,food_name:Hash Browns;food_amount:1,food_url:img/food/burgerking/sides/onionrings.png,food_name:Onion Rings;food_amount:1,food_url:img/food/burgerking/sides/chickennuggets.png,food_name:Chicken Nuggets;');
-    // qr.addData('bruh');
-    console.log(qr.getModuleCount());
+    qr.addData('Big Mac,bigmac,1;Whopper Sandwich,whopper,1;Big Mac,bigmac,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Double Quarter Pounder with Cheese,doublequarter,1;Double Quarter Pounder with Cheese,doublequarter,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;');
     qr.make();
-    document.getElementById('placeHolder').innerHTML = qr.createImgTag();
-    // document.getElementById('placeHolder').innerHTML = qr.createImgTag(3, 2*3);
+    document.getElementById('placeHolder').innerHTML = qr.createImgTag(3, 2*3);
 
 
 

@@ -45,9 +45,13 @@
                   <img class="draft_img" src="img/food/everything/{{draftItem.food_url}}.png">
                 </ion-thumbnail>
                 <h2>{{draftItem.food_name}}</h2>
-                <p>Amount: {{draftItem.food_amount}}</p>
+                <p>Amount: {{draftItem.food_amount}} <ion-badge *ngIf="draftItem.food_notes" item-right>note</ion-badge></p>
               </ion-item>
               <ion-item-options side="right">
+                <button primary tappable ion-button (click)="AddNote(draftItem.id)">
+                  <ion-icon name="md-create"></ion-icon>
+                  notes
+                </button>
                 <button secondary tappable ion-button (click)="UpdateDraftItem(draftItem.id, draftItem.food_amount)">
                   <ion-icon name="md-create"></ion-icon>
                   update

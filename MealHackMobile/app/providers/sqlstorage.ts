@@ -18,7 +18,7 @@ export class SqlStorageService {
     this.profile = document.getElementsByClassName("homemain-page");
 
     //CREATE THE FOOD TABLE
-    this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT, scanned_food TEXT, barcode_id TEXT, food_notes TEXT, name_of_creator TEXT, profile_pic TEXT, scanned_date TEXT, food_order TEXT, food_title TEXT)').then(
+    this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT, scanned_food TEXT, food_notes TEXT, name_of_creator TEXT, profile_pic TEXT, created_on TEXT, food_order TEXT, food_title TEXT)').then(
       result => {
         console.log(result);
         console.log("Created Table food_table Successfully");
@@ -29,7 +29,7 @@ export class SqlStorageService {
     );
 
     //CREATE THE DRAFT TABLE
-  this.DB.query('CREATE TABLE IF NOT EXISTS draft_table (id INTEGER PRIMARY KEY AUTOINCREMENT, food_name TEXT, food_url TEXT, food_amount TEXT)').then(
+  this.DB.query('CREATE TABLE IF NOT EXISTS draft_table (id INTEGER PRIMARY KEY AUTOINCREMENT, food_name TEXT, food_url TEXT, food_amount TEXT, food_notes TEXT)').then(
       result => {
         console.log(result);
         console.log("Created Table draft_table Successfully");
@@ -229,6 +229,11 @@ export class SqlStorageService {
     );
   }
 
+  public AddFoodNote(amount, item_id){
+    let sql = `UPDATE draft_table SET food_notes='${amount}' WHERE id=${item_id}`;
+    return this.DB.query(sql);
+  }
+
   public UpdateIndividualDraftItem(amount, item_id){
     let sql = `UPDATE draft_table SET food_amount=${amount} WHERE id=${item_id}`;
     return this.DB.query(sql);
@@ -244,15 +249,15 @@ export class SqlStorageService {
 
     let newObj = "";
     for(let i = 0; i< obj.length ; i++){
-      newObj += `food_amount:${obj[i].food_amount},food_url:${obj[i].food_url},food_name:${obj[i].food_name};`;
+      newObj += `${obj[i].food_name},${obj[i].food_url},${obj[i].food_amount};`;
     };
     console.log(newObj);
-
+//food_amount, food_url, food_name
 
   }
 
   public AddFakeDraftItems(){
-    return this.DB.query(`INSERT INTO draft_table (food_name,food_url,food_amount) VALUES (?,?,?)`, ["Fake burger", "img/food/burgerking/burger/baconkingsandwich.png", "3"]);
+    return this.DB.query(`INSERT INTO draft_table (food_name,food_url,food_amount, food_notes) VALUES (?,?,?,?)`, ["Fake burger", "img/food/burgerking/burger/baconkingsandwich.png", "3", "empty"]);
   }
 
 
