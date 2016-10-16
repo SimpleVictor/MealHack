@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ViewController, NavParams} from "ionic-angular";
 
+declare var cordova;
+
 @Component({
     templateUrl: 'build/pages/home/signup/signup.html',
 })
@@ -33,6 +35,7 @@ export class SignUpPage implements OnInit {
   }
 
   switchProfilePicture(data){
+    cordova.plugins.Keyboard.show();
     this.myColor[this.currentColor] = false;
     this.currentColor = data;
     this.myColor[this.currentColor] = true;
