@@ -385,6 +385,47 @@ export class Barcode {
     );
   }
 
+
+  public DeleteScanned(id):void{
+    console.log(id);
+    this.sqlstorage.DeleteFromTheScannedTable(id).then(
+      (data) => {
+        let alerts = this.alertCtrl.create({
+          title: 'Deleted',
+          subTitle: 'Your saved order has been deleted!',
+          buttons: ['OK']
+        });
+        this.RefreshData();
+        alerts.present();
+      }, (err) => {
+        console.log("FAILED TO DELETE");
+        console.log(err);
+      }
+    )
+  }
+
+  public SaveScannedToSaved(id):void{
+    for(let i = 0; i < this.scanTable.length; i++){
+      if(id === this.scanTable[i].id){
+        this.sqlstorage.SendScanDataIntoScannedTable(this.scanTable[i].scanned_food).then(
+          (data) => {
+            let alerts = this.alertCtrl.create({
+              title: 'Saved',
+              subTitle: 'Your scanned data has been saved!',
+              buttons: ['OK']
+            });
+            this.RefreshData();
+            alerts.present();
+          }, (err) => {
+            console.log("problem saving data into DATA");
+            console.log(err);
+          }
+        );
+      };
+    };
+  }
+
+
   public BackgroundOpacity(value){
     if(value){
       this.profile[0].setAttribute("style", "background-color: '';");

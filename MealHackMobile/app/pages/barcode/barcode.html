@@ -89,11 +89,11 @@
                 <p>{{scannedItem.title}}</p>
               </ion-item>
               <ion-item-options side="right">
-                <button secondary>
+                <button secondary ion-button tappable (click)="SaveScannedToSaved(scannedItem.id)">
                   <ion-icon name="md-checkmark-circle-outline"></ion-icon>
                   save
                 </button>
-                <button danger>
+                <button danger ion-button tappable (click)="DeleteScanned(scannedItem.id)">
                   <ion-icon name="trash"></ion-icon>
                   delete
                 </button>

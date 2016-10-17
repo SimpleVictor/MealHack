@@ -386,6 +386,17 @@ export class SqlStorageService {
     return this.DB.query(sql, [str]);
   }
 
+  public DeleteFromTheScannedTable(item_index){
+    let sql = `DELETE FROM food_scanned_table WHERE id='${item_index}'`;
+    return this.DB.query(sql);
+  }
+
+  public SendScanDataIntoScannedTable(str){
+    let sql = `INSERT INTO food_table (saved_food) VALUES (?)`;
+    return this.DB.query(sql, [str]);
+  }
+
+
 
 }
 
