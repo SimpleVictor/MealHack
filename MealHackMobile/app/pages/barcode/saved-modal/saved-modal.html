@@ -1,0 +1,36 @@
+<ion-content class="saved-modal">
+  <ion-card class="saved-modal-card">
+    <ion-card-title style="color: #E62117" *ngIf="saveOrders">
+      <ion-thumbnail class="thumbnail-header" text-center>
+        <img src="img/profile-picture/{{saveOrders.profile_pic}}.png">
+      </ion-thumbnail>
+      <h3 text-center style="font-size: 3rem !important;">{{saveOrders.creator}}</h3>
+      <hr>
+      <h5 style="color: #FFF" text-center>{{saveOrders.title}}</h5>
+    </ion-card-title>
+    <ion-card-content *ngIf="saveOrders">
+      <ion-list>
+        <ion-item class="order-ion-item" *ngFor="let order of saveOrders.order">
+          <ion-thumbnail item-left>
+            <img class="draft_img" src="img/food/everything/{{order.food_url}}.png">
+          </ion-thumbnail>
+          <h2 style="color: #FFF">{{order.food_name}}</h2>
+          <p style="color: #CCC">Amount: {{order.food_amount}}<ion-badge *ngIf="order.food_comment !== 'empty'" item-right>note</ion-badge></p>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+
+  <div class="qr-container">
+
+    <ion-thumbnail class="qr-img" item-left>
+      <img src="img/qrcode.png">
+    </ion-thumbnail>
+
+    <img id="handIcon" src="img/tap.png" class="tap-img">
+  </div>
+    <ion-icon id="close-marker" name="md-close"></ion-icon>
+
+</ion-content>
+

@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
-import { NavController, AlertController} from 'ionic-angular';
+import { NavController, AlertController, ModalController} from 'ionic-angular';
 import {SqlStorageService} from "../../providers/sqlstorage";
+import {SavedModal} from "./saved-modal/saved-modal";
 
 declare var TweenLite;
 declare var Circ;
@@ -13,13 +14,16 @@ declare var $;
 export class Barcode {
 
   BarcodeTabs= "draft";
+  profile;
+  header2;
   draftItems;
   profileInfo;
   scannedItems;
   savedItems:any[] = [];
 
-  constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService, public alertCtrl: AlertController) {
-
+  constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService, public alertCtrl: AlertController, private modalCtrl: ModalController) {
+    this.profile = document.getElementsByClassName("page-barcode");
+    this.header2 = document.getElementsByClassName("tab-header");
   }
 
 
@@ -294,6 +298,26 @@ export class Barcode {
         console.log(err);
       }
     );
+  }
+
+  public OpenSavedItemModal(order):void{
+    let modal = this.modalCtrl.create(SavedModal, {order: order});
+    modal.onDidDismiss(() => {
+      // this.CreateProfileAccount(Dataresults);
+      this.BackgroundOpacity(true);
+    });
+    this.BackgroundOpacity(false);
+    modal.present();
+  }
+
+  public BackgroundOpacity(value){
+    if(value){
+      this.profile[0].setAttribute("style", "background-color: '';");
+      this.header2[0].setAttribute("style", "background-color: '';");
+    }else{
+      this.profile[0].setAttribute("style", "opacity: 0.5;background-color: #363838;-webkit-filter: blur(5px);moz-filter: blur(5px);-o-filter: blur(5px);-ms-filter: blur(5px);filter: blur(5px);");
+      this.header2[0].setAttribute("style", "opacity: 0.5;background-color: #363838 !important;-webkit-filter: blur(5px);moz-filter: blur(5px);-o-filter: blur(5px);-ms-filter: blur(5px);filter: blur(5px);");
+    }
   }
 
 

@@ -1,0 +1,69 @@
+.saved-modal{
+  background: transparent;
+  scroll-content{
+    background: transparent;
+  }
+  .thumbnail-header{
+    margin: auto;
+    display: table;
+    img{
+      max-width: 10rem;
+      max-height: 10rem;
+    }
+  }
+
+  .qr-img{
+    left: 0;
+    padding-left: 10px;
+    position:relative;
+  }
+
+  .qr-container{
+    position: relative;
+  }
+
+  .tap-img{
+    position: relative;
+    max-width: 3rem;
+    left: 7%;
+
+  }
+
+  #close-marker{
+    color: #FFF;
+    font-size: 4rem;
+    font-weight: 900;
+    top: 20px;
+    right:30px;
+    position:absolute;
+  }
+
+  .saved-modal-card{
+    position: absolute;
+    padding-top: 20px;
+    height: 100%;
+    background: transparent;
+    color: white !important;
+    hr{
+      width: 75%;
+      background: #FFF;
+    }
+  }
+
+  .order-ion-item{
+    padding-left: 0;
+    background: transparent;
+    img{
+      min-height: 6rem;
+      max-width: 8rem;
+    }
+
+  }
+
+
+  .barcode-button-modal{
+    right: 0;
+  }
+
+
+}
