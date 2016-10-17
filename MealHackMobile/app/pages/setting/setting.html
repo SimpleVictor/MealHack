@@ -3,6 +3,16 @@
 
   <ion-navbar>
     <ion-title id="setting-title" style="text-align:center;">Setting</ion-title>
+    <ion-buttons end>
+      <button class="scan-button" ion-button icon-only (click)="activateScan()">
+        <!--<ion-icon name="search"></ion-icon>-->
+        <!--<i class="fa-stack fa-circle fa-qrcode "></i>-->
+        <span class="fa-stack fa-lg">
+  <i class="fa fa-square-o fa-stack-2x"></i>
+  <i class="fa fa-qrcode fa-stack-3x"></i>
+</span>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

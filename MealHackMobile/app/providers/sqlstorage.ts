@@ -19,12 +19,21 @@ export class SqlStorageService {
 
     //CREATE THE FOOD TABLE
     // this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT, scanned_food TEXT, food_notes TEXT, name_of_creator TEXT, profile_pic TEXT, created_on TEXT, food_order TEXT, food_title TEXT)').then(
-    this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT, scanned_food TEXT)').then(
+    this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT)').then(
       result => {
         // console.log(result);
         console.log("Created Table food_table Successfully");
       }, err => {
         console.log("Failed Making Table food_table");
+        console.log(err);
+      }
+    );
+
+    this.DB.query('CREATE TABLE IF NOT EXISTS food_scanned_table (id INTEGER PRIMARY KEY AUTOINCREMENT, scanned_food TEXT)').then(
+      (data) => {
+        console.log("Created Table food_scanned_table Successfully!");
+      }, (err) => {
+        console.log("Failed Making Table food_scanned_table");
         console.log(err);
       }
     );
@@ -100,6 +109,14 @@ export class SqlStorageService {
           console.log(err);
         }
       );
+      this.DB.query(`DROP TABLE IF EXISTS food_scanned_table`).then(
+        (data) => {
+          console.log("Deleted food_scanned_table success!!!");
+        }, (err) => {
+          console.log("ERROR DELETING food_scanned_table");
+          console.log(err);
+        }
+      );
       return this.DB.query(`DROP TABLE IF EXISTS draft_table`);
   }
 
@@ -118,8 +135,9 @@ export class SqlStorageService {
   RetreiveAllTable(callback){
       let allTable = {
         food_table: [],
-         profile_table: [],
-        draft_table: []
+        profile_table: [],
+        draft_table: [],
+        scanned_table: []
       };
       this.DB.query(`SELECT * FROM food_table`).then(
         (data) => {
@@ -134,20 +152,28 @@ export class SqlStorageService {
                 allTable.draft_table.push(data.res.rows.item(i))
               };
 
-              this.DB.query(`SELECT * FROM profile_table`).then(
+              this.DB.query(`SELECT * FROM food_scanned_table`).then(
                 (data) => {
-                  console.log("grabbed Everything successfully!");
                   for(let i = 0; i < data.res.rows.length; i++){
-                    allTable.profile_table.push(data.res.rows.item(i))
+                    allTable.scanned_table.push(data.res.rows.item(i))
                   };
-                  callback(allTable);
+                  this.DB.query(`SELECT * FROM profile_table`).then(
+                    (data) => {
+                      console.log("grabbed Everything successfully!");
+                      for(let i = 0; i < data.res.rows.length; i++){
+                        allTable.profile_table.push(data.res.rows.item(i))
+                      };
+                      callback(allTable);
+                    }, (err) => {
+                      console.log("Failed to grab profile_table");
+                      console.log(err);
+                      callback(err);
+                    }
+                  );
                 }, (err) => {
-                  console.log("Failed to grab profile_table");
                   console.log(err);
-                  callback(err);
                 }
               );
-
             }, (err) => {
               console.log("Failed to grab draft_table");
               console.log(err);
@@ -321,15 +347,17 @@ export class SqlStorageService {
 
 
   public AddIntoFoodTableFromDraft(str){
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     console.log(str);
-    let sql = `INSERT INTO food_table (saved_food, scanned_food) VALUES (?,?)`;
-    return this.DB.query(sql, [str, "empty"]);
+    let sql = `INSERT INTO food_table (saved_food) VALUES (?)`;
+    return this.DB.query(sql, [str]);
   }
 
   public GetFoodTableById(id){
     let sql = `SELECT * FROM food_table WHERE id=${id}`;
     return this.DB.query(sql);
   }
+
 
 
   /* ENDING
@@ -340,6 +368,23 @@ export class SqlStorageService {
    *
    * */
 
+
+
+
+
+  /* Beginning
+   *
+   *
+   * EVERYTHING IN HERE WILL ASSOCIATE WITH THE food_scanned_table TABLE
+   *
+   *
+   * */
+
+  public InsertScannedData(str){
+    console.log(str);
+    let sql = `INSERT INTO food_scanned_table (scanned_food) VALUES (?)`;
+    return this.DB.query(sql, [str]);
+  }
 
 
 }

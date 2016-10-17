@@ -19,8 +19,10 @@ export class Barcode {
   draftItems;
   profileInfo;
   foodTable;
-  scannedItems;
+  scanTable;
+
   savedItems:any[] = [];
+  scannedItems:any[] = [];
 
   constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService, public alertCtrl: AlertController, private modalCtrl: ModalController) {
     this.profile = document.getElementsByClassName("page-barcode");
@@ -30,11 +32,14 @@ export class Barcode {
 
   ionViewDidEnter(){
     this.sqlstorage.RetreiveAllTable((result) => {
-      // console.log(result)
+      console.log(result)
       this.draftItems = result.draft_table;
       this.profileInfo = result.profile_table;
       this.foodTable = result.food_table;
+      this.scanTable = result.scanned_table;
       this.SplitUpSavedData(result.food_table);
+      this.SplitUpScannedData(result.scanned_table);
+
       // console.log(this.draftItems);
     });
 
@@ -100,12 +105,69 @@ export class Barcode {
     }
   }
 
+
+  SplitUpScannedData(data){
+    this.scannedItems = [];
+    for(let i = 0; i < data.length; i++) {
+      let savedHolder2 = {
+        creator: "",
+        title: "",
+        profile_pic: "",
+        order: [],
+        id: data[i].id
+      };
+
+      let splitStr = data[i].scanned_food.split("^");
+
+
+
+
+      let splitInfo = (info, order) => {
+        let splitInfo = info.split("?");
+        savedHolder2.creator = splitInfo[0];
+        savedHolder2.profile_pic = splitInfo[1];
+        savedHolder2.title = splitInfo[2];
+        splitOrder(order, () => {
+          this.scannedItems.push(savedHolder2);
+        });
+      };
+
+      splitInfo(splitStr[0], splitStr[1]);
+
+      //food_name, food_url,food_amount, food_comment
+
+      function splitOrder(order, callback) {
+        let str2 = order;
+        str2.split(";").forEach((el, idx, array) => {
+          let x = el.split(',');
+          let newX = {
+            food_name: x[0],
+            food_url: x[1],
+            food_amount: x[2],
+            food_comment: x[3]
+          };
+          savedHolder2.order.push(newX);
+          if (idx === array.length - 1) {
+            savedHolder2.order.splice(idx, 1);
+            callback();
+          }
+          ;
+        });
+      }
+      if(i === (data.length - 1)){
+        console.log(this.scannedItems);
+      };
+    }
+  }
+
+
   public RefreshData(){
     this.sqlstorage.RetreiveAllTable((result) => {
       console.log(result)
       this.draftItems = result.draft_table;
       this.profileInfo = result.profile_table;
       this.SplitUpSavedData(result.food_table);
+      this.SplitUpScannedData(result.scanned_table);
       console.log(this.draftItems);
     });
   }

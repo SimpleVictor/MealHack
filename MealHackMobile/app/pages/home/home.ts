@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController , AlertController} from 'ionic-angular';
+import { BarcodeScanner } from 'ionic-native';
 import  * as mcdonald from '../../json/mcdonald';
 import * as burgerking from '../../json/burgerking';
 import * as tacobell from '../../json/tacobell';
@@ -7,6 +8,13 @@ import {SqlStorageService} from "../../providers/sqlstorage";
 declare var TweenLite;
 declare var Bounce;
 declare var Circ;
+
+export class BarcodeData {
+  constructor(
+    public text: String,
+    public format: String
+  ) {}
+}
 
 @Component({
   templateUrl: 'build/pages/home/home.html',
@@ -265,6 +273,41 @@ export class HomePage {
 
   safetyButton(){
     this.goBackToStart();
+  }
+
+  activateScan(){
+    // let myStr = {
+    //   text : "Bob?male3?MealPrep^Big Mac,bigmac,1,empty;Quarter Pounder with Cheese,quarterpounder,1,empty;"
+    // };
+    // this.scanDetails(myStr);
+    BarcodeScanner.scan({
+      "preferFrontCamera": false,
+      "showFlipCameraButton" : true
+    })
+      .then((result) => {
+        if (!result.cancelled) {
+          const barcodeData = new BarcodeData(result.text, result.format);
+          this.scanDetails(barcodeData);
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      })
+  }
+
+  scanDetails(details) {
+    console.log(details.text);
+    // console.log(this.navCtrl);
+    this.sqlstorage.InsertScannedData(details.text).then(
+      (data) => {
+        console.log("Sucessfully added data");
+        this.navCtrl.parent.select(1);
+      }, (err) => {
+        console.log("FAILED ADDING DATA");
+        console.log(err);
+      }
+    );
+    // this.navCtrl.push(IndividualBarcode, {id: details.text, is_scan: true});
   }
 
 }
