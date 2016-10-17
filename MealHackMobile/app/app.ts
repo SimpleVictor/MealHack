@@ -1,14 +1,20 @@
 import { Component } from '@angular/core';
 import { ionicBootstrap, Platform, SqlStorage, Storage , ModalController} from 'ionic-angular';
-import { StatusBar , SQLite} from 'ionic-native';
+import { StatusBar , BarcodeScanner} from 'ionic-native';
 import {TabsPage} from "./pages/tabs/tabs";
-// import {NativePageTransitions, TransitionOptions} from 'ionic-native';
 import * as CONFIGS from "../myConfig";
 import {SqlStorageService} from "./providers/sqlstorage";
 import {SignUpPage} from "./pages/home/signup/signup";
 
 declare var firebase;
 declare var cordova;
+
+export class BarcodeData {
+  constructor(
+    public text: String,
+    public format: String
+  ) {}
+}
 
 @Component({
   providers: [SqlStorageService],
@@ -65,7 +71,25 @@ export class MyApp {
   }
 
   ScanButton(){
-    console.log("Hey");
+    console.log("works");
+    BarcodeScanner.scan({
+      "preferFrontCamera": false,
+      "showFlipCameraButton" : true
+    })
+      .then((result) => {
+        if (!result.cancelled) {
+          const barcodeData = new BarcodeData(result.text, result.format);
+          this.scanDetails(barcodeData);
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      })
+  }
+
+  scanDetails(details) {
+    console.log(details.text);
+    // this.navCtrl.push(IndividualBarcode, {id: details.text, is_scan: true});
   }
 
   BackgroundOpacity(value){
