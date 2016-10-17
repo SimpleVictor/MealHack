@@ -320,6 +320,13 @@ export class SqlStorageService {
   }
 
 
+  /* ENDING
+   *
+   *
+   * EVERYTHING IN HERE WILL ASSOCIATE WITH THE food_table TABLE
+   *
+   *
+   * */
 
 
 

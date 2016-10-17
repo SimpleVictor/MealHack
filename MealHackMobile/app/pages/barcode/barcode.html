@@ -96,24 +96,20 @@
 
 
         <div *ngSwitchCase="'saved'">
-          <ion-list>
+          <ion-list *ngIf="savedItems">
             <ion-list-header>
-              Saved Barcodes
+              Saved
             </ion-list-header>
-            <ion-item-sliding>
-              <ion-item>
+            <ion-item-sliding *ngFor="let savedItem of savedItems">
+              <ion-item class="savedItem">
                 <ion-avatar item-left>
-                  <img src="img/profile-picture/female3.png">
+                  <img src='img/profile-picture/{{savedItem.profile_pic}}.png'>
                 </ion-avatar>
-                <h2>Cindy</h2>
-                <p>Description of my order</p>
+                <h2>{{savedItem.creator}}</h2>
+                <p>{{savedItem.title}}</p>
               </ion-item>
               <ion-item-options side="right">
-                <button secondary>
-                  <ion-icon name="md-checkmark-circle-outline"></ion-icon>
-                  save
-                </button>
-                <button danger>
+                <button danger tappable (click)="DeleteFromSaved(savedItem.id)">
                   <ion-icon name="trash"></ion-icon>
                   delete
                 </button>

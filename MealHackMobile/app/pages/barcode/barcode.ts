@@ -47,7 +47,8 @@ export class Barcode {
         creator: "",
         title: "",
         profile_pic: "",
-        order: []
+        order: [],
+        id: data[i].id
       };
 
       let splitStr = data[i].saved_food.split("^");
@@ -60,9 +61,7 @@ export class Barcode {
         savedHolder.creator = splitInfo[0];
         savedHolder.profile_pic = splitInfo[1];
         savedHolder.title = splitInfo[2];
-        console.log(savedHolder);
         splitOrder(order, () => {
-          console.log("done!");
           this.savedItems.push(savedHolder);
         });
       };
@@ -101,9 +100,11 @@ export class Barcode {
       console.log(result)
       this.draftItems = result.draft_table;
       this.profileInfo = result.profile_table;
+      this.SplitUpSavedData(result.food_table);
       console.log(this.draftItems);
     });
   }
+
 
 
   public DeleteDraftItem(id):void{
@@ -178,8 +179,16 @@ export class Barcode {
         }
       })
     }
+  }
 
-
+  public ResetDraftFromGenerate():void{
+    this.sqlstorage.ResetEverythingInDraft((result) => {
+      if(result){
+        this.RefreshData();
+      }else{
+        console.log("There was an error in deleting the table");
+      }
+    })
   }
 
   public AddNote(id):void{
@@ -256,6 +265,7 @@ export class Barcode {
                   buttons: ['OK']
                 });
                 setTimeout(() => {
+                  this.ResetDraftFromGenerate();
                   alerts.present();
                 },300);
               });
@@ -264,13 +274,27 @@ export class Barcode {
         ]
       });
       prompt.present();
-
-
-
-
     }
   }
 
+  public DeleteFromSaved(id):void{
+    console.log(id);
+    this.sqlstorage.DeleteFromTheSavedTable(id).then(
+      (data) => {
+        let alerts = this.alertCtrl.create({
+          title: 'Deleted',
+          subTitle: 'Your saved order has been deleted!',
+          buttons: ['OK']
+        });
+        this.RefreshData();
+        alerts.present();
+
+      }, (err) => {
+        console.log("Error deleting table");
+        console.log(err);
+      }
+    );
+  }
 
 
 
