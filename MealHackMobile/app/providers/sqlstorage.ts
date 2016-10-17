@@ -175,7 +175,9 @@ export class SqlStorageService {
     let sql = `INSERT INTO profile_table (name, profile_pic) VALUES (?,?)`;
     this.DB.query(sql, [obj.name, obj.picture]).then(
       (data) => {
-        this.CheckLoader.dismiss();
+        setTimeout(() => {
+          this.CheckLoader.dismiss();
+        }, 0);
       }, (err) => {
         console.log(err);
       }

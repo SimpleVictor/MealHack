@@ -24,12 +24,12 @@ export class Setting {
     TweenLite.from(cards, 0.2, {margin:"100px",ease:Circ.easeOut});
 
 
-    let alert = this.alertCtrl.create({
-      title: 'Sorry',
-      subTitle: 'Nothing on this page works by the way. App still in the beta!',
-      buttons: ['=( okay.']
-    });
-    alert.present();
+    // let alert = this.alertCtrl.create({
+    //   title: 'Sorry',
+    //   subTitle: 'Nothing on this page works by the way. App still in the beta!',
+    //   buttons: ['=( okay.']
+    // });
+    // alert.present();
 
 
   }
