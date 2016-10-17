@@ -213,6 +213,8 @@ export class SqlStorageService {
   }
 
   public AddItemToDraft(item){
+    console.log("Made it here");
+    console.log(item);
     let sql = `INSERT INTO draft_table (food_name, food_url, food_amount, food_notes) VALUES (?,?,?,?)`;
     return this.DB.query(sql , [item.name, item.picture_url, item.amount, "empty"]);
   }
@@ -221,7 +223,7 @@ export class SqlStorageService {
     this.DB.query(`DROP TABLE IF EXISTS draft_table`).then(
       (data) => {
         console.log("Sucess deleting everything in draft!");
-        this.DB.query('CREATE TABLE IF NOT EXISTS draft_table (id INTEGER PRIMARY KEY AUTOINCREMENT, food_name TEXT, food_url TEXT, food_amount TEXT)').then(
+        this.DB.query('CREATE TABLE IF NOT EXISTS draft_table (id INTEGER PRIMARY KEY AUTOINCREMENT, food_name TEXT, food_url TEXT, food_amount TEXT, food_notes TEXT)').then(
           result => {
             console.log("Created Table draft_table Successfully");
             callback(true);

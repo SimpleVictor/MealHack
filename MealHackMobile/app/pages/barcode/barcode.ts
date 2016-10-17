@@ -16,7 +16,7 @@ export class Barcode {
   draftItems;
   profileInfo;
   scannedItems;
-  savedItems;
+  savedItems:any[] = [];
 
   constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService, public alertCtrl: AlertController) {
 
@@ -28,6 +28,7 @@ export class Barcode {
       console.log(result)
       this.draftItems = result.draft_table;
       this.profileInfo = result.profile_table;
+      this.SplitUpSavedData(result.food_table);
       console.log(this.draftItems);
     });
 
@@ -37,6 +38,62 @@ export class Barcode {
     let cards = document.getElementsByClassName("barcode-card");
     TweenLite.from(cards, 0.2, {margin:"100px",ease:Circ.easeOut});
 
+  }
+
+  public SplitUpSavedData(data){
+    this.savedItems = [];
+    for(let i = 0; i < data.length; i++) {
+      let savedHolder = {
+        creator: "",
+        title: "",
+        profile_pic: "",
+        order: []
+      };
+
+      let splitStr = data[i].saved_food.split("^");
+
+
+
+
+      let splitInfo = (info, order) => {
+        let splitInfo = info.split("?");
+        savedHolder.creator = splitInfo[0];
+        savedHolder.profile_pic = splitInfo[1];
+        savedHolder.title = splitInfo[2];
+        console.log(savedHolder);
+        splitOrder(order, () => {
+          console.log("done!");
+          this.savedItems.push(savedHolder);
+        });
+      };
+
+      splitInfo(splitStr[0], splitStr[1]);
+
+      //food_name, food_url,food_amount, food_comment
+
+      function splitOrder(order, callback) {
+        let str2 = order;
+        str2.split(";").forEach((el, idx, array) => {
+          let x = el.split(',');
+          let newX = {
+            food_name: x[0],
+            food_url: x[1],
+            food_amount: x[2],
+            food_comment: x[3]
+          };
+          savedHolder.order.push(newX);
+          if (idx === array.length - 1) {
+            savedHolder.order.splice(idx, 1);
+            callback();
+          }
+          ;
+        });
+      }
+      if(i === (data.length - 1)){
+        console.log("Last iteration!");
+        console.log(this.savedItems);
+      };
+    }
   }
 
   public RefreshData(){
