@@ -262,55 +262,27 @@ export class SqlStorageService {
       (data) => {
 
         let newObj = [];
-
-        // let name = data.res.rows[0].name;
-        // let profilepic = data.res.rows[0].profile_pic;
-        // let newStr = `${name}?${profilepic}?${title}^`;
-        // for(let i = 0; i< obj.length ; i++){
-        //   newStr += `${obj[i].food_name},${obj[i].food_url},${obj[i].food_amount},${obj[i].food_notes};`;
-        //   if(i === (obj.length-1)){
-        //     console.log(newStr);
-        //     this.AddIntoFoodTableFromDraft(newStr).then(
-        //       (data) => {
-        //         console.log("Successfully added draft into the saved tab");
-        //         callback();
-        //       }, (err) => {
-        //         console.log(err);
-        //       }
-        //     );
-        //   }
-        // };
-
-
         for(let i = 0; i < data.res.rows.length; i++){
           newObj.push(data.res.rows.item(i))
         };
 
-        console.log(newObj);
-
-        // let newData = data.res.rows;
-        // let name = newData[0].name;
-        // let profilepic = newData[0].profile_pic;
-        // let newStr = `${name}?${profilepic}?${title}^`;
-        // for(let i = 0; i< obj.length ; i++){
-        //   newStr += `${obj[i].food_name},${obj[i].food_url},${obj[i].food_amount},${obj[i].food_notes};`;
-        //   if(i === (obj.length-1)){
-        //     console.log(newStr);
-        //     this.AddIntoFoodTableFromDraft(newStr).then(
-        //       (data) => {
-        //         console.log("Successfully added draft into the saved tab");
-        //         callback();
-        //       }, (err) => {
-        //         console.log(err);
-        //       }
-        //     );
-        //   }
-        // };
-
-
-
-
-
+        let name = newObj[0].name;
+        let profilepic = newObj[0].profile_pic;
+        let newStr = `${name}?${profilepic}?${title}^`;
+        for(let i = 0; i< obj.length ; i++){
+          newStr += `${obj[i].food_name},${obj[i].food_url},${obj[i].food_amount},${obj[i].food_notes};`;
+          if(i === (obj.length-1)){
+            console.log(newStr);
+            this.AddIntoFoodTableFromDraft(newStr).then(
+              (data) => {
+                console.log("Successfully added draft into the saved tab");
+                callback();
+              }, (err) => {
+                console.log(err);
+              }
+            );
+          }
+        };
 
       }, (err) => {
         console.log("Failed to grab profile account")
