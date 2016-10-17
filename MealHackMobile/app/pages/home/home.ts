@@ -275,7 +275,8 @@ export class HomePage {
     this.goBackToStart();
   }
 
-  activateScan(){
+  ScanBarCode(){
+    console.log("went in here");
     // let myStr = {
     //   text : "Bob?male3?MealPrep^Big Mac,bigmac,1,empty;Quarter Pounder with Cheese,quarterpounder,1,empty;"
     // };
