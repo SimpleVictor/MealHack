@@ -304,7 +304,14 @@ export class Barcode {
   public OpenSavedItemModal(order, id):void{
     this.sqlstorage.GetFoodTableById(id).then(
       (data) => {
-        let modal = this.modalCtrl.create(SavedModal, {order: order, raw: data.res.rows[0].saved_food});
+
+        let newObj = [];
+        for(let i = 0; i < data.res.rows.length; i++){
+          newObj.push(data.res.rows.item(i))
+        };
+
+
+        let modal = this.modalCtrl.create(SavedModal, {order: order, raw: newObj[0].saved_food});
         modal.onDidDismiss(() => {
           // this.CreateProfileAccount(Dataresults);
           this.BackgroundOpacity(true);
