@@ -260,6 +260,9 @@ export class SqlStorageService {
     console.log(obj);
     this.GetProfileAccount().then(
       (data) => {
+
+        let newObj = [];
+
         // let name = data.res.rows[0].name;
         // let profilepic = data.res.rows[0].profile_pic;
         // let newStr = `${name}?${profilepic}?${title}^`;
@@ -279,9 +282,11 @@ export class SqlStorageService {
         // };
 
 
+        for(let i = 0; i < data.res.rows.length; i++){
+          newObj.push(data.res.rows.item(i))
+        };
 
-        console.log(data);
-        console.log(data.res.rows);
+        console.log(newObj);
 
         // let newData = data.res.rows;
         // let name = newData[0].name;
