@@ -12,7 +12,8 @@ declare var cordova;
 
 @Component({
   providers: [SqlStorageService],
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  template: `<ion-nav [root]="rootPage"></ion-nav>
+<i style='font-size: 4rem;color: #FFF; right:7%;bottom:3%;background-color: #E62117; border-radius: 100%; padding: 5px 10px; position: absolute;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); ' ion-button tappable (click)="ScanButton()" class="fa fa-qrcode fa-stack-3x"></i>`
 })
 export class MyApp {
   rootPage: any = TabsPage;
@@ -20,7 +21,7 @@ export class MyApp {
 
   constructor(public platform: Platform, private modalCtrl: ModalController, public sqlStorage: SqlStorageService) {
     platform.ready().then(() => {
-      console.log(CONFIGS);
+      // console.log(CONFIGS);
 
       // console.log(document.getElementsByClassName("homemain-page"));
       // this.profile = document.getElementsByClassName("homemain-page");
@@ -61,6 +62,10 @@ export class MyApp {
     //     .catch((err) => console.log(err));
     //
     });
+  }
+
+  ScanButton(){
+    console.log("Hey");
   }
 
   BackgroundOpacity(value){

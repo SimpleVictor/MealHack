@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import {SqlStorageService} from "../../providers/sqlstorage";
 
 declare var qrcode;
@@ -11,24 +11,27 @@ declare var Circ;
 })
 export class Setting {
 
-  constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService) {
+  constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService, private alertCtrl: AlertController) {
 
   }
 
   ionViewDidEnter(){
-    var typeNumber = "20";
-    var errorCorrectionLevel = 'L';
-    var qr = qrcode(typeNumber, errorCorrectionLevel);
-    qr.addData('Big Mac,bigmac,1;Whopper Sandwich,whopper,1;Big Mac,bigmac,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Double Quarter Pounder with Cheese,doublequarter,1;Double Quarter Pounder with Cheese,doublequarter,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;');
-    qr.make();
-    document.getElementById('placeHolder').innerHTML = qr.createImgTag(3, 2*3);
-
 
 
     let obj = document.getElementById("setting-title");
     TweenLite.from(obj, 0.4, {width:"0px",opacity: 0, ease:Circ.easeOut});
     let cards = document.getElementsByClassName("setting-card");
     TweenLite.from(cards, 0.2, {margin:"100px",ease:Circ.easeOut});
+
+
+    let alert = this.alertCtrl.create({
+      title: 'Sorry',
+      subTitle: 'Nothing on this page works by the way. App still in the beta!',
+      buttons: ['=( okay.']
+    });
+    alert.present();
+
+
   }
 
   deleteTable(){

@@ -25,10 +25,8 @@
       </ion-card-content>
     </ion-card>
 
-
     <ion-card padding class="barcode-card">
       <div [ngSwitch]="BarcodeTabs">
-
 
 
 
@@ -101,7 +99,7 @@
               Saved
             </ion-list-header>
             <ion-item-sliding *ngFor="let savedItem of savedItems">
-              <ion-item class="savedItem" tappable ion-button (click)="OpenSavedItemModal(savedItem)">
+              <ion-item class="savedItem" tappable ion-button (click)="OpenSavedItemModal(savedItem, savedItem.id)">
                 <ion-avatar item-left>
                   <img src='img/profile-picture/{{savedItem.profile_pic}}.png'>
                 </ion-avatar>
@@ -119,7 +117,6 @@
         </div>
       </div>
     </ion-card>
-
 
 
   </ion-content>

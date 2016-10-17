@@ -18,6 +18,7 @@ export class Barcode {
   header2;
   draftItems;
   profileInfo;
+  foodTable;
   scannedItems;
   savedItems:any[] = [];
 
@@ -29,11 +30,12 @@ export class Barcode {
 
   ionViewDidEnter(){
     this.sqlstorage.RetreiveAllTable((result) => {
-      console.log(result)
+      // console.log(result)
       this.draftItems = result.draft_table;
       this.profileInfo = result.profile_table;
+      this.foodTable = result.food_table;
       this.SplitUpSavedData(result.food_table);
-      console.log(this.draftItems);
+      // console.log(this.draftItems);
     });
 
     let obj = document.getElementById("barcode-title");
@@ -93,7 +95,6 @@ export class Barcode {
         });
       }
       if(i === (data.length - 1)){
-        console.log("Last iteration!");
         console.log(this.savedItems);
       };
     }
@@ -300,14 +301,19 @@ export class Barcode {
     );
   }
 
-  public OpenSavedItemModal(order):void{
-    let modal = this.modalCtrl.create(SavedModal, {order: order});
-    modal.onDidDismiss(() => {
-      // this.CreateProfileAccount(Dataresults);
-      this.BackgroundOpacity(true);
-    });
-    this.BackgroundOpacity(false);
-    modal.present();
+  public OpenSavedItemModal(order, id):void{
+    this.sqlstorage.GetFoodTableById(id).then(
+      (data) => {
+        let modal = this.modalCtrl.create(SavedModal, {order: order, raw: data.res.rows[0].saved_food});
+        modal.onDidDismiss(() => {
+          // this.CreateProfileAccount(Dataresults);
+          this.BackgroundOpacity(true);
+        });
+        this.BackgroundOpacity(false);
+        modal.present();
+
+      }, (err) => console.log(err)
+    );
   }
 
   public BackgroundOpacity(value){

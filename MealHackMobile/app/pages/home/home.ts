@@ -52,9 +52,9 @@ export class HomePage {
     this.tacobell_menu =  tacobell.tacobell;
 
 
-    console.log(this.burgerking_menu);
-    console.log(this.tacobell_menu);
-    console.log(this.mcdonald_menu);
+    // console.log(this.burgerking_menu);
+    // console.log(this.tacobell_menu);
+    // console.log(this.mcdonald_menu);
   }
 
   ionViewDidEnter(){
@@ -128,7 +128,8 @@ export class HomePage {
     TweenLite.to(img , 0.5, {height:"130px", ease:Circ.easeIn, onComplete: ImgComplete});
     //CLOSE
     let close = window.document.getElementById("close-marker");
-    TweenLite.to(close, 1, {left:"-400px",ease:Circ.easeOut, rotation: 1440, onComplete: CloseFinish});
+    // TweenLite.to(close, 1, {left:"-400px",ease:Circ.easeOut, rotation: 1440, onComplete: CloseFinish});
+    TweenLite.from(close, 0.5, {ease:Circ.easeOut, rotation: 720, onComplete: CloseFinish});
 
 
     //BRING BACK OTHER RESTAURANT
@@ -146,8 +147,8 @@ export class HomePage {
 
 
     function CloseFinish(){
-      // close.style.opacity = "1";
-      close.style.left = "85%";
+      close.style.opacity = "1";
+      // close.style.left = "85%";
       close.style.display = "none";
     }
 
@@ -192,7 +193,8 @@ export class HomePage {
     TweenLite.to(card, 0.5, {height:"auto" ,ease:Circ.easeOut});
     //Close Marker
     // TweenLite.from(close, 1, {left:"-400px", opacity: 0, ease:Circ.easeOut, rotation: 1000,delay: 0.5});
-    TweenLite.from(close, 1, {left:"-400px", opacity: 0, ease:Circ.easeOut, rotation: 1000});
+    // TweenLite.from(close, 1, {left:"-400px", opacity: 0, ease:Circ.easeOut, rotation: 1000});
+    TweenLite.from(close, 0.5, {opacity: 0, ease:Circ.easeOut, rotation: 720});
     // Food List
     // console.log(foodlist);
     // foodlist[0].style.display = "";

@@ -38,6 +38,11 @@
     position:absolute;
   }
 
+  #close-marker:active{
+    font-size: 5rem;
+    color: #ccc;
+  }
+
   .saved-modal-card{
     position: absolute;
     padding-top: 20px;

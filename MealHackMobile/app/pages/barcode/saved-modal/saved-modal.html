@@ -25,12 +25,12 @@
   <div class="qr-container">
 
     <ion-thumbnail class="qr-img" item-left>
-      <img src="img/qrcode.png">
+      <img tappable ion-button (click)="openQrModal()" src="img/qrcode.png">
     </ion-thumbnail>
 
     <img id="handIcon" src="img/tap.png" class="tap-img">
   </div>
-    <ion-icon id="close-marker" name="md-close"></ion-icon>
+    <ion-icon id="close-marker" name="md-close" tappable ion-button (click)="DismissModal()"></ion-icon>
 
 </ion-content>
 

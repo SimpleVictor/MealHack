@@ -14,14 +14,14 @@ export class SqlStorageService {
   constructor(private platform: Platform, private modalCtrl: ModalController, private loadingCtrl: LoadingController) {
     this.DB = new Storage(SqlStorage);
     let whichPlat = platform.platforms();
-    console.log(whichPlat);
+    // console.log(whichPlat);
     this.profile = document.getElementsByClassName("homemain-page");
 
     //CREATE THE FOOD TABLE
     // this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT, scanned_food TEXT, food_notes TEXT, name_of_creator TEXT, profile_pic TEXT, created_on TEXT, food_order TEXT, food_title TEXT)').then(
     this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT, scanned_food TEXT)').then(
       result => {
-        console.log(result);
+        // console.log(result);
         console.log("Created Table food_table Successfully");
       }, err => {
         console.log("Failed Making Table food_table");
@@ -32,7 +32,7 @@ export class SqlStorageService {
     //CREATE THE DRAFT TABLE
   this.DB.query('CREATE TABLE IF NOT EXISTS draft_table (id INTEGER PRIMARY KEY AUTOINCREMENT, food_name TEXT, food_url TEXT, food_amount TEXT, food_notes TEXT)').then(
       result => {
-        console.log(result);
+        // console.log(result);
         console.log("Created Table draft_table Successfully");
       }, err => {
         console.log("Failed Making Table draft_table");
@@ -123,7 +123,7 @@ export class SqlStorageService {
       };
       this.DB.query(`SELECT * FROM food_table`).then(
         (data) => {
-          console.log(data.res.rows.length);
+          // console.log(data.res.rows.length);
           for(let i = 0; i < data.res.rows.length; i++){
             allTable.food_table.push(data.res.rows.item(i))
           };
@@ -317,6 +317,11 @@ export class SqlStorageService {
     console.log(str);
     let sql = `INSERT INTO food_table (saved_food, scanned_food) VALUES (?,?)`;
     return this.DB.query(sql, [str, "empty"]);
+  }
+
+  public GetFoodTableById(id){
+    let sql = `SELECT * FROM food_table WHERE id=${id}`;
+    return this.DB.query(sql);
   }
 
 

@@ -1,0 +1,30 @@
+.qr-modal{
+  color: #FFF;
+  background: transparent;
+  scroll-content{
+    background: transparent;
+  }
+
+  #close-marker2{
+    color: #FFF;
+    font-size: 4rem;
+    font-weight: 900;
+    top: 20px;
+    right:30px;
+    position:absolute;
+  }
+
+  #close-marker2:active{
+    font-size: 5rem;
+    color: #ccc;
+  }
+
+  .qr-modal-card{
+    position: absolute;
+    padding-top: 20px;
+    height: 100%;
+    background: transparent;
+    color: white !important;
+
+  }
+}
