@@ -46,6 +46,72 @@ export class HomePage {
   checkClick:boolean = false;
 
   constructor(public navCtrl: NavController, public sqlstorage: SqlStorageService, public alertCtrl: AlertController){
+
+    let objArray = []
+    let str = "Victor?male3?CheatMeal^Big Mac,bigmac,1,empty;Coke,cup,1,no ice;Vanilla Cone,vanillacone,1,empty;World Famous Fries,fries,1,no salt;";
+
+    let savedHolder = {
+      creator: "",
+      title: "",
+      profile_pic: "",
+      order: []
+    };
+
+    let splitStr = str.split("^");
+
+    splitInfo(splitStr[0], splitStr[1]);
+
+    // str.split('^').forEach((el, idx, array) => {
+    //   console.log(el);
+    //   splitMe();
+
+      // console.log(el);
+      // let x = el.split(',');
+      // let newobj = {
+      //   food_name: x[0],
+      //   food_url: x[1],
+      //   food_amount: x[2]
+      // };
+      // objArray.push(newobj);
+      // if (idx === array.length - 1){
+      //   objArray.splice(idx, 1);
+      //   console.log(objArray);
+      // };
+    // });
+
+    function splitInfo(info, order){
+      let splitInfo = info.split("?");
+      savedHolder.creator = splitInfo[0];
+      savedHolder.profile_pic = splitInfo[1];
+      savedHolder.title = splitInfo[2];
+      console.log(savedHolder);
+      splitOrder(order, () => {
+        console.log("done!");
+        console.log(savedHolder);
+      });
+    }
+
+    //food_name, food_url,food_amount, food_comment
+
+    function splitOrder(order, callback){
+      let str2 = order;
+      str2.split(";").forEach((el, idx, array) => {
+        let x = el.split(',');
+        let newX = {
+          food_name: x[0],
+          food_url: x[1],
+          food_amount: x[2],
+          food_comment: x[3]
+        };
+        savedHolder.order.push(newX);
+        if (idx === array.length - 1){
+          savedHolder.order.splice(idx, 1);
+          callback();
+        };
+      });
+    }
+
+
     this.mcdonald_menu = JSON.parse(mcdonald.mcdonald);
     this.burgerking_menu = burgerking.burgerking;
     this.tacobell_menu =  tacobell.tacobell;

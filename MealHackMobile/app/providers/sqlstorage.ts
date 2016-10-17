@@ -18,7 +18,8 @@ export class SqlStorageService {
     this.profile = document.getElementsByClassName("homemain-page");
 
     //CREATE THE FOOD TABLE
-    this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT, scanned_food TEXT, food_notes TEXT, name_of_creator TEXT, profile_pic TEXT, created_on TEXT, food_order TEXT, food_title TEXT)').then(
+    // this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT, scanned_food TEXT, food_notes TEXT, name_of_creator TEXT, profile_pic TEXT, created_on TEXT, food_order TEXT, food_title TEXT)').then(
+    this.DB.query('CREATE TABLE IF NOT EXISTS food_table (id INTEGER PRIMARY KEY AUTOINCREMENT, saved_food TEXT, scanned_food TEXT)').then(
       result => {
         console.log(result);
         console.log("Created Table food_table Successfully");
@@ -109,6 +110,10 @@ export class SqlStorageService {
 
   }
 
+  public AddFakeDraftItems(){
+    return this.DB.query(`INSERT INTO draft_table (food_name,food_url,food_amount, food_notes) VALUES (?,?,?,?)`, ["Fake burger", "img/food/burgerking/burger/baconkingsandwich.png", "3", "empty"]);
+  }
+
   //GRAB ALL TABLE AND PLACE THEM INTO AN OBJECT
   RetreiveAllTable(callback){
       let allTable = {
@@ -178,6 +183,11 @@ export class SqlStorageService {
     )
   }
 
+  public GetProfileAccount(){
+    let sql = `SELECT * FROM profile_table`;
+    return this.DB.query(sql);
+  }
+
 
   /* ENDING
    *
@@ -203,8 +213,8 @@ export class SqlStorageService {
   }
 
   public AddItemToDraft(item){
-    let sql = `INSERT INTO draft_table (food_name, food_url, food_amount) VALUES (?,?,?)`;
-    return this.DB.query(sql , [item.name, item.picture_url, item.amount]);
+    let sql = `INSERT INTO draft_table (food_name, food_url, food_amount, food_notes) VALUES (?,?,?,?)`;
+    return this.DB.query(sql , [item.name, item.picture_url, item.amount, "empty"]);
   }
 
   public ResetEverythingInDraft(callback){
@@ -244,22 +254,37 @@ export class SqlStorageService {
     return this.DB.query(sql);
   }
 
-  public SendOffDraft(obj){
+  public SendOffDraft(obj, title, callback){
+    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     console.log(obj);
+    this.GetProfileAccount().then(
+      (data) => {
+        let name = data.res.rows[0].name;
+        let profilepic = data.res.rows[0].profile_pic;
+        let newStr = `${name}?${profilepic}?${title}^`;
+        for(let i = 0; i< obj.length ; i++){
+          newStr += `${obj[i].food_name},${obj[i].food_url},${obj[i].food_amount},${obj[i].food_notes};`;
+          if(i === (obj.length-1)){
+            console.log(newStr);
+            this.AddIntoFoodTableFromDraft(newStr).then(
+              (data) => {
+                console.log("Successfully added draft into the saved tab");
+                callback();
+              }, (err) => {
+                console.log(err);
+              }
+            );
+          }
+        };
 
-    let newObj = "";
-    for(let i = 0; i< obj.length ; i++){
-      newObj += `${obj[i].food_name},${obj[i].food_url},${obj[i].food_amount};`;
-    };
-    console.log(newObj);
-//food_amount, food_url, food_name
+      }, (err) => {
+        console.log("Failed to grab profile account")
+      }
+    );
+
+
 
   }
-
-  public AddFakeDraftItems(){
-    return this.DB.query(`INSERT INTO draft_table (food_name,food_url,food_amount, food_notes) VALUES (?,?,?,?)`, ["Fake burger", "img/food/burgerking/burger/baconkingsandwich.png", "3", "empty"]);
-  }
-
 
   /* ENDING
    *
@@ -274,7 +299,7 @@ export class SqlStorageService {
   /* Beginning
    *
    *
-   * EVERYTHING IN HERE WILL ASSOCIATE WITH THE SAVED TABLE
+   * EVERYTHING IN HERE WILL ASSOCIATE WITH THE food_table TABLE
    *
    *
    * */
@@ -283,6 +308,13 @@ export class SqlStorageService {
   public DeleteFromTheSavedTable(item_index){
     let sql = `DELETE FROM food_table WHERE id='${item_index}'`;
     return this.DB.query(sql);
+  }
+
+
+  public AddIntoFoodTableFromDraft(str){
+    console.log(str);
+    let sql = `INSERT INTO food_table (saved_food, scanned_food) VALUES (?,?)`;
+    return this.DB.query(sql, [str, "empty"]);
   }
 
 

@@ -18,26 +18,26 @@
 <body>
   <ion-app></ion-app>
 
-  <script>
-    let objArray = []
-    let str = "Big Mac,bigmac,1;Whopper Sandwich,whopper,1;Big Mac,bigmac,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Double Quarter Pounder with Cheese,doublequarter,1;Double Quarter Pounder with Cheese,doublequarter,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;";
-    console.log(str);
-    str.split(';').forEach((el, idx, array) => {
-      console.log(el);
-      let x = el.split(',');
-      let newobj = {
-        food_name: x[0],
-        food_url: x[1],
-        food_amount: x[2]
-      };
-      objArray.push(newobj);
-      if (idx === array.length - 1){
-        objArray.splice(idx, 1);
-        console.log(objArray);
-      };
-    });
+  <!--<script>-->
+    <!--let objArray = []-->
+    <!--let str = "Big Mac,bigmac,1;Whopper Sandwich,whopper,1;Big Mac,bigmac,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Double Quarter Pounder with Cheese,doublequarter,1;Double Quarter Pounder with Cheese,doublequarter,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;Quarter Pounder with Cheese,quarterpounder,1;";-->
+    <!--console.log(str);-->
+    <!--str.split(';').forEach((el, idx, array) => {-->
+      <!--console.log(el);-->
+      <!--let x = el.split(',');-->
+      <!--let newobj = {-->
+        <!--food_name: x[0],-->
+        <!--food_url: x[1],-->
+        <!--food_amount: x[2]-->
+      <!--};-->
+      <!--objArray.push(newobj);-->
+      <!--if (idx === array.length - 1){-->
+        <!--objArray.splice(idx, 1);-->
+        <!--console.log(objArray);-->
+      <!--};-->
+    <!--});-->
 
-  </script>
+  <!--</script>-->
 
   <!-- cordova.js required for cordova apps -->
   <script src="cordova.js"></script>

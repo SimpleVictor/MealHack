@@ -171,14 +171,46 @@ export class Barcode {
       });
       alert.present();
     }else{
-      this.sqlstorage.SendOffDraft(this.draftItems);
 
-      let alert = this.alertCtrl.create({
-        title: 'Saved',
-        subTitle: 'You order has been saved!',
-        buttons: ['OK']
+
+      let prompt = this.alertCtrl.create({
+        title: 'Order Title',
+        message: "Title your food orders",
+        inputs: [
+          {
+            name: 'food_title',
+            placeholder: 'My Cheat Meal'
+          },
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Save',
+            handler: data => {
+              this.sqlstorage.SendOffDraft(this.draftItems, data.food_title, () => {
+                let alerts = this.alertCtrl.create({
+                  title: 'Saved',
+                  subTitle: 'You order has been saved!',
+                  buttons: ['OK']
+                });
+                setTimeout(() => {
+                  alerts.present();
+                },300);
+              });
+            }
+          }
+        ]
       });
-      alert.present();
+      prompt.present();
+
+
+
+
     }
   }
 
