@@ -176,7 +176,6 @@ export class SqlStorageService {
     this.DB.query(sql, [obj.name, obj.picture]).then(
       (data) => {
         this.CheckLoader.dismiss();
-        console.log(data);
       }, (err) => {
         console.log(err);
       }
