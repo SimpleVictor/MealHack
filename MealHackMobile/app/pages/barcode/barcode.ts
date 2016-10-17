@@ -1,7 +1,9 @@
 import { Component} from '@angular/core';
 import { NavController, AlertController, ModalController} from 'ionic-angular';
+import { BarcodeScanner } from 'ionic-native';
 import {SqlStorageService} from "../../providers/sqlstorage";
 import {SavedModal} from "./saved-modal/saved-modal";
+import {BarcodeData} from "../home/home";
 
 declare var TweenLite;
 declare var Circ;
@@ -385,6 +387,28 @@ export class Barcode {
     );
   }
 
+  public OpenScannedItemModal(order, id):void{
+    this.sqlstorage.GetFoodScannedTableById(id).then(
+      (data) => {
+
+        let newObj = [];
+        for(let i = 0; i < data.res.rows.length; i++){
+          newObj.push(data.res.rows.item(i))
+        };
+
+
+        let modal = this.modalCtrl.create(SavedModal, {order: order, raw: newObj[0].scanned_food});
+        modal.onDidDismiss(() => {
+          // this.CreateProfileAccount(Dataresults);
+          this.BackgroundOpacity(true);
+        });
+        this.BackgroundOpacity(false);
+        modal.present();
+
+      }, (err) => console.log(err)
+    );
+  }
+
 
   public DeleteScanned(id):void{
     console.log(id);
@@ -424,6 +448,37 @@ export class Barcode {
       };
     };
   }
+
+  ScanBarCode(){
+    BarcodeScanner.scan({
+      "preferFrontCamera": false,
+      "showFlipCameraButton" : true
+    })
+      .then((result) => {
+        if (!result.cancelled) {
+          const barcodeData = new BarcodeData(result.text, result.format);
+          this.scanDetails(barcodeData);
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      })
+  }
+
+  scanDetails(details) {
+    console.log(details.text);
+    this.sqlstorage.InsertScannedData(details.text).then(
+      (data) => {
+        console.log("Sucessfully added data");
+        this.navCtrl.parent.select(1);
+      }, (err) => {
+        console.log("FAILED ADDING DATA");
+        console.log(err);
+      }
+    );
+    // this.navCtrl.push(IndividualBarcode, {id: details.text, is_scan: true});
+  }
+
 
 
   public BackgroundOpacity(value){

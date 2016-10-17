@@ -276,11 +276,6 @@ export class HomePage {
   }
 
   ScanBarCode(){
-    console.log("went in here");
-    // let myStr = {
-    //   text : "Bob?male3?MealPrep^Big Mac,bigmac,1,empty;Quarter Pounder with Cheese,quarterpounder,1,empty;"
-    // };
-    // this.scanDetails(myStr);
     BarcodeScanner.scan({
       "preferFrontCamera": false,
       "showFlipCameraButton" : true
@@ -298,7 +293,6 @@ export class HomePage {
 
   scanDetails(details) {
     console.log(details.text);
-    // console.log(this.navCtrl);
     this.sqlstorage.InsertScannedData(details.text).then(
       (data) => {
         console.log("Sucessfully added data");

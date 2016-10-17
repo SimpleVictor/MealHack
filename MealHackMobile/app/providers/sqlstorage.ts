@@ -396,6 +396,11 @@ export class SqlStorageService {
     return this.DB.query(sql, [str]);
   }
 
+  public GetFoodScannedTableById(id){
+    let sql = `SELECT * FROM food_scanned_table WHERE id=${id}`;
+    return this.DB.query(sql);
+  }
+
 
 
 }

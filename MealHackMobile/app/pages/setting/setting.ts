@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import {SqlStorageService} from "../../providers/sqlstorage";
+import { BarcodeScanner } from 'ionic-native';
+import {BarcodeData} from "../home/home";
 
 declare var qrcode;
 
@@ -67,5 +69,36 @@ export class Setting {
       (err) => console.log(err)
     );
   }
+
+  ScanBarCode(){
+    BarcodeScanner.scan({
+      "preferFrontCamera": false,
+      "showFlipCameraButton" : true
+    })
+      .then((result) => {
+        if (!result.cancelled) {
+          const barcodeData = new BarcodeData(result.text, result.format);
+          this.scanDetails(barcodeData);
+        }
+      })
+      .catch((err) => {
+        alert(err);
+      })
+  }
+
+  scanDetails(details) {
+    console.log(details.text);
+    this.sqlstorage.InsertScannedData(details.text).then(
+      (data) => {
+        console.log("Sucessfully added data");
+        this.navCtrl.parent.select(1);
+      }, (err) => {
+        console.log("FAILED ADDING DATA");
+        console.log(err);
+      }
+    );
+    // this.navCtrl.push(IndividualBarcode, {id: details.text, is_scan: true});
+  }
+
 
 }

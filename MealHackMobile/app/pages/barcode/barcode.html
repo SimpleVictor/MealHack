@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title id="barcode-title" style="text-align:center;">Barcode</ion-title>
     <ion-buttons end>
-      <button class="scan-button" ion-button icon-only (click)="activateScan()">
+      <button class="scan-button" ion-button icon-only (click)="ScanBarCode()">
         <!--<ion-icon name="search"></ion-icon>-->
         <!--<i class="fa-stack fa-circle fa-qrcode "></i>-->
         <span class="fa-stack fa-lg">
@@ -81,7 +81,7 @@
               Scanned Barcodes
             </ion-list-header>
             <ion-item-sliding *ngFor="let scannedItem of scannedItems">
-              <ion-item>
+              <ion-item tappable ion-button (click)="OpenScannedItemModal(scannedItem, scannedItem.id)">
                 <ion-avatar item-left>
                   <img src='img/profile-picture/{{scannedItem.profile_pic}}.png'>
                 </ion-avatar>
