@@ -280,24 +280,27 @@ export class SqlStorageService {
 
 
 
-        let newData = data.res.rows;
-        let name = newData[0].name;
-        let profilepic = newData[0].profile_pic;
-        let newStr = `${name}?${profilepic}?${title}^`;
-        for(let i = 0; i< obj.length ; i++){
-          newStr += `${obj[i].food_name},${obj[i].food_url},${obj[i].food_amount},${obj[i].food_notes};`;
-          if(i === (obj.length-1)){
-            console.log(newStr);
-            this.AddIntoFoodTableFromDraft(newStr).then(
-              (data) => {
-                console.log("Successfully added draft into the saved tab");
-                callback();
-              }, (err) => {
-                console.log(err);
-              }
-            );
-          }
-        };
+        console.log(data);
+        console.log(data.res.rows);
+
+        // let newData = data.res.rows;
+        // let name = newData[0].name;
+        // let profilepic = newData[0].profile_pic;
+        // let newStr = `${name}?${profilepic}?${title}^`;
+        // for(let i = 0; i< obj.length ; i++){
+        //   newStr += `${obj[i].food_name},${obj[i].food_url},${obj[i].food_amount},${obj[i].food_notes};`;
+        //   if(i === (obj.length-1)){
+        //     console.log(newStr);
+        //     this.AddIntoFoodTableFromDraft(newStr).then(
+        //       (data) => {
+        //         console.log("Successfully added draft into the saved tab");
+        //         callback();
+        //       }, (err) => {
+        //         console.log(err);
+        //       }
+        //     );
+        //   }
+        // };
 
 
 
