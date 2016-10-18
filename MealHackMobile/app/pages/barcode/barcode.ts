@@ -53,6 +53,15 @@ export class Barcode {
 
   }
 
+  public SegmentChanged(data):void{
+    console.log("segment changed!");
+    console.log(data);
+  }
+
+  public SegmentEnter():void{
+    console.log("segment entered");
+  }
+
   public SplitUpSavedData(data){
     this.savedItems = [];
     for(let i = 0; i < data.length; i++) {

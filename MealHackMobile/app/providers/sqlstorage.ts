@@ -5,13 +5,18 @@ import {SignUpPage} from "../pages/home/signup/signup";
 
 
 @Injectable()
-export class SqlStorageService {
+export class SqlStorageService{
 
   DB: Storage = null;
   profile;
   CheckLoader;
 
-  constructor(private platform: Platform, private modalCtrl: ModalController, private loadingCtrl: LoadingController) {
+  //FOR THE BADGES
+  globalDraft:number = 0;
+  globalScanned:number = 0;
+  globalSaved:number = 0;
+
+  constructor(private platform: Platform, private modalCtrl: ModalController, private loadingCtrl: LoadingController)  {
     this.DB = new Storage(SqlStorage);
     let whichPlat = platform.platforms();
     // console.log(whichPlat);
@@ -79,6 +84,20 @@ export class SqlStorageService {
       }
     );
   }
+
+  GetBadgeNumber(){
+    let x = (this.globalDraft + this.globalScanned + this.globalSaved);
+    return x;
+  }
+
+  IncreaseBadgeNumber(name){
+    console.log(name);
+  }
+
+  DecreaseBadgeNumber(name){
+    console.log(name);
+  }
+
 
   //THIS FUNCTION IS TO CHANGE THE BACKGROUND OF THE MAIN PAGE TO BLUR AND BLACK
   //THIS ONLY COMES UP WHEN THE USER FIRST LOGGED INTO THE APP
@@ -241,6 +260,7 @@ export class SqlStorageService {
 
   public AddItemToDraft(item){
     console.log("Made it here");
+    this.globalDraft += 1;
     console.log(item);
     let sql = `INSERT INTO draft_table (food_name, food_url, food_amount, food_notes) VALUES (?,?,?,?)`;
     return this.DB.query(sql , [item.name, item.picture_url, item.amount, "empty"]);

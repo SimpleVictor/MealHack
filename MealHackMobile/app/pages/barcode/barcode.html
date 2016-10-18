@@ -27,7 +27,7 @@
 
     <ion-card class="barcode-card tabs">
       <ion-card-content class="tab-content">
-        <ion-segment [(ngModel)]="BarcodeTabs" sidecolor>
+        <ion-segment [(ngModel)]="BarcodeTabs" sidecolor (ionChange)="SegmentChanged($event)">
           <ion-segment-button class="segment-activated" value="draft">Draft</ion-segment-button>
           <ion-segment-button value="scanned">Scanned</ion-segment-button>
           <ion-segment-button value="saved">Saved</ion-segment-button>

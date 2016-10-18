@@ -3,6 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 import {SqlStorageService} from "../../providers/sqlstorage";
 import { BarcodeScanner } from 'ionic-native';
 import {BarcodeData} from "../home/home";
+import {TabsPage} from "../tabs/tabs";
 
 declare var qrcode;
 
@@ -98,6 +99,11 @@ export class Setting {
       }
     );
     // this.navCtrl.push(IndividualBarcode, {id: details.text, is_scan: true});
+  }
+
+  AddBadge(){
+    // this.myTabs.myBadge = 2;
+    // this.sqlstorage.ChangeBadge();
   }
 
 
