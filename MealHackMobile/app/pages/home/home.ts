@@ -87,7 +87,7 @@ export class HomePage {
 
   //  THIS IS FOR THE PIZZA ANIMATION
     this.tabIcon = document.getElementsByClassName("ion-md-restaurant");
-    console.log(this.tabIcon[0].getBoundingClientRect());
+    // console.log(this.tabIcon[0].getBoundingClientRect());
     this.savedTop = this.tabIcon[0].getBoundingClientRect().top;
     this.savedLeft = this.tabIcon[0].getBoundingClientRect().left;
 
@@ -216,7 +216,7 @@ export class HomePage {
 
 
   addFoodItem(myevent, item){
-    console.log(item);
+    // console.log(item);
 
     let alert = this.alertCtrl.create();
     alert.setTitle('Lightsaber color');
@@ -241,18 +241,18 @@ export class HomePage {
     alert.addButton({
       text: 'OK',
       handler: data => {
-        console.log(data);
+        // console.log(data);
         item.amount = data;
         this.sqlstorage.AddItemToDraft(item).then(
           (data) => console.log("Added Succesfully"),
           (err) => console.log(err)
         );
 
-        console.log(myevent.toElement.getBoundingClientRect());
+        // console.log(myevent.toElement.getBoundingClientRect());
         let element = myevent.toElement.getBoundingClientRect();
         let objTop = Math.round(element.top);
         let objLeft = Math.round(element.left);
-        console.log(objTop, objLeft);
+        // console.log(objTop, objLeft);
 
         TweenLite.from(this.pizzaIcon, 0.50, {top: objTop, left: objLeft , rotation: 720,ease:Circ.easeOut, onComplete: onComplete, onCompleteParams: [this.tabIcon[0]]});
 

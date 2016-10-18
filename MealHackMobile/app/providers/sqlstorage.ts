@@ -259,9 +259,9 @@ export class SqlStorageService{
   }
 
   public AddItemToDraft(item){
-    console.log("Made it here");
+    // console.log("Made it here");
     this.globalDraft += 1;
-    console.log(item);
+    // console.log(item);
     let sql = `INSERT INTO draft_table (food_name, food_url, food_amount, food_notes) VALUES (?,?,?,?)`;
     return this.DB.query(sql , [item.name, item.picture_url, item.amount, "empty"]);
   }
@@ -304,8 +304,8 @@ export class SqlStorageService{
   }
 
   public SendOffDraft(obj, title, callback){
-    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-    console.log(obj);
+    // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    // console.log(obj);
     this.GetProfileAccount().then(
       (data) => {
 
@@ -320,7 +320,7 @@ export class SqlStorageService{
         for(let i = 0; i< obj.length ; i++){
           newStr += `${obj[i].food_name},${obj[i].food_url},${obj[i].food_amount},${obj[i].food_notes};`;
           if(i === (obj.length-1)){
-            console.log(newStr);
+            // console.log(newStr);
             this.AddIntoFoodTableFromDraft(newStr).then(
               (data) => {
                 console.log("Successfully added draft into the saved tab");
@@ -367,8 +367,8 @@ export class SqlStorageService{
 
 
   public AddIntoFoodTableFromDraft(str){
-    console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-    console.log(str);
+    // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+    // console.log(str);
     let sql = `INSERT INTO food_table (saved_food) VALUES (?)`;
     return this.DB.query(sql, [str]);
   }

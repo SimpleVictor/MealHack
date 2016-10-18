@@ -196,7 +196,7 @@
               </ion-thumbnail>
               <h2>{{burrito.name}}</h2>
               <p>Price: ${{burrito.price}}</p>
-              <button ion-button tappable (click)="addFoodItem($event, taco)" clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event, burrito)" clear item-right>Add</button>
             </ion-item>
           </div>
           <div *ngSwitchCase="'sides'">
@@ -206,7 +206,7 @@
               </ion-thumbnail>
               <h2>{{sides.name}}</h2>
               <p>Price: ${{sides.price}}</p>
-              <button ion-button tappable (click)="addFoodItem($event, taco)" clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event, sides)" clear item-right>Add</button>
             </ion-item>
           </div>
           <div *ngSwitchCase="'drinks'">
@@ -216,7 +216,7 @@
               </ion-thumbnail>
               <h2>{{drinks.name}}</h2>
               <p>Price: ${{drinks.price}}</p>
-              <button ion-button tappable (click)="addFoodItem($event, taco)" clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event, drinks)" clear item-right>Add</button>
             </ion-item>
           </div>
           <div *ngSwitchCase="'dessert'">
@@ -226,7 +226,7 @@
               </ion-thumbnail>
               <h2>{{dessert.name}}</h2>
               <p>Price: ${{dessert.price}}</p>
-              <button ion-button tappable (click)="addFoodItem($event, taco)" clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event, dessert)" clear item-right>Add</button>
             </ion-item>
           </div>
           <div *ngSwitchCase="'breakfast'">
@@ -236,7 +236,7 @@
               </ion-thumbnail>
               <h2>{{breakfast.name}}</h2>
               <p>Price: ${{breakfast.price}}</p>
-              <button ion-button tappable (click)="addFoodItem($event, taco)" clear item-right>Add</button>
+              <button ion-button tappable (click)="addFoodItem($event, breakfast)" clear item-right>Add</button>
             </ion-item>
           </div>
 

@@ -34,7 +34,7 @@ export class Barcode {
 
   ionViewDidEnter(){
     this.sqlstorage.RetreiveAllTable((result) => {
-      console.log(result)
+      // console.log(result)
       this.draftItems = result.draft_table;
       this.profileInfo = result.profile_table;
       this.foodTable = result.food_table;
@@ -54,8 +54,8 @@ export class Barcode {
   }
 
   public SegmentChanged(data):void{
-    console.log("segment changed!");
-    console.log(data);
+    // console.log("segment changed!");
+    // console.log(data);
   }
 
   public SegmentEnter():void{
@@ -111,7 +111,7 @@ export class Barcode {
         });
       }
       if(i === (data.length - 1)){
-        console.log(this.savedItems);
+        // console.log(this.savedItems);
       };
     }
   }
@@ -166,7 +166,7 @@ export class Barcode {
         });
       }
       if(i === (data.length - 1)){
-        console.log(this.scannedItems);
+        // console.log(this.scannedItems);
       };
     }
   }
@@ -174,12 +174,12 @@ export class Barcode {
 
   public RefreshData(){
     this.sqlstorage.RetreiveAllTable((result) => {
-      console.log(result)
+      // console.log(result)
       this.draftItems = result.draft_table;
       this.profileInfo = result.profile_table;
       this.SplitUpSavedData(result.food_table);
       this.SplitUpScannedData(result.scanned_table);
-      console.log(this.draftItems);
+      // console.log(this.draftItems);
     });
   }
 
